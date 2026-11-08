@@ -1,0 +1,31 @@
+name: ARCHIUM · новости в Telegram
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'news.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: archium-telegram-news
+  cancel-in-progress: false
+
+jobs:
+  announce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Скачать репозиторий с историей
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Опубликовать новые одобренные анонсы
+        env:
+          ARCHIUM_TELEGRAM_BOT_TOKEN: ${{ secrets.ARCHIUM_TELEGRAM_BOT_TOKEN }}
+          BEFORE_SHA: ${{ github.event.before }}
+          ARCHIUM_SITE_URL: https://666danya.github.io/archium-beta/
+        run: |
+          python3 .github/scripts/telegram_announce.py --before-sha "$BEFORE_SHA" --after-file news.json
