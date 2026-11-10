@@ -16,6 +16,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: archium-5.7-staging-20261110
+      - name: Verify ARCHIUM 5.7 archive checksum
+        shell: bash
+        run: |
+          test -f incoming/ARCHIUM_5_7_SITE_PREVIEW.zip
+          echo 'c27bc23b0dd8c3d864afb6d07bd9e79d7ccecd70733160c7479684b3bb29a18a  incoming/ARCHIUM_5_7_SITE_PREVIEW.zip' | sha256sum --check --status
       - name: Extract public distribution
         shell: bash
         run: |
