@@ -1,0 +1,59 @@
+name: Import ARCHIUM 5.7 site ZIP to staging branch
+on:
+  push:
+    branches:
+      - archium-5.7-staging-20261110
+    paths:
+      - incoming/ARCHIUM_5_7_SITE_PREVIEW.zip
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    if: github.ref == 'refs/heads/archium-5.7-staging-20261110'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: archium-5.7-staging-20261110
+      - name: Verify ARCHIUM 5.7 archive checksum
+        shell: bash
+        run: |
+          test -f incoming/ARCHIUM_5_7_SITE_PREVIEW.zip
+          echo 'c27bc23b0dd8c3d864afb6d07bd9e79d7ccecd70733160c7479684b3bb29a18a  incoming/ARCHIUM_5_7_SITE_PREVIEW.zip' | sha256sum --check --status
+      - name: Extract public distribution
+        shell: bash
+        run: |
+          python - <<'PYZIP'
+          from zipfile import ZipFile
+          from pathlib import Path
+          src=Path('incoming/ARCHIUM_5_7_SITE_PREVIEW.zip')
+          if not src.is_file():
+              print('No release ZIP found')
+              raise SystemExit(0)
+          with ZipFile(src) as archive:
+              members=[i for i in archive.infolist() if not i.is_dir()]
+              if not (300 <= len(members) <= 500):
+                  raise SystemExit('Unexpected file count')
+              if sum(i.file_size for i in members) > 40_000_000:
+                  raise SystemExit('Oversized archive')
+              names={i.filename for i in members}
+              for needed in ('index.html','assets/js/01-archium-core.js','assets/js/15-archium57-tools.js','assets/css/archium57.css'):
+                  if needed not in names:
+                      raise SystemExit('Missing '+needed)
+              for entry in members:
+                  p=Path(entry.filename)
+                  if p.is_absolute() or '..' in p.parts or p.parts[0] in ('.github','admin','incoming','staging-5.7'):
+                      raise SystemExit('Unsafe path '+entry.filename)
+                  p.parent.mkdir(parents=True,exist_ok=True)
+                  p.write_bytes(archive.read(entry))
+          PYZIP
+      - name: Commit files to staging (never main)
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'stage: import complete ARCHIUM 5.7 public site'
+          git push origin HEAD:archium-5.7-staging-20261110

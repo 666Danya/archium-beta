@@ -1,0 +1,1105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0d0b"><meta name="description" content="ARCHIUM — независимый фанатский портал по S.T.A.L.K.E.R. и новости авторской игры «Проект Горизонт»">
+<title>ARCHIUM 5.7 — Живой архив</title>
+<script src="auth-config.js" defer></script>
+<style>
+:root{--bg:#080909;--surface:#141714;--surface2:#1d211c;--olive:#283329;--ink:#e8e0cf;--muted:#aaa997;--amber:#efbd53;--amber2:#b27c2b;--green:#a6ca85;--alert:#f17a54;--edge:#63543d;--hair:#353c32;--font:'Arial Narrow','Segoe UI',Arial,sans-serif;--shadow:0 8px 30px #0009}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse 1000px 600px at 50% -20%,#273126 0%,#0c0e0c 78%),#070807;color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}body:before{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(80deg,#ffffff03 0 1px,transparent 1px 70px);opacity:.25}button,input,textarea,select{font:inherit}button{cursor:pointer;-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--amber);outline-offset:3px}button:disabled{opacity:.45;cursor:not-allowed}img{display:block;max-width:100%}[hidden]{display:none!important}
+#app{width:min(1480px,100%);margin:auto;padding:0 14px 32px;position:relative}.ornament{border:1px solid #806039;box-shadow:inset 0 0 0 2px #151914,0 5px 15px #0009;position:relative;background:linear-gradient(125deg,#252720,#111310 22%,#121411 80%,#25251d)}.ornament:before{content:"";position:absolute;inset:4px;pointer-events:none;border:1px solid #a88b4b24}.section-label{display:flex;align-items:center;gap:9px;padding:9px 12px;background:linear-gradient(90deg,#28281f,#161915);border-bottom:1px solid #725933;min-height:45px}.section-label h2,.section-label h3{margin:0;font-size:23px;line-height:1.12;font-weight:900;letter-spacing:.3px}.section-label small{font-size:10px;font-weight:700;letter-spacing:.8px;color:#aeae91}.section-label .push{margin-left:auto}.section-label .action-link{font-size:12px;color:#edc46d;border:0;background:transparent;padding:6px}.section-label .action-link:hover{text-decoration:underline}.section-label .ico{font-size:22px;color:var(--amber)}
+.top{position:sticky;top:0;z-index:30;background:#0e100ef0;backdrop-filter:blur(8px);border:1px solid #4b4939;border-top:0;box-shadow:0 6px 25px #000b}.top-main{display:flex;align-items:center;gap:13px;padding:9px 16px;min-height:66px}.symbol{height:45px;width:45px;flex:0 0 45px;display:grid;place-items:center;color:#0b0b09;background:var(--amber);border-radius:50%;font-size:30px;border:2px solid #181814}.identity{min-width:182px}.identity strong{display:block;font-family:Impact,'Arial Narrow',sans-serif;font-size:34px;letter-spacing:1.6px;color:#e5dcc6;line-height:1}.identity small{font-size:10px;letter-spacing:2.2px;color:#c4ae7e}.top-search{margin-left:auto;display:flex;align-items:center;border:1px solid #756d4f;background:#090c0a;min-width:260px;max-width:500px;flex:1;height:37px}.top-search span{color:var(--amber);padding:0 12px;font-size:19px}.top-search input{background:none;border:0;outline:0;width:100%;color:#eee0bf;font-size:13px;padding:8px 1px}.top-search input::placeholder{color:#898a80}.top-auth{display:flex;gap:6px}.square-btn{background:#111512;border:1px solid #806943;color:#e6cf9a;padding:8px 12px;font-weight:800;font-size:13px}.square-btn:hover{background:#353122}.square-btn.emph{background:linear-gradient(#eac263,#c39735);color:#211a0b;border-color:#ebc664}.nav{display:flex;align-items:stretch;gap:1px;overflow:auto;scrollbar-width:none;background:#0d0f0d;border-top:1px solid #393b33}.nav::-webkit-scrollbar{display:none}.nav button{color:#d6ceba;background:transparent;border:0;border-right:1px solid #282d27;padding:11px 15px;white-space:nowrap;font-size:13px;font-weight:800;letter-spacing:.3px;min-height:43px}.nav button:hover{color:#ffdf90}.nav button.active{background:linear-gradient(#e9be58,#aa7729);color:#1a160e;box-shadow:inset 0 -3px #efcf73}.nav .mob-menu{display:none}
+.route{display:none;animation:fadein .2s ease-out}.route.active{display:block}@keyframes fadein{from{opacity:.7;transform:translateY(5px)}to{opacity:1;transform:none}}.minor-head{margin:13px 0 9px;display:flex;align-items:center;gap:10px;min-width:0}.minor-head:before{content:"";background:var(--amber);width:4px;height:28px}.minor-head h1{font-size:30px;margin:0;color:#f0e5cd;text-transform:uppercase}.minor-head p{margin:0 0 0 auto;color:#abaca0;font-size:12px}.foot{font-size:11px;color:#8e9684;text-align:center;margin:20px 0 0;border-top:1px solid #444436;padding:12px}
+/* portal hero */
+.hero{height:350px;display:grid;grid-template-columns:245px minmax(0,1fr) 270px;gap:20px;align-items:end;padding:15px 16px 16px;position:relative;overflow:hidden;background:#151713 url('assets/images/55cc5c8ebe578e27.webp') center 45%/cover no-repeat;border:1px solid #756143;margin-top:0}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#090c0b88,#090c0b66 34%,#090b0b40 63%,#050705b5),linear-gradient(0deg,#050806c6,transparent 48%)}.hero>*{position:relative;z-index:1}.guide-card{background:linear-gradient(0deg,#060907f5 0%,#111810bd 47%,transparent 100%);border:1px solid #755f3a;align-self:stretch;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:end}.guide-img{position:absolute;inset:0;background:url('assets/images/df818275ec418daf.webp') center 16%/cover no-repeat;opacity:.95;filter:contrast(1.06)}.guide-card:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#060806 0%,#060806bf 23%,transparent 60%);pointer-events:none}.guide-info{position:relative;z-index:1;padding:13px 12px 15px}.guide-info b{display:block;font-size:22px;color:var(--amber);text-shadow:0 2px 5px #000}.guide-info small{font-size:10px;color:#e8d9b7;text-transform:uppercase}.guide-info p{font-size:11px;line-height:1.4;color:#e5dbc3;margin:6px 0 0}.hero-copy{align-self:center;min-width:0;text-shadow:0 2px 6px #000}.tagline{display:block;font-size:11px;color:#edc26e;letter-spacing:2px;font-weight:900}.hero-copy h1{margin:10px 0 14px;font:900 clamp(35px,4vw,57px)/1.03 Impact,'Arial Narrow',sans-serif;letter-spacing:1px;max-width:580px;color:#eee6d5;text-transform:uppercase}.hero-copy h1 span{color:#f3c15b}.hero-copy p{font-size:15px;line-height:1.55;max-width:610px;color:#e8e0d2;margin:0 0 21px}.hero-buttons{display:flex;gap:9px;flex-wrap:wrap}.major-btn{border:1px solid #90784a;background:#171b17;color:#e8dfc6;font-weight:900;font-size:13px;letter-spacing:.3px;padding:12px 16px;min-height:42px;box-shadow:0 3px 8px #0008}.major-btn.gold{color:#1e170b;background:linear-gradient(#f2c761,#bc8426);border-color:#e1b154}.major-btn:hover{filter:brightness(1.12)}.kpk{align-self:stretch;background:linear-gradient(135deg,#383a31,#141913 20%,#252a22 88%,#090b09);border-radius:22px;border:5px ridge #60604c;padding:15px 12px;box-shadow:inset 0 0 0 3px #090e0b,0 4px 18px #000c;display:flex;flex-direction:column;position:relative;min-height:280px}.kpk:after{content:"ARCHIUM // КПК";position:absolute;bottom:5px;left:0;right:0;text-align:center;font:900 10px Consolas,monospace;color:#6c715f;letter-spacing:1.5px}.kpk-screen{background:linear-gradient(#152018,#060e0a);border:2px solid #6c663e;box-shadow:inset 0 0 18px #000;flex:1;padding:10px;min-height:0}.kpk-title{display:flex;justify-content:space-between;color:#a8d289;font-weight:900;margin-bottom:9px}.kpk button{width:100%;text-align:left;background:#111a12;color:#c9d5b5;border:0;border-top:1px solid #3a4e35;padding:9px 7px;font-size:12px;font-weight:700}.kpk button:hover{background:#2a3926;color:#f2cf7e}
+.block{margin-top:11px}.category-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;padding:11px}.cat{height:122px;border:1px solid #766242;background-color:#1b201c;background-size:cover;background-position:center;display:flex;align-items:end;position:relative;text-align:left;padding:9px;overflow:hidden;color:#f2e8d7;box-shadow:inset 0 0 0 2px #1e1e1c;transition:transform .15s,border-color .15s}.cat:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#030605f8, #0609067c 40%, #0002 78%)}.cat span{position:relative;font-size:14px;font-weight:900;text-shadow:0 2px 3px #000}.cat:hover{border-color:#e1b154;transform:translateY(-2px)}.lower-grid{display:grid;grid-template-columns:1.1fr 1fr .9fr;gap:10px;margin-top:10px}.lower-grid>.ornament{min-width:0}.news-list{padding:8px 10px}.news-row{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid #3c3e35;width:100%;text-align:left;border-right:0;border-top:0;border-left:0;background:transparent;color:var(--ink)}.news-row:last-child{border-bottom:0}.news-row:hover strong{color:#f0c46e}.news-row img{width:56px;height:44px;object-fit:cover;border:1px solid #4e503d}.news-row strong{font-size:12px;line-height:1.3;display:block}.news-row small{font-size:10px;color:#aeb29b}.news-row .nbadge{color:#d1b77b;font-size:11px}.horizon-panel{padding:10px}.horizon-art{min-height:140px;background:url('assets/images/f7268efbb883de9b.webp') center 45%/cover;position:relative;border:1px solid #64573c}.horizon-art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#030403ee,transparent 70%)}.horizon-art span{position:absolute;bottom:10px;left:12px;z-index:1;font-size:24px;font-weight:900}.horizon-panel p{margin:10px 0;font-size:12px;line-height:1.5;color:#d4d4c5}.horizon-panel .hero-buttons .major-btn{font-size:11px;padding:9px}.signal-panel{padding:11px;display:grid;grid-template-columns:.9fr 1fr;gap:9px}.signal-panel img{width:100%;height:175px;object-fit:cover;border:1px solid #697348;filter:saturate(.65)}.signal-panel dl{margin:0}.signal-panel dt{font-size:11px;color:#b5bba1;margin:6px 0 2px}.signal-panel dd{font-size:12px;font-weight:800;margin:0 0 5px;padding-bottom:5px;border-bottom:1px solid #343e31}.fake{color:#a1a78e;font-size:10px;margin:2px 12px 10px}.footerstats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:10px;gap:1px;background:#493c2d;border:1px solid #61513a}.footerstats div{background:linear-gradient(#1b1d19,#11130f);text-align:center;padding:11px 6px}.footerstats strong{display:block;color:var(--amber);font-size:20px}.footerstats small{color:#a4ae9e;font-size:10px}
+/* shared pages */
+.sub-banner{min-height:145px;position:relative;background:#161b15 url('assets/images/ba482ab6638ffefd.webp') center 48%/cover;display:flex;align-items:center;padding:20px 25px;border:1px solid #756143;overflow:hidden}.sub-banner:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#060a08f5 10%,#0a0b0980 75%,#090c0baa)}.sub-banner>div{position:relative}.sub-banner h1{font:900 clamp(28px,3.4vw,45px) Impact,'Arial Narrow',sans-serif;letter-spacing:.7px;margin:0 0 8px}.sub-banner p{font-size:13px;line-height:1.5;color:#d7d4c8;margin:0;max-width:650px}.column3{display:grid;grid-template-columns:235px minmax(0,1fr) 254px;gap:11px;margin-top:11px;align-items:start}.pane{min-width:0}.side-list{padding:10px}.side-list button{width:100%;display:flex;justify-content:space-between;gap:8px;align-items:center;border:1px solid transparent;border-bottom-color:#363c32;background:#141815;color:#ded5bf;padding:10px;text-align:left;font-size:12px;font-weight:800;min-height:39px}.side-list button:hover{background:#2e3228}.side-list button.selected{background:linear-gradient(90deg,#a37b34,#3a3022);color:#fff1d1;border-color:#aa8138}.side-list button small{color:#c2b48f;font-size:10px}.side-list .search-filter{width:100%;background:#0b100d;border:1px solid #575844;color:#eee0c1;padding:11px;font-size:13px;margin-bottom:10px}.filterbar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:10px;border-bottom:1px solid #424838}.filterbar button{background:#0b100d;border:1px solid #596044;padding:7px 11px;color:#d2d6bd;font-weight:800;font-size:11px}.filterbar button.selected{background:#e8bd60;color:#1a170d;border-color:#edbf5a}.article{padding:16px;min-height:440px}.article h2{font:900 32px Impact,'Arial Narrow',sans-serif;letter-spacing:.5px;margin:2px 0 11px;color:#f0d28a}.article h3{font-size:18px;color:#e5c16c;border-bottom:1px solid #584b30;padding-bottom:7px;margin:20px 0 9px}.article p{line-height:1.67;color:#d7dbc9;font-size:14px}.article .feature-img{width:100%;height:270px;object-fit:cover;border:1px solid #8a7546}.article .meta-line{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0 14px}.chip{font-size:11px;border:1px solid #516043;background:#17251a;color:#c3cead;padding:6px 8px}.article ul{font-size:13px;line-height:1.8;color:#d7dbc9;padding-left:20px}.aside-note{padding:11px 13px;font-size:12px;line-height:1.55;color:#cdd2bd}.aside-note p{margin:7px 0}.small-link{font-size:11px;border:1px solid #615534;background:#1b211a;color:#f2cd79;padding:8px 9px;margin:3px 0;width:100%;text-align:left}.small-link:hover{background:#3a3827}.empty{padding:20px;color:#b6bba8;text-align:center}
+.forum-layout{display:grid;grid-template-columns:220px 1fr 240px;gap:11px;margin-top:11px}.forum-headline{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;border-bottom:1px solid #3c4439;padding:13px}.forum-headline h3{margin:0;font-size:18px;color:#e7c371}.forum-headline small{color:#abae98}.thread-row{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;text-align:left;border:0;border-bottom:1px solid #383f32;background:#121713;width:100%;color:#dedacb;padding:10px}.thread-row:hover{background:#252c21}.thread-row img{width:44px;height:41px;object-fit:cover;border:1px solid #5a553e}.thread-row strong{font-size:13px;display:block}.thread-row small{color:#a5af98;font-size:11px}.thread-row em{font-size:11px;color:#d6bb7e;font-style:normal}.forum-thread-view{padding:15px}.forum-thread-view h2{color:#edc56e;font-size:25px;margin:0 0 8px}.forum-thread-view p{line-height:1.6;font-size:13px}.post{padding:12px;border:1px solid #384733;background:#0f170f;margin-bottom:9px}.post b{color:#f1c874}.post small{font-size:10px;color:#91a391;margin-left:8px}.post p{margin:7px 0 0}.textarea{width:100%;min-height:98px;resize:vertical;border:1px solid #5f613d;background:#0a0f0a;color:#ebdfc7;padding:10px;font-size:13px}.field{width:100%;background:#0a100b;border:1px solid #585b41;color:#f0e5cb;padding:11px;font-size:13px;margin:8px 0}.form-error{color:#f08c6d;font-size:12px;min-height:17px}
+/* map */
+.map-layout{display:grid;grid-template-columns:200px minmax(0,1fr) 242px;gap:10px;margin-top:11px}.map-wrap{height:530px;position:relative;overflow:hidden;background:#0b150c;border:2px solid #75613f;touch-action:pan-y}.map-canvas{position:absolute;inset:0;transform-origin:50% 50%;transition:transform .15s ease-out;background:linear-gradient(#07110844,#07110a44),url('assets/images/923d4cfeb53e1a8d.webp') center/100% 100% no-repeat}.map-canvas:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,#d1e99709 0 1px,transparent 1px 45px),repeating-linear-gradient(90deg,#d1e99709 0 1px,transparent 1px 45px)}.map-pin{position:absolute;z-index:2;transform:translate(-50%,-50%);border:1px solid #b9a060;background:#17231ce8;color:#f2e2ae;font-size:11px;padding:7px;white-space:nowrap;box-shadow:0 3px 10px #0008}.map-pin.active{background:#e0b54e;color:#110e08;z-index:3}.map-zoom{position:absolute;right:12px;top:12px;z-index:4;display:grid;gap:4px}.map-zoom button{width:35px;height:35px;background:#111c13e8;color:#e7c778;border:1px solid #a08645;font-size:23px}.map-legend{position:absolute;left:12px;bottom:12px;right:12px;pointer-events:none;background:#0b140dec;color:#cfceb7;font-size:11px;padding:9px;border:1px solid #535e3b}.map-info img{height:135px;width:100%;object-fit:cover}.map-info h3{font-size:22px;color:#edc36c;margin:10px 0 5px}.map-info p{line-height:1.5;font-size:12px}
+/* horizon/profile */
+.horizon-cover{min-height:300px;background:linear-gradient(90deg,#070a07f5,#080b0980 55%,#03060442),url('assets/images/f7268efbb883de9b.webp') center/cover;display:flex;align-items:center;border:1px solid #796343;padding:30px}.horizon-cover div{max-width:650px}.horizon-cover h1{font:900 clamp(36px,5vw,62px) Impact,'Arial Narrow',sans-serif;letter-spacing:1px;color:#f3debb;margin:8px 0}.horizon-cover p{font-size:15px;line-height:1.6}.horizon-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:11px}.feature-card{min-width:0}.feature-card>img{width:100%;height:145px;object-fit:cover}.feature-card>div{padding:13px}.feature-card h3{margin:0 0 7px;color:#e8c279;font-size:20px}.feature-card p{margin:0;color:#c4cbb9;line-height:1.5;font-size:12px}.profile-layout{display:grid;grid-template-columns:240px minmax(0,1fr) 265px;gap:11px;margin-top:11px}.profile-avatar{height:250px;object-fit:cover;width:100%;object-position:50% 24%}.profile-stat{padding:11px;border-bottom:1px solid #3d4635;display:flex;justify-content:space-between;gap:10px;font-size:12px}.profile-stat b{color:#e4c275}.achievement-list{padding:13px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}.achievement{background:#1e251b;border:1px solid #75613a;padding:12px 4px;color:#edc874;font-size:21px}.achievement small{display:block;color:#bfc8aa;font-size:9px;margin-top:6px}.prefs{display:grid;gap:9px;padding:14px}.prefs label{display:flex;gap:8px;align-items:center;font-size:12px}.prefs input[type=checkbox]{accent-color:#d0a44c}
+/* raven toast */
+.raven-trigger{position:fixed;z-index:38;right:16px;bottom:16px;border:2px solid #dbad4b;border-radius:50%;width:66px;height:66px;background:#0a0b09;box-shadow:0 5px 25px #000e;overflow:hidden;padding:0}.raven-trigger img{width:100%;height:100%;object-fit:cover;object-position:50% 32%}.raven-drawer{position:fixed;z-index:39;right:15px;bottom:91px;width:min(380px,calc(100vw - 30px));border:1px solid #a18148;background:#111711;box-shadow:0 12px 40px #000e;display:none}.raven-drawer.open{display:block}.raven-drawer header{display:flex;justify-content:space-between;align-items:center;background:#283025;border-bottom:1px solid #7b6540;padding:10px}.raven-drawer header b{color:var(--amber);font-size:17px}.raven-drawer header button{background:none;color:var(--ink);border:0;font-size:24px}.raven-content{padding:14px}.raven-content p{font-size:13px;line-height:1.58;margin:0 0 12px}.raven-shortcuts{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}.raven-shortcuts button{background:#1b241b;border:1px solid #535e3e;padding:9px;color:#f2d28a;font-size:12px}.toast{position:fixed;z-index:40;bottom:91px;left:50%;transform:translateX(-50%);max-width:min(450px,90vw);background:#152016;border:1px solid #ac8c4b;padding:13px 17px;color:#f1e4c3;font-size:12px;box-shadow:0 10px 35px #000d;display:none}.toast.show{display:block}
+@media(max-width:1100px){.hero{grid-template-columns:195px minmax(0,1fr) 226px;gap:12px;height:370px}.column3{grid-template-columns:200px 1fr}.column3>.pane:last-child{grid-column:2}.lower-grid{grid-template-columns:1fr 1fr}.lower-grid>.ornament:last-child{grid-column:1 / -1}.forum-layout,.profile-layout{grid-template-columns:200px 1fr}.forum-layout>aside:last-child,.profile-layout>aside:last-child{grid-column:2}.map-layout{grid-template-columns:180px 1fr}.map-layout>aside:last-child{grid-column:2}.top-search{min-width:160px}}
+@media(max-width:740px){#app{padding:0 0 75px}.top{position:sticky}.top-main{padding:7px 10px;gap:8px;flex-wrap:wrap}.symbol{height:37px;width:37px;flex-basis:37px;font-size:23px}.identity{min-width:0}.identity strong{font-size:25px}.identity small{font-size:8px;letter-spacing:1.4px}.top-search{order:3;min-width:100%;max-width:none;height:34px}.top-auth{margin-left:auto}.top-auth .square-btn{font-size:10px;padding:8px}.nav button{font-size:11px;padding:9px 12px;min-height:39px}.hero{height:auto;display:grid;grid-template-columns:1fr;padding:10px;gap:10px;background-position:55% center}.hero-copy{grid-row:1;padding:18px 9px 8px}.hero-copy h1{font-size:37px}.hero-copy p{font-size:13px}.guide-card{height:118px;grid-row:2;display:block}.guide-img{width:120px;right:auto;background-size:cover;background-position:50% 20%}.guide-card:after{background:linear-gradient(90deg,#05070555 0%,#050705ee 45%,#050705 100%)}.guide-info{margin-left:125px;padding:13px}.guide-info b{font-size:18px}.guide-info p{font-size:11px}.kpk{grid-row:3;min-height:0;padding:8px;border-width:3px}.kpk-screen{padding:7px}.kpk-title{font-size:12px}.kpk-screen>div{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}.kpk button{font-size:11px;padding:7px}.block,.lower-grid,.column3,.forum-layout,.map-layout,.profile-layout,.horizon-grid{margin:9px 9px 0}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:8px}.cat{height:114px}.cat span{font-size:13px}.lower-grid,.column3,.forum-layout,.profile-layout,.map-layout,.horizon-grid{grid-template-columns:1fr}.column3>.pane:last-child,.forum-layout>aside:last-child,.profile-layout>aside:last-child,.map-layout>aside:last-child,.lower-grid>.ornament:last-child{grid-column:auto}.section-label h2,.section-label h3{font-size:19px}.section-label small{font-size:9px}.footerstats{margin:10px 9px 0;grid-template-columns:repeat(2,1fr)}.sub-banner{min-height:128px;padding:18px 14px}.sub-banner h1{font-size:29px}.sub-banner p{font-size:12px}.minor-head{margin-left:10px}.minor-head h1{font-size:23px}.minor-head p{font-size:10px;padding-right:7px}.article{padding:11px}.article h2{font-size:26px}.article .feature-img{height:180px}.article p{font-size:13px}.map-wrap{height:410px}.map-pin{font-size:9px;padding:5px}.map-info img{height:180px}.horizon-cover{min-height:260px;padding:18px}.horizon-cover h1{font-size:42px}.horizon-cover p{font-size:13px}.feature-card>img{height:135px}.profile-avatar{height:160px;object-position:50% 25%}.raven-trigger{width:57px;height:57px;bottom:13px;right:12px}.raven-drawer{bottom:78px;right:10px}.toast{bottom:80px}.foot{margin:15px 8px 0}.forum-headline{grid-template-columns:1fr auto}.forum-headline small{display:none}.thread-row{grid-template-columns:36px 1fr auto}.thread-row img{width:36px;height:36px}.thread-row em{font-size:10px}}
+@media(max-width:380px){.section-label small{display:none}.section-label h2,.section-label h3{font-size:17px}.section-label .action-link{font-size:10px;padding:3px}.top-auth .square-btn{font-size:9px;padding:7px}.hero-copy h1{font-size:33px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Архив ARCHIUM 4 · полные сведения, сохраняющие исходную компоновку портала */
+#archive-article .archium-rich-text{white-space:pre-line;overflow-wrap:anywhere;line-height:1.72}
+#archive-article .feature-img{object-fit:cover;max-height:370px;width:100%;background:#0c1513;border:1px solid #6b6643}
+#archive-article .feature-img.archium-contain{object-fit:contain;background:radial-gradient(ellipse at center,#26372e,#0b110e)}
+#archive-article .archium-patch{width:64px;height:64px;object-fit:contain;background:#101914;border:1px solid #565a3c;margin:-76px 10px 20px auto;position:relative;padding:7px;box-shadow:0 5px 15px #0008}
+#archive-article .archium-extra{margin:17px 0;border:1px solid #75613b;background:#0c1912}
+#archive-article .archium-extra>summary{padding:14px 15px;cursor:pointer;color:#e9c774;font-weight:800;list-style-position:inside}
+#archive-article .archium-extra[open]>.archium-rich-object{padding:4px 15px 15px}
+#archive-article .archium-rich-item{border-left:2px solid #615d35;padding:7px 9px;margin:7px 0;background:#19231a55}
+#archive-article .archium-rich-list{margin:9px 0}
+#archive-article .archium-rich-object{margin:8px 0 12px 8px}
+#archive-article .archium-rich-field{margin:9px 0;padding:6px 7px 9px;border-bottom:1px solid #53604455}
+#archive-article .archium-rich-label{color:#d6b16b;font-size:12px;font-weight:800;letter-spacing:.02em;margin:3px 0 5px}
+#archive-article .archium-rich-item p,#archive-article .archium-rich-field p{margin:5px 0;font-size:13px;white-space:pre-line;overflow-wrap:anywhere;line-height:1.65}
+#archive-article .archium-rich-object .archium-rich-object{margin-left:10px}
+#archive-article .archium-sources{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+#archive-article .archium-source{color:#e6c778;background:#17251c;border:1px solid #76623a;padding:6px 9px;display:inline-block;max-width:100%;overflow-wrap:anywhere;font-size:11px}
+#archive-article .archium-record-meta{font-size:11px;color:#b9b69d;border-left:3px solid #c0a05c;padding:9px 13px;background:#1e2219}
+#archive-article .archium-full-button{margin:14px 0}
+.archium-full-modal[hidden]{display:none!important}
+.archium-full-modal{position:fixed;z-index:1100;inset:0;inset:0 0 0 0;background:#050a07;display:flex;flex-direction:column}
+.archium-full-modal header{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px;background:#1b271d;border-bottom:2px solid #be9f5d;color:#f1d28d;min-height:56px}
+.archium-full-modal header button{background:#2e251d;color:#f3d286;border:1px solid #b18d51;padding:10px 13px;cursor:pointer;font-weight:bold}
+.archium-full-modal iframe{width:100%;flex:1;border:0;background:#0b100d}
+@media(max-width:710px){#archive-article .archium-extra>summary{padding:12px;font-size:12px}#archive-article .feature-img{max-height:230px}#archive-article .archium-rich-object{margin-left:0}#archive-article .archium-rich-item p{font-size:12px}.archium-full-modal header{padding:7px 9px}.archium-full-modal header strong{font-size:12px}}
+
+/* Переполненные категории не занимают весь экран телефона */
+.archium-cat-hint{font-size:10px;color:#cabb83;letter-spacing:.025em;padding:7px 2px 4px;display:none}
+@media(max-width:740px){
+ #page-archive .column3>aside:first-child .side-list{padding:8px}
+ #page-archive #archive-cats{display:flex;overflow-x:auto;scrollbar-width:thin;gap:6px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;padding:4px 0 8px}
+ #page-archive #archive-cats button{flex:0 0 auto;width:auto;min-width:140px;max-width:190px;white-space:normal;min-height:40px;border:1px solid #5f5f42;scroll-snap-align:start;padding:8px 9px;gap:8px}
+ #page-archive #archive-cats button small{font-size:9px}
+ #page-archive .archium-cat-hint{display:block}
+ #page-archive #archive-article{scroll-margin-top:142px}
+}
+
+</style>
+<style id="archium-4-1-news-mods-style">
+/* ARCHIUM 4.1 / Newsroom + mods + tactical demo; all responsive & offline. */
+:root{--news-gold:#e8ba5a;--news-edge:#554c35}
+.news-heading,.mods-intro{position:relative;overflow:hidden;border:1px solid #7d6138;background:linear-gradient(90deg,#0b120fee 0%,#0c110fdd 51%,#0b130d33 100%),var(--archium-news-art) center/cover no-repeat;min-height:275px;padding:clamp(23px,4vw,46px);display:flex;align-items:center;justify-content:space-between;gap:20px;margin:14px 0 14px;box-shadow:inset 0 0 0 3px #10130e,0 14px 34px #0008}
+.news-heading-copy{max-width:755px;position:relative;z-index:1}.news-eyebrow{font:800 11px/1.6 Consolas,monospace;letter-spacing:2px;color:#f2d384}
+.news-heading h1,.mods-intro h1{margin:10px 0;font-size:clamp(33px,5vw,65px);line-height:1;letter-spacing:2px;text-shadow:0 3px 12px #000}.news-heading h1 span,.mods-intro h1 span{color:#f1c268}
+.news-heading p,.mods-intro p{max-width:650px;font-size:clamp(13px,1.35vw,16px);line-height:1.6;color:#e0dfcc;text-shadow:0 2px 6px #000}
+.news-heading-buttons{display:flex;gap:9px;flex-wrap:wrap;margin-top:21px}.news-heading-buttons button{min-height:40px}
+.news-heading-seal{align-self:stretch;display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:6px;white-space:nowrap;text-align:right;color:#f5d58c;text-shadow:0 3px 10px #000;font:700 12px Consolas,monospace;letter-spacing:1.5px}.news-heading-seal strong{font-size:17px}.news-heading-seal small{font-size:10px}
+.news-layout,.mods-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start;margin-bottom:18px}.news-primary{min-width:0}
+.news-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:65px;padding:14px 17px;background:linear-gradient(105deg,#24251c,#121811);border-color:#87704a}.news-toolbar b{display:block;font-size:20px;letter-spacing:.65px}.news-toolbar small{display:block;margin-top:6px;color:#b8b8a5;font-size:11px}.news-live-indicator{white-space:nowrap;color:#a3ce96;font-size:10px;letter-spacing:1px}
+.news-controls{display:flex;gap:10px;justify-content:space-between;align-items:center;padding:12px 0;flex-wrap:wrap}.news-filterset,.mods-tabs{display:flex;gap:5px;flex-wrap:wrap}.news-filterset button,.mods-tabs button{border:1px solid #675937;background:#131c15;color:#d8c9a5;min-height:33px;padding:7px 10px;font-size:11px;font-weight:700}.news-filterset button.is-on,.mods-tabs button.is-on{background:#ddae58;border-color:#efc779;color:#201b10}.news-controls input,.mods-controlbar input{border:1px solid #655e42;background:#0b150e;color:#f1e3c0;padding:9px 11px;min-height:36px;max-width:100%;width:min(260px,100%)}
+.news-feed{display:flex;flex-direction:column;gap:11px}.news-story{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:0;border:1px solid #5b5139;background:linear-gradient(130deg,#20251d,#0f1512);box-shadow:0 4px 18px #0006;min-height:183px;overflow:hidden}.news-story:first-child{border-color:#9c7540}.news-story-art{height:100%;width:100%;min-height:178px;object-fit:cover;filter:saturate(.74) contrast(1.1)}.news-story-copy{min-width:0;padding:16px 18px;display:flex;flex-direction:column;gap:8px}.news-story-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:10px;color:#a8ad97;letter-spacing:.6px}.news-story-chip{padding:4px 7px;background:#463b23;color:#f2d08d;border:1px solid #826739}.news-story h2{font-size:clamp(18px,2vw,26px);line-height:1.15;margin:0;color:#eee2c7}.news-story p{font-size:13px;line-height:1.55;margin:0;color:#c2c9b8}.news-story-footer{margin-top:auto;display:flex;gap:9px;align-items:center;flex-wrap:wrap}.news-story-footer button{background:#1b291c;color:#f1ca75;border:1px solid #866b3c;padding:7px 10px;font-size:11px}.news-story-footer button:hover{background:#3a3825}.news-article-expanded{white-space:pre-wrap;border-top:1px solid #4c533f;padding-top:10px;color:#e1dcc7!important}.news-empty{padding:22px;border:1px dashed #7d6847;color:#c7c4a7;background:#111911}
+.news-sidebar{display:flex;flex-direction:column;gap:12px}.news-sideblock{overflow:hidden}.news-sideblock .section-label h3{font-size:18px}.news-sideblock p{font-size:12px;line-height:1.65;color:#c2c7b1;margin:14px}.news-sidebuttons{padding:10px}.news-sidebuttons button{border:0;border-bottom:1px solid #373f31;background:transparent;color:#e7d9b6;width:100%;padding:12px 8px;text-align:left;display:flex;justify-content:space-between;gap:5px;font-weight:750;font-size:12px}.news-sidebuttons button:hover{background:#2c3324;color:#f1c879}.news-side-link{display:inline-block;border:1px solid #7d6238;margin:0 14px 15px;padding:9px 12px;color:#ecc46d;font-size:12px}
+.news-publisher{margin:15px 0;padding:0 14px}.news-publisher summary{cursor:pointer;padding:15px 4px;color:#e9c575;font-size:13px;font-weight:800}.news-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;padding:4px 0 17px}.news-form label{font-size:12px;color:#e7d6ab;display:flex;flex-direction:column;gap:6px}.news-form label:first-child,.news-form label:has(textarea){grid-column:1/-1}.news-form input,.news-form textarea,.news-form select{width:100%;min-width:0;background:#08100d;border:1px solid #5d654e;color:#efecd9;padding:10px;resize:vertical}.news-form small{font-size:11px;color:#a6aa92;line-height:1.5;align-self:center}.news-form button{justify-self:start}
+.news-archive-heading{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:20px 0 10px;color:#f1c56d}.news-archive-heading span{color:#a3a897;font-size:11px}.news-heading + .news-layout + .news-archive-heading + .ornament.block{margin-top:0}
+.mods-intro{min-height:238px;display:block;--archium-news-art:none}.mods-intro h1{max-width:950px}.mods-controlbar{padding:12px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}.mods-results{font-size:12px;color:#ddc992;margin:11px 0;display:flex;justify-content:space-between;gap:9px}.mods-results small{color:#9ea992}
+.mods-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.mod-card{border:1px solid #5d5c45;background:#111913;overflow:hidden}.mod-card-art{height:144px;width:100%;object-fit:cover;filter:contrast(1.07) saturate(.65)}.mod-card-content{padding:13px}.mod-card-tag{font-size:10px;letter-spacing:1px;color:#e2be6e}.mod-card h3{font-size:21px;margin:7px 0 6px;color:#efe3cb}.mod-card p{font-size:12px;line-height:1.6;color:#c0cbb9}.mod-card-meta{display:flex;gap:5px;flex-wrap:wrap}.mod-card-meta span{font-size:10px;border:1px solid #4f603f;padding:5px 6px;color:#d0cda9}.mod-card button{background:#27301f;border:1px solid #806c3e;color:#f1cb75;padding:9px 12px;margin-top:13px;font-size:12px}.mod-card-more{border-top:1px solid #536047;margin-top:10px;padding-top:8px;white-space:pre-wrap}.mods-aside .section-label h3{font-size:19px}.mods-aside-content{padding:16px;color:#c6c8b4}.mods-aside-content strong{color:#f1cb75;font-size:12px}.mods-aside-content p{line-height:1.65;font-size:12px}.mods-aside-content button{margin-top:12px}
+.horizon-live-strip{margin:12px 9px 15px;background:linear-gradient(100deg,#213126,#121c1b);border:1px solid #9c7f4c;display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:13px 15px}.horizon-live-strip span{font-size:10px;color:#bdcead;letter-spacing:1.3px}.horizon-live-strip strong{font-size:13px}.horizon-live-strip button{margin-left:auto}.horizon-demo-box{margin:0 9px 14px;padding:13px;min-width:0}.horizon-demo-info{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#e4c16c;font-size:11px;letter-spacing:1px}.horizon-demo-box p{font-size:12px;color:#b9c6b2;line-height:1.5}.horizon-demo-box iframe{display:block;width:100%;height:min(780px,87vh);min-height:560px;background:#081115;border:1px solid #6e744a;border-radius:7px}
+@media(max-width:1050px){.news-layout,.mods-layout{grid-template-columns:minmax(0,1fr) 250px}.news-heading-seal{display:none}}
+@media(max-width:760px){.news-layout,.mods-layout{grid-template-columns:1fr}.news-sidebar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.news-sidebar>.news-sideblock:first-child{grid-column:1/-1}.news-sidebuttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.mods-aside{order:2}}
+@media(max-width:560px){.news-heading,.mods-intro{min-height:245px;margin:9px 0 13px;padding:20px 14px;background-position:center}.news-heading h1,.mods-intro h1{font-size:36px;letter-spacing:.8px}.news-heading p,.mods-intro p{font-size:12px}.news-heading-buttons{gap:6px}.news-heading-buttons button{font-size:10px;padding:8px;min-height:37px}.news-story{grid-template-columns:1fr}.news-story-art{height:156px;min-height:156px}.news-story-copy{padding:12px}.news-story h2{font-size:20px}.news-story p{font-size:12px}.news-sidebar{grid-template-columns:1fr}.news-sidebuttons{grid-template-columns:1fr}.news-toolbar{padding:11px}.news-toolbar b{font-size:17px}.news-toolbar small{font-size:10px}.news-live-indicator{display:none}.news-controls input{flex:1;width:100%}.news-filterset{width:100%}.news-filterset button{font-size:10px;padding:6px 7px}.mods-grid{grid-template-columns:1fr}.mods-controlbar input{width:100%}.news-form{grid-template-columns:1fr}.news-form label{grid-column:1/-1}.horizon-live-strip{margin-left:0;margin-right:0}.horizon-live-strip button{width:100%;margin:0}.horizon-demo-box{margin:0 0 14px}.horizon-demo-box iframe{height:72vh;min-height:490px}.news-archive-heading{margin-top:18px}}
+@media(prefers-reduced-motion:reduce){.news-story *,.mod-card *{transition:none!important}}
+</style><style id="archium-4-2-voron-style">
+:root{--voron-signal:#e8bc67}
+html.voron-entry-locked,html.voron-entry-locked body{overflow:hidden!important}
+.voron-entry[hidden]{display:none!important}
+.voron-entry{position:fixed;inset:0;z-index:100000;display:grid;place-items:center;padding:clamp(10px,2.5vw,30px);background:radial-gradient(ellipse at 18% 16%,#313b2c 0,#0c1511 45%,#020403 100%);color:#e8e3d2;isolation:isolate;overflow:auto;overscroll-behavior:contain}
+.voron-entry::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:repeating-linear-gradient(0deg,#a2c09a07 0 1px,transparent 1px 6px),radial-gradient(ellipse at 75% 84%,#a56f2026,transparent 48%)}
+.voron-entry-fog{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.6;background:radial-gradient(ellipse at 10% 68%,#64744f1a,transparent 50%),radial-gradient(ellipse at 90% 20%,#bd883013,transparent 45%);animation:voron-fog 11s ease-in-out infinite alternate}
+@keyframes voron-fog{from{transform:translateX(-1.5%);opacity:.36}to{transform:translateX(1.5%);opacity:.65}}
+.voron-entry-frame{width:min(1040px,100%);position:relative;border:1px solid #947747;box-shadow:0 0 0 4px #111a13,0 0 0 6px #434a36,0 24px 95px #000e,inset 0 0 45px #0009;background:linear-gradient(126deg,#18231a,#090e0b 65%);animation:voron-panel-in .42s ease-out both}
+.voron-entry-frame::before{content:"";position:absolute;inset:5px;border:1px solid #a88f4d28;pointer-events:none}
+.voron-entry-topline,.voron-entry-bottom{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#0c130d;padding:9px 17px;font-family:Consolas,monospace;font-size:10px;letter-spacing:.13em;color:#c3b98f;border-bottom:1px solid #544b33}
+.voron-entry-bottom{border-bottom:0;border-top:1px solid #544b33;color:#939d83}
+.voron-entry-live{color:#a9d39d;font-weight:800;white-space:nowrap}
+.voron-entry-body{display:grid;grid-template-columns:minmax(220px,.75fr) minmax(0,1.25fr);gap:0;min-height:530px}
+.voron-entry-portrait{position:relative;min-height:100%;overflow:hidden;background:radial-gradient(circle at 50% 25%,#77603d 0,#171e17 49%,#080c09 82%);border-right:1px solid #75623e}
+.voron-entry-portrait::after{position:absolute;inset:0;content:"";background:linear-gradient(0deg,#030704f7,transparent 38%),linear-gradient(90deg,#070b0755,transparent 40%);pointer-events:none}
+.voron-entry-portrait img{width:100%;height:100%;min-height:520px;object-fit:cover;object-position:47% 20%;filter:contrast(1.06) saturate(.76);transform:scale(1.05)}
+.voron-entry-portrait-caption{position:absolute;z-index:1;bottom:22px;left:22px;right:14px;display:flex;flex-direction:column;gap:6px;text-shadow:0 2px 9px #000}
+.voron-entry-portrait-caption strong{font-size:39px;font-family:Impact,'Arial Narrow',sans-serif;color:#f0ca7d;letter-spacing:3px;line-height:1}
+.voron-entry-portrait-caption span{color:#c5c1a7;font-family:Consolas,monospace;font-size:10px;letter-spacing:1.5px}
+.voron-entry-main{padding:clamp(19px,3.5vw,37px);min-width:0}
+.voron-entry-overline{color:#a8cd95;font-size:11px;letter-spacing:2px;font-weight:800}
+.voron-entry-main h2{margin:10px 0 10px;font-size:clamp(26px,3vw,37px);font-weight:900;line-height:1.08;letter-spacing:.035em;color:#f4e4c8;text-transform:uppercase}
+.voron-entry-main h2 em{display:block;font-style:normal;color:#e8bd68}
+.voron-entry-main blockquote{margin:0;border-left:3px solid #ae833c;padding:7px 0 8px 14px;font-size:clamp(12px,1.3vw,14px);color:#c7d2be;line-height:1.57;background:linear-gradient(90deg,#7f60200c,transparent)}
+.voron-entry-divider{display:flex;align-items:center;gap:12px;margin:16px 0 10px;font-size:10px;letter-spacing:1.5px;color:#adbc97;font-weight:800}
+.voron-entry-divider::after{content:"";height:1px;background:#636749;flex:1}
+.voron-entry-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.voron-entry-link{display:flex;align-items:center;text-align:left;gap:10px;padding:11px 9px;min-height:72px;border:1px solid #505b43;background:linear-gradient(120deg,#1d2a1e,#0d1710);color:#efe5c9;box-shadow:inset 0 1px #ffffff0b;transition:background .17s,border-color .17s,transform .17s}
+.voron-entry-link:hover,.voron-entry-link:focus-visible{border-color:#d8af63;background:linear-gradient(100deg,#3e3c24,#19271c)}.voron-entry-link:active{transform:scale(.985)}
+.voron-entry-link.primary{border-color:#c19c55;background:linear-gradient(100deg,#54462a,#242a1e)}
+.voron-entry-link-icon{flex:0 0 29px;display:grid;place-items:center;width:29px;height:30px;border:1px solid #776e47;color:#f3cd79;font-size:19px;background:#0d160f}
+.voron-entry-link b{display:block;font-size:12px;letter-spacing:.035em;line-height:1.3;color:#f3d9a6}.voron-entry-link small{display:block;color:#aebda9;font-size:10px;line-height:1.3;margin-top:4px}
+.voron-entry-arrow{margin-left:auto;color:#f5ca75;font-size:22px;flex-shrink:0}
+.voron-entry-actions{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-top:15px;font-family:Consolas,monospace;font-size:9px;letter-spacing:.04em;color:#788e77}
+.voron-entry-skip{background:transparent;border:0;padding:8px 2px;color:#d8b776;text-decoration:underline;text-underline-offset:4px;font-size:11px}
+.voron-entry-skip:hover{color:#ffe3a4}
+.voron-entry.closing{opacity:0;pointer-events:none;transition:opacity .2s ease-out}
+@keyframes voron-panel-in{from{opacity:.4;transform:translateY(12px)}to{opacity:1;transform:none}}
+#main-nav .voron-menu-open{color:#efc478;border-right:1px solid #766143;font-weight:900;background:linear-gradient(130deg,#243423,#11180f);position:relative}
+#main-nav .voron-menu-open:hover{background:#3d3d27}
+@media(max-width:700px){.voron-entry{padding:8px;align-items:center}.voron-entry-frame{width:100%;max-width:540px}.voron-entry-body{grid-template-columns:1fr}.voron-entry-portrait{min-height:122px;height:122px;border-right:0;border-bottom:1px solid #78603b}.voron-entry-portrait img{width:48%;height:100%;min-height:0;object-fit:cover;object-position:50% 34%;transform:none;filter:brightness(.87) contrast(1.08)}.voron-entry-portrait::after{background:linear-gradient(90deg,#02060209 0%,#06100936 35%,#030704e8 56%)}.voron-entry-portrait-caption{left:auto;right:17px;top:22px;bottom:auto;text-align:right}.voron-entry-portrait-caption strong{font-size:28px}.voron-entry-main{padding:14px}.voron-entry-main h2{font-size:clamp(22px,6.4vw,30px);margin:8px 0}.voron-entry-main blockquote{font-size:12px;line-height:1.5}.voron-entry-divider{margin:11px 0 8px}.voron-entry-link{min-height:64px;gap:7px;padding:8px 6px}.voron-entry-link-icon{width:25px;height:26px;flex-basis:25px;font-size:17px}.voron-entry-link b{font-size:10px}.voron-entry-link small{font-size:9px}.voron-entry-arrow{font-size:15px}.voron-entry-topline,.voron-entry-bottom{font-size:8px;padding:8px 10px}.voron-entry-bottom span{display:none}.voron-entry-actions{margin-top:8px}.voron-entry-actions>span{display:none}}
+@media(max-width:355px){.voron-entry-links{gap:5px}.voron-entry-link{min-height:59px}.voron-entry-link-icon{display:none}.voron-entry-main blockquote{font-size:11px}}
+@media(max-height:730px) and (max-width:700px){.voron-entry{place-items:start center}.voron-entry-frame{margin:0 auto}.voron-entry-portrait{height:94px;min-height:94px}.voron-entry-portrait-caption{top:12px}.voron-entry-main h2{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.voron-entry-frame,.voron-entry-fog{animation:none!important}.voron-entry.closing{transition:none!important}}
+</style>
+<style id="archium-4-3-guides-style">/* ARCHIUM 4.3 — персональные проводники */
+:root{--g-accent:#d4b365;--g-rgb:212,179,101}
+.guide-choice[hidden]{display:none!important}
+.guide-choice{position:fixed;inset:0;z-index:150000;display:flex;justify-content:center;align-items:center;background:radial-gradient(ellipse at 25% 12%,#32402f 0%,#111813 36%,#030605 100%);padding:12px;overflow-y:auto;overscroll-behavior:contain;color:#ece6d2;isolation:isolate}
+.guide-choice:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:repeating-linear-gradient(0deg,transparent 0 3px,#9ab38b09 3px 4px),linear-gradient(115deg,#e6b45a0a,transparent 48%,#d2bc7a13);opacity:.8}
+html.guide-choice-locked,html.guide-choice-locked body{overflow:hidden!important}
+.guide-shell{max-width:1160px;width:100%;max-height:min(940px,calc(100dvh - 24px));display:flex;flex-direction:column;background:linear-gradient(145deg,#111b16f7,#080c0afa);border:1px solid #766240;outline:1px solid #263123;outline-offset:4px;box-shadow:0 20px 90px #000f, inset 0 0 70px #193b1710;min-height:0}
+.guide-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 19px;border-bottom:1px solid #625234;background:#1b241c;color:#d4c39a;font:700 11px var(--font-ui,Arial,sans-serif);letter-spacing:.12em}
+.guide-signal{color:#b6cf9c;white-space:nowrap}
+.guide-scroll{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#8b6c36 #172019;padding:18px 22px 12px}
+.guide-intro{display:grid;grid-template-columns:94px 1fr;align-items:center;gap:17px;margin-bottom:16px}
+.guide-intro img{width:94px;height:101px;object-fit:cover;object-position:center 14%;border:1px solid #8d703d;box-shadow:inset 0 0 0 2px #111}
+.guide-intro .pre{font-size:10px;letter-spacing:.16em;color:#acc69b;font-weight:700}
+.guide-intro h2{font-size:clamp(22px,3.5vw,38px);line-height:1.08;margin:7px 0 5px;color:#eac97f;font-family:var(--font-head,Impact,Arial Black,sans-serif);letter-spacing:.025em}
+.guide-intro p{margin:4px 0;color:#c9c9b8;line-height:1.45;font-size:13px}
+.guide-intro strong{color:#eed1a0}
+.guide-section-kicker{display:flex;gap:10px;align-items:center;color:#b4c49a;font-size:10px;font-weight:700;letter-spacing:.18em;margin:0 0 10px}
+.guide-section-kicker:after{content:"";flex:1;height:1px;background:#535b40}
+.guide-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.guide-card43{display:flex;flex-direction:column;position:relative;text-align:left;padding:0;border:1px solid #445445;border-radius:0;background:linear-gradient(150deg,#1f2a23,#0c100e);color:#f1e9d3;cursor:pointer;min-width:0;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
+.guide-card43:hover{border-color:var(--choice-accent);transform:translateY(-2px)}
+.guide-card43:focus-visible{outline:2px solid #e5bc5d;outline-offset:2px}
+.guide-card43.chosen{border-color:var(--choice-accent);box-shadow:0 0 0 1px var(--choice-accent),0 0 23px color-mix(in srgb,var(--choice-accent) 35%,transparent)}
+.guide-card43 .guide-img43{width:100%;height:133px;object-fit:cover;object-position:center 24%;filter:contrast(1.07) saturate(.92);background:#182019}
+.guide-card43:after{content:"";position:absolute;inset:0 0 auto;height:133px;background:linear-gradient(0deg,#0a120ecb,transparent 56%);pointer-events:none}
+.guide-card43 .choice-logo{position:absolute;top:8px;left:8px;width:41px;height:41px;object-fit:contain;filter:drop-shadow(0 1px 3px #000);z-index:2}
+.guide-card43 .choice-check{position:absolute;right:7px;top:7px;z-index:3;padding:3px 5px;font-weight:900;font-size:11px;color:#070d09;background:var(--choice-accent);opacity:0}
+.guide-card43.chosen .choice-check{opacity:1}
+.guide-card43 .choice-body{position:relative;z-index:1;border-top:2px solid var(--choice-accent);padding:9px 11px 11px;flex:1}
+.guide-card43 .choice-name{display:block;font-size:18px;font-family:var(--font-head,Impact,Arial Black,sans-serif);letter-spacing:.03em;color:#ece6d6}
+.guide-card43 .choice-faction{display:block;font-size:10px;font-weight:800;color:var(--choice-accent);text-transform:uppercase;letter-spacing:.07em;margin-top:1px}
+.guide-card43 .choice-role{display:block;color:#bbbcae;font-size:11px;line-height:1.3;margin-top:5px}
+.guide-pending{margin:11px 0 0;color:#8f9987;font-size:11px}
+.guide-pending img{width:24px;height:24px;object-fit:contain;vertical-align:middle;margin-right:4px}
+.guide-preview{display:grid;grid-template-columns:50px 1fr;gap:12px;align-items:center;background:#101a15;border-left:3px solid var(--choice-accent,#b4a06f);padding:9px 12px;margin-top:13px;min-height:71px}
+.guide-preview img{width:48px;height:48px;object-fit:contain}
+.guide-preview b{display:block;color:#e5cf9a;font-size:13px;margin-bottom:3px}
+.guide-preview p{margin:0;color:#c9cbbb;font-size:12px;line-height:1.42}
+.guide-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 20px;background:#161e19;border-top:1px solid #665536}
+.guide-bottom p{color:#a7ad9a;font-size:11px;margin:0;line-height:1.4}
+.guide-confirm{padding:12px 21px;background:#d3a752;color:#121108;white-space:nowrap;border:1px solid #f6d683;font-size:13px;font-weight:900;cursor:pointer;letter-spacing:.04em}
+.guide-confirm:disabled{background:#484c39;color:#96988a;border-color:#60604b;cursor:not-allowed}
+.guide-back{border:1px solid #6b6248;color:#d4c39a;padding:10px 13px;background:#172019;cursor:pointer}
+.guide-back[hidden]{display:none!important}
+/* presence in site */
+.personal-guide-bar{--accent:var(--g-accent);display:grid;grid-template-columns:125px 1fr auto;align-items:center;gap:15px;background:linear-gradient(110deg,#111916 0%,#1d241f 58%,#10130f 100%);border:1px solid color-mix(in srgb,var(--accent) 65%,#222);border-left:4px solid var(--accent);margin:10px 9px 18px;box-shadow:0 8px 30px #0005;min-height:117px;overflow:hidden}
+.personal-guide-bar .guide-bar-portrait{width:125px;height:117px;object-fit:cover;object-position:center 20%;filter:contrast(1.1);border-right:1px solid #4b4c39}
+.personal-guide-bar .guide-bar-inner{padding:10px 0;min-width:0}
+.personal-guide-bar .guide-bar-meta{display:flex;gap:9px;align-items:center;font-size:10px;letter-spacing:.12em;color:var(--accent);font-weight:800}
+.personal-guide-bar .guide-bar-logo{width:23px;height:23px;object-fit:contain}
+.personal-guide-bar h3{font-family:var(--font-head,Impact,Arial Black,sans-serif);font-size:24px;margin:2px 0;color:#e5e0d2;letter-spacing:.06em}
+.personal-guide-bar p{color:#cccfc1;font-size:12px;line-height:1.42;margin:0 0 5px;max-width:800px}
+.personal-guide-bar .guide-bar-buttons{display:flex;flex-direction:column;gap:8px;padding:12px 13px 12px 3px}
+.personal-guide-bar button,.guide-profile43 button{background:#1a231d;border:1px solid color-mix(in srgb,var(--g-accent) 70%,#40402c);color:#ead7ab;padding:9px 10px;cursor:pointer;font-size:11px;white-space:nowrap}
+.personal-guide-bar button:hover,.guide-profile43 button:hover{background:#2b352b}
+.guide-profile43{--accent:var(--g-accent);margin:13px 9px;border:1px solid #5e543d;background:linear-gradient(130deg,#1a221b,#101611);padding:15px}
+.guide-profile43 h3{font-size:17px;color:var(--accent);margin:0 0 12px}
+.guide-profile43 .profile-guide-data{display:flex;align-items:center;gap:13px}
+.guide-profile43 .profile-guide-data>img{width:78px;height:90px;object-fit:cover;border:1px solid #6c6c53}
+.guide-profile43 b{display:block;color:#e6d9b6}
+.guide-profile43 small{color:#abb6a3}
+.guide-profile43 button{margin-top:12px}
+#raven-trigger{border-color:var(--g-accent);box-shadow:0 0 20px color-mix(in srgb,var(--g-accent) 35%,transparent),0 4px 22px #000c}
+#raven-drawer{border-color:var(--g-accent)}
+#raven-drawer header{border-color:var(--g-accent);background:linear-gradient(90deg,#2a3328,#121e18)}
+#raven-drawer header b{color:var(--g-accent)}
+.guide-reactions43{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:10px 0}
+.guide-reactions43 button{display:flex;align-items:center;flex-direction:column;gap:4px;min-width:0;background:#1b251d;color:#dfdec8;border:1px solid #5e634c;padding:6px 4px;font-size:10px;cursor:pointer}
+.guide-reactions43 img{width:53px;height:44px;object-fit:cover;object-position:center 25%;border-bottom:2px solid var(--g-accent)}
+.guide-reactions43 button:focus-visible,.personal-guide-bar button:focus-visible{outline:2px solid var(--g-accent);outline-offset:2px}
+.guide-local-hint{font-size:10px;color:#8c998b;display:block;margin-top:8px}
+@media(max-width:900px){.guide-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.guide-card43 .guide-img43{height:150px}.personal-guide-bar{grid-template-columns:106px 1fr}.personal-guide-bar .guide-bar-portrait{height:160px;width:106px;grid-row:span 2}.personal-guide-bar .guide-bar-inner{padding:9px 5px 0 0}.personal-guide-bar .guide-bar-buttons{flex-direction:row;grid-column:2;align-self:start;padding:0 10px 9px 0;gap:5px;flex-wrap:wrap}.personal-guide-bar .guide-bar-buttons button{padding:6px 8px}}
+@media(max-width:540px){.guide-choice{padding:7px;align-items:stretch}.guide-shell{max-height:calc(100dvh - 14px);margin:auto 0}.guide-top{padding:9px 11px;font-size:9px;letter-spacing:.06em}.guide-scroll{padding:11px 11px 8px}.guide-intro{grid-template-columns:66px 1fr;gap:9px;margin-bottom:10px}.guide-intro img{width:66px;height:83px}.guide-intro h2{font-size:21px;margin:3px 0}.guide-intro p{font-size:11px;line-height:1.35}.guide-intro .pre{font-size:9px}.guide-grid{gap:7px}.guide-card43 .guide-img43{height:112px}.guide-card43:after{height:112px}.guide-card43 .choice-logo{width:30px;height:30px}.guide-card43 .choice-body{padding:7px}.guide-card43 .choice-name{font-size:16px}.guide-card43 .choice-faction{font-size:9px}.guide-card43 .choice-role{font-size:10px;margin-top:3px}.guide-preview{margin-top:9px;gap:7px;padding:8px}.guide-preview p{font-size:11px}.guide-bottom{padding:9px 11px;gap:7px}.guide-bottom p{font-size:10px}.guide-confirm{padding:10px 12px;font-size:11px}.guide-pending{font-size:10px}.guide-pending img{width:20px;height:20px}.personal-guide-bar{grid-template-columns:90px 1fr;margin:7px 0 12px;gap:9px}.personal-guide-bar .guide-bar-portrait{width:90px;height:157px}.personal-guide-bar .guide-bar-inner{padding:8px 6px 0 0}.personal-guide-bar h3{font-size:20px}.personal-guide-bar p{font-size:11px}.personal-guide-bar .guide-bar-meta{font-size:9px}.personal-guide-bar .guide-bar-buttons{gap:5px}.personal-guide-bar button{font-size:10px}}
+@media(max-width:340px){.guide-card43 .guide-img43{height:90px}.guide-card43:after{height:90px}.guide-card43 .choice-name{font-size:14px}.guide-intro img{width:58px;height:78px}.guide-intro{grid-template-columns:58px 1fr}.guide-bottom p{display:none}}
+@media(prefers-reduced-motion:reduce){.guide-card43{transition:none!important}}
+</style>
+
+<style id="archium-4-4-legal-style">
+/* Plain, readable disclosure, deliberately separate from roleplay and guide selection. */
+#archium-legal-notice[hidden]{display:none!important}
+#archium-legal-notice{position:fixed;inset:0;z-index:250000;display:flex;align-items:center;justify-content:center;overflow-y:auto;overscroll-behavior:contain;padding:20px 14px;box-sizing:border-box;background:rgba(5,9,7,.94);color:#f1ecdf;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+html.archium-legal-open,html.archium-legal-open body{overflow:hidden!important}
+#archium-legal-notice *,#archium-legal-notice *::before,#archium-legal-notice *::after{box-sizing:border-box}
+#archium-legal-notice .legal-panel{width:min(100%,610px);max-height:calc(100dvh - 40px);overflow-y:auto;overscroll-behavior:contain;border:1px solid #72694f;border-radius:14px;background:#151b16;padding:clamp(18px,3.8vw,32px);box-shadow:0 20px 70px #000b}
+#archium-legal-notice .legal-eyebrow{font-size:11px;letter-spacing:.14em;color:#cbb784;text-transform:uppercase;font-weight:750}
+#archium-legal-notice h2{font-size:clamp(22px,5.8vw,30px);line-height:1.15;color:#f8f2df;margin:10px 0 12px;letter-spacing:-.015em}
+#archium-legal-notice .legal-lead{font-size:14px;line-height:1.58;color:#ddd8c7;margin:0 0 15px}
+#archium-legal-notice .legal-part{margin:12px 0 0;padding:14px 16px;border:1px solid #3d493e;background:#1c241d;border-radius:9px}
+#archium-legal-notice .legal-part h3{font-size:15px;line-height:1.3;margin:0 0 7px;color:#f0d393}
+#archium-legal-notice .legal-part p{font-size:13px;line-height:1.58;margin:0;color:#e3e2d9}
+#archium-legal-notice .legal-rights{font-size:12px;line-height:1.5;color:#bdbfb4;margin:15px 0}
+#archium-legal-notice .legal-submit{width:100%;min-height:48px;display:block;border:1px solid #c8a96c;border-radius:9px;background:#e5c37b;color:#151b15;font:750 14px system-ui,-apple-system,'Segoe UI',Arial,sans-serif;cursor:pointer;padding:12px 14px;touch-action:manipulation}
+#archium-legal-notice .legal-submit:hover{background:#f0d492}
+#archium-legal-notice .legal-submit:focus-visible{outline:3px solid #9de0a8;outline-offset:3px}
+#archium-legal-notice .legal-footnote{font-size:11px;line-height:1.5;color:#afb6ac;text-align:center;margin:11px 0 0}
+@media(max-width:400px){#archium-legal-notice{padding:8px}#archium-legal-notice .legal-panel{max-height:calc(100dvh - 16px);padding:15px;border-radius:10px}#archium-legal-notice .legal-part{padding:11px 12px;margin-top:10px}#archium-legal-notice .legal-part p{font-size:12px}#archium-legal-notice .legal-rights{margin:11px 0}}
+</style>
+<script id="archium-4-4-legal-preinit">window.ARCHIUM_LEGAL_NOTICE_ACTIVE=true;</script>
+
+<style id="archium-4-5-stickers-css">
+/* ARCHIUM 4.5 — sticker decks, radio responses and accessible mobile controls */
+.guide-reactions43{display:none!important}
+#guide-sticker-deck45{--g45:var(--g-accent,#d8b86b);margin:12px 0 14px;border-top:1px solid #59634d;padding-top:12px}
+.sticker-heading45{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.sticker-heading45 b{font-size:12px;letter-spacing:.9px;color:var(--g45)}
+.sticker-heading45 small{font-size:9px;color:#aeb6a7}
+.sticker-focus45{display:grid;grid-template-columns:112px minmax(0,1fr);gap:10px;align-items:center;border:1px solid color-mix(in srgb,var(--g45) 65%,#3c4036);border-left:3px solid var(--g45);padding:8px;background:linear-gradient(110deg,#202a22,#0d130f);min-height:104px}
+.sticker-focus45 img{width:112px;max-width:100%;aspect-ratio:300/230;object-fit:contain;filter:drop-shadow(0 3px 5px #000c)}
+.sticker-focus45 strong{color:var(--g45);font-size:12px;display:block;margin-bottom:5px}
+.sticker-focus45 p{font-size:11px!important;line-height:1.42!important;margin:0!important;color:#e8e2d2!important}
+.sticker-focus45.is-new img{animation:sticker-signal45 .38s ease-out}
+.sticker-grid45{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:9px 0}
+.sticker-grid45 button{border:1px solid #596552;background:#101811;color:#e4e1cb;padding:5px 2px 7px;min-width:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;position:relative}
+.sticker-grid45 button:hover,.sticker-grid45 button:focus-visible,.sticker-grid45 button[aria-pressed=true]{border-color:var(--g45);background:#273025;outline:1px solid var(--g45)}
+.sticker-grid45 img{width:100%;max-width:96px;aspect-ratio:300/230;object-fit:contain;display:block}
+.sticker-grid45 span{font-size:9px;font-weight:700;letter-spacing:.15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.sticker-controls45{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}
+.sticker-controls45 button{cursor:pointer;text-align:center;background:#1a221d;color:#dad9ce;border:1px solid #626c51;padding:9px 6px;font-size:11px}
+.sticker-controls45 button[aria-pressed=true]{border-color:var(--g45);color:var(--g45)}
+.sticker-controls45 button:focus-visible,.guide-sticker-ribbon45 button:focus-visible{outline:2px solid var(--g45);outline-offset:2px}
+#raven-drawer.open{max-height:calc(100dvh - 104px);display:flex;flex-direction:column}
+#raven-drawer .raven-content{overflow-y:auto;overscroll-behavior:contain;min-height:0}
+.guide-sticker-ribbon45{--g45:var(--g-accent,#d8b86b);margin:0 9px 18px;border:1px solid color-mix(in srgb,var(--g45) 58%,#445046);padding:12px;background:linear-gradient(110deg,#17211c,#101711);display:grid;grid-template-columns:150px minmax(0,1fr) auto;align-items:center;gap:14px}
+.guide-sticker-ribbon45 img{width:148px;max-width:100%;height:auto;filter:drop-shadow(0 4px 8px #000b)}
+.guide-sticker-ribbon45 h3{color:var(--g45);font-size:15px;margin:0 0 7px}
+.guide-sticker-ribbon45 p{color:#d3d8c9;font-size:12px;line-height:1.5;margin:0 0 8px}
+.guide-mini-reactions45{display:flex;flex-wrap:wrap;gap:5px}
+.guide-mini-reactions45 button,.guide-open-stickers45{cursor:pointer;color:#e9debd;background:#202820;border:1px solid #626c50;padding:7px 8px;font-size:11px}
+.guide-mini-reactions45 button.active{color:var(--g45);border-color:var(--g45)}
+.guide-open-stickers45{white-space:nowrap;color:var(--g45);border-color:var(--g45)}
+.guide-pop45[hidden]{display:none!important}
+.guide-pop45{--g45:var(--g-accent,#d8b86b);position:fixed;z-index:43;left:12px;bottom:85px;width:min(318px,calc(100vw - 95px));background:#111a16;border:1px solid var(--g45);box-shadow:0 10px 28px #000a;display:grid;grid-template-columns:100px minmax(0,1fr);gap:9px;padding:7px;pointer-events:none;animation:sticker-signal45 .26s ease-out}
+.guide-pop45 img{width:100px;aspect-ratio:300/230;object-fit:contain}
+.guide-pop45 strong{color:var(--g45);display:block;font-size:12px;margin-bottom:5px}
+.guide-pop45 p{font-size:11px;line-height:1.38;color:#e1e0d2;margin:0}
+@keyframes sticker-signal45{from{opacity:.25;transform:translateY(9px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:760px){.guide-sticker-ribbon45{grid-template-columns:105px 1fr;gap:8px;padding:8px}.guide-sticker-ribbon45 img{width:105px}.guide-open-stickers45{grid-column:1/-1;justify-self:stretch}.guide-sticker-ribbon45 h3{font-size:13px}.guide-sticker-ribbon45 p{font-size:11px}.guide-mini-reactions45 button{font-size:10px;padding:5px 7px}}
+@media(max-width:380px){.guide-sticker-ribbon45{grid-template-columns:90px 1fr}.guide-sticker-ribbon45 img{width:90px}.sticker-grid45{grid-template-columns:repeat(2,minmax(0,1fr))}#raven-drawer{bottom:75px!important}.guide-pop45{bottom:75px;width:min(260px,calc(100vw - 93px));grid-template-columns:72px 1fr}.guide-pop45 img{width:72px}}
+@media(prefers-reduced-motion:reduce){.sticker-focus45.is-new img,.guide-pop45{animation:none!important}}
+.sticker-no-motion45 .sticker-focus45.is-new img,.sticker-no-motion45 .guide-pop45{animation:none!important}
+</style>
+<style id="archium-4-6-news-style">
+/* ARCHIUM 4.6 — единая новостная лента */
+.news-connection46{margin:8px 0 12px;display:flex;gap:12px;align-items:center;justify-content:space-between;border:1px solid #4e5b44;background:linear-gradient(135deg,#101e18,#11150f);padding:10px 14px;border-radius:7px;flex-wrap:wrap}
+.news-connection46 span{font-size:12px;line-height:1.5;color:#d5ddc9}.news-connection46 span[data-mode="live"]{color:#bbdda4}.news-connection46 span[data-mode="error"]{color:#efc797}
+.news-connection46 button{padding:7px 12px;border:1px solid #8d7845;background:#28271d;color:#f3deb0;border-radius:5px;min-height:36px;cursor:pointer}
+.news-story46 time{font-size:inherit}.news-article46{white-space:pre-line;line-height:1.75!important;color:#e3dfca!important}
+.news-source46{display:inline-flex;align-items:center;padding:6px 10px;border:1px solid #665d43;border-radius:4px;color:#e9c986!important;text-decoration:none;font-size:12px}
+.news-editor46[hidden]{display:none!important}.news-editor46{margin:17px 0;padding:16px;border:1px solid #8f753e;background:linear-gradient(130deg,#24271c,#0e1915);border-radius:8px;color:#e9e6cf}
+.news-editor46 summary{font-size:16px;cursor:pointer;color:#e6d3a1;font-weight:700}.news-editor46 p{font-size:13px;line-height:1.55;color:#c4c9b5}.news-editor46 input,.news-editor46 textarea,.news-editor46 select{width:100%;min-width:0;box-sizing:border-box;background:#0d1713;color:#e9e9dc;border:1px solid #5d6653;border-radius:5px;padding:11px;font:inherit;font-size:14px}.news-editor46 label{font-size:13px;color:#e5d4a3;display:grid;gap:6px}.news-editor46 textarea{resize:vertical;min-height:90px}.news-editor-form46{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}.news-editor-form46 .wide46{grid-column:1/-1}.news-editor-form46 label.checkbox46{display:flex;align-items:center;gap:9px}.news-editor-form46 label.checkbox46 input{width:auto;min-height:20px}
+.news-editor46 button,.news-editor46 .news-editor-upload46{min-height:38px;padding:9px 13px;background:#29392d;border:1px solid #817447;border-radius:5px;color:#efdfb2;cursor:pointer;font-size:13px;white-space:normal}
+.news-editor46 button.primary46{background:#85733f;color:#0b100f;font-weight:bold}
+.news-editor-toolbar46{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:14px 0}.news-editor-toolbar46 input[type=file]{max-width:250px;padding:7px}.news-editor-row46{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid #4c5246}.news-editor-row46 b{font-size:13px}.news-editor-row46 small{display:block;color:#aeb7a9;font-size:11px;margin-top:4px}.news-editor-row-buttons46{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}.news-editor-row-buttons46 button{padding:7px 8px;min-height:32px}.news-editor-muted46{margin:6px 0}.news-editor-message46{color:#bedc9f!important;min-height:18px}
+.news-editor46 .news-editor-warn46{padding:10px 12px;border-left:3px solid #d1ab67;background:#231c14;color:#e7d1aa}
+@media(max-width:650px){.news-editor-form46{grid-template-columns:1fr}.news-editor-form46 .wide46{grid-column:1}.news-editor46{padding:12px}.news-editor-row46{align-items:flex-start;flex-direction:column}.news-editor-row-buttons46{justify-content:flex-start}.news-connection46{align-items:flex-start}}
+
+</style>
+<style id="archium461-telegram-css">
+.news-story.news-deep-link461{outline:2px solid #c0a260;outline-offset:2px;scroll-margin-top:80px}
+.news-editor46 .checkbox46 input[name="telegram_announce"]{accent-color:#d2b15d}
+</style>
+
+<style id="archium-4-6-2-legal-hotfix-css">
+/* Stable mobile legal disclosure: scroll text, not the confirmation button. */
+#archium-legal-notice{isolation:isolate;pointer-events:auto!important;z-index:2147483000!important;}
+#archium-legal-notice .legal-panel{display:flex!important;flex-direction:column!important;overflow:hidden!important;max-height:calc(100vh - 16px);max-height:calc(100dvh - 16px);}
+#archium-legal-notice .legal-copy{min-height:0;flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-right:2px;}
+#archium-legal-notice .legal-actions{flex:0 0 auto;padding-top:12px;margin-top:6px;border-top:1px solid #3e4c40;background:#151b16;}
+#archium-legal-notice .legal-submit{position:relative!important;z-index:3!important;min-height:52px;touch-action:manipulation!important;pointer-events:auto!important;}
+#archium-legal-notice .legal-footnote{font-size:10px;margin-top:8px;}
+@media(max-height:580px){#archium-legal-notice .legal-panel{padding:12px!important}#archium-legal-notice .legal-actions{padding-top:8px}#archium-legal-notice .legal-submit{min-height:46px}}
+</style>
+<style id="archium-auth-css47">
+/* ARCHIUM 4.7: account UI. Guest encyclopaedia stays public. */
+#archium-auth-modal[hidden]{display:none!important}
+#archium-auth-modal{position:fixed;inset:0;z-index:210000;background:#040704eF;display:grid;place-items:center;padding:12px;overflow-y:auto;color:#e8e2d2;font-family:system-ui,'Segoe UI',Arial,sans-serif}
+#archium-auth-modal *,#archium-account-panel *{box-sizing:border-box}
+#archium-auth-modal .auth-panel{width:min(100%,530px);background:linear-gradient(135deg,#222a20,#111610);border:1px solid #98814c;box-shadow:0 25px 90px #000d;padding:0;max-height:calc(100dvh - 24px);overflow-y:auto;border-radius:10px}
+#archium-auth-modal .auth-top{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;background:#252b23;border-bottom:1px solid #776344;gap:12px}
+#archium-auth-modal h2{font-size:23px;color:#efd38c;margin:0;letter-spacing:.5px}
+#archium-auth-modal p{font-size:13px;line-height:1.5;color:#c7c8b8;margin:6px 0 14px}
+#archium-auth-modal .auth-close{font-size:25px;min-width:40px;min-height:40px;border:1px solid #827250;background:#131a14;color:#f1e0ad;border-radius:5px}
+#archium-auth-modal .auth-body{padding:18px}
+#archium-auth-modal .auth-tabs{display:flex;gap:6px;margin-bottom:16px}
+#archium-auth-modal .auth-tabs button{flex:1;min-height:42px;background:#101810;color:#cbd1bb;border:1px solid #52604b;border-radius:5px;font-size:13px}
+#archium-auth-modal .auth-tabs button[aria-selected=true]{background:#d3ab51;color:#171710;border-color:#e6c675;font-weight:bold}
+#archium-auth-modal .auth-view[hidden]{display:none}
+#archium-auth-modal label{font-size:12px;color:#e4ddc9;display:block;margin:10px 0}
+#archium-auth-modal label>input:not([type=checkbox]),#archium-auth-modal label>select{display:block;width:100%;margin-top:5px;min-height:42px;padding:9px 12px;background:#080e09;border:1px solid #68725a;border-radius:5px;color:#eee7d4;font-size:15px}
+#archium-auth-modal .auth-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#archium-auth-modal .auth-action,#archium-account-panel button{border:1px solid #ddbb69;background:#d1ab58;color:#181a10;padding:11px 14px;min-height:42px;border-radius:5px;font-weight:800;font-size:13px}
+#archium-auth-modal .auth-action{width:100%;margin-top:7px}
+#archium-auth-modal .auth-action:disabled{opacity:.46}
+#archium-auth-modal .auth-link{background:none;border:none;color:#eec777;text-decoration:underline;padding:9px 3px;font-size:12px}
+#archium-auth-modal .auth-consent{display:flex;gap:9px;align-items:flex-start;font-size:11px;line-height:1.5}
+#archium-auth-modal .auth-consent input{min-width:19px;min-height:19px;margin:0}
+#archium-auth-modal .auth-consent a{color:#efc877;text-decoration:underline}
+#archium-auth-modal .auth-message{border:1px solid #55674b;background:#101b14;padding:10px;color:#d9e7c8;border-radius:5px;line-height:1.5;font-size:12px;margin-bottom:10px}
+#archium-auth-modal .auth-message[hidden]{display:none}
+#archium-auth-modal .auth-message.error{border-color:#a45847;color:#ffd3c4;background:#281713}
+#archium-auth-modal .auth-unavailable{border-left:3px solid #f2c676;background:#30271a;padding:9px 12px;margin-bottom:12px;color:#ffdfaa;font-size:12px;line-height:1.5}
+#archium-auth-modal .auth-unavailable[hidden]{display:none}
+#archium-account-panel{grid-column:1/-1;border:1px solid #6e7649;background:linear-gradient(120deg,#1e2a1e,#111811);padding:16px;margin:0;display:flex;gap:15px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+#archium-account-panel h3{color:#efcd87;margin:0 0 5px;font-size:18px}
+#archium-account-panel p{color:#bfc8b7;margin:0;font-size:12px;line-height:1.45}
+#archium-account-panel .auth-status{color:#e1e7ca;font-size:13px;font-weight:700}
+#archium-account-panel .account-actions{display:flex;gap:7px;flex-wrap:wrap}
+#archium-account-panel button.secondary{background:#151d16;color:#e7d49f;border-color:#68775c}
+#archium-account-header{display:flex;align-items:center;gap:7px}
+#archium-account-header[hidden]{display:none!important}
+#archium-account-header button{font-size:11px;white-space:nowrap}
+.auth-account-label{display:block;font-size:11px;color:#d0e0c7}
+@media(max-width:520px){#archium-auth-modal .auth-row{grid-template-columns:1fr}#archium-auth-modal .auth-body{padding:13px}#archium-account-panel{margin:0 8px}#archium-auth-modal .auth-panel{max-height:calc(100dvh - 16px)}}
+
+</style>
+<style id="archium-5-3-style">
+/* ARCHIUM 5.3 · Умный КПК · адаптивные темы и сквозной поиск */
+:root{--theme53-glow:#efbd5340;--theme53-dark:#44331f}
+:root[data-archium-theme53="duty"]{--amber:#ed6865;--amber2:#9d393c;--green:#d5a4a2;--edge:#844b49;--theme53-glow:#e2515942;--theme53-dark:#472023}
+:root[data-archium-theme53="freedom"]{--amber:#b6d77b;--amber2:#668d39;--green:#b6d77b;--edge:#607347;--theme53-glow:#a8d47035;--theme53-dark:#253d1d}
+:root[data-archium-theme53="mercs"]{--amber:#86c7d5;--amber2:#337e8c;--green:#8ed6c6;--edge:#446e76;--theme53-glow:#62b6c744;--theme53-dark:#1a353d}
+:root[data-archium-theme53="clearsky"]{--amber:#98bce7;--amber2:#4679b2;--green:#9ed4dd;--edge:#536b88;--theme53-glow:#87aadd48;--theme53-dark:#1d3047}
+:root[data-archium-theme53="loners"]{--amber:#efbd53;--amber2:#b27c2b;--green:#a6ca85;--edge:#63543d;--theme53-glow:#efbd5340;--theme53-dark:#44331f}
+:root[data-archium-theme53="monolith"]{--amber:#d5d0bd;--amber2:#827e77;--green:#b4b7a9;--edge:#77736a;--theme53-glow:#c7c3ad38;--theme53-dark:#35352f}
+:root[data-archium-theme53="military"]{--amber:#98c1a5;--amber2:#467b58;--green:#98c1a5;--edge:#4f755c;--theme53-glow:#78b99539;--theme53-dark:#213a29}
+:root[data-archium-theme53="renegades"]{--amber:#dfa274;--amber2:#9a5933;--green:#c5ad88;--edge:#866047;--theme53-glow:#d58b5840;--theme53-dark:#4b2b20}
+/* Тема влияет на активные элементы портала, не меняя эмблемы и исходные фотографии. */
+:root[data-archium-theme53] body{background:radial-gradient(ellipse 850px 530px at 50% -12%,var(--theme53-dark),#090d0a 80%),#080b08}
+:root[data-archium-theme53] .top{border-bottom-color:var(--edge)}
+:root[data-archium-theme53] .rep52-track span{background:linear-gradient(90deg,var(--amber2),var(--amber))}
+:root[data-archium-theme53] #page-profile .rep52-emblem{color:var(--amber);border-color:var(--edge)}
+.nav button.active,.square-btn.emph,.major-btn.gold,.legal-submit{background:linear-gradient(160deg,var(--amber),var(--amber2))!important;color:#141610!important;border-color:var(--amber)!important;box-shadow:inset 0 -2px #0004,0 0 13px var(--theme53-glow)!important}
+.section-label .ico,.top-search span,.minor-head:before{color:var(--amber)!important}
+.ornament,.passport-hero48,.rep52,.news-toolbar{border-color:var(--edge)!important}
+.section-label,.rep52 .section-label{border-bottom-color:var(--edge)!important}
+#page-profile .passport-hero48{box-shadow:0 0 0 1px var(--edge),0 9px 32px #000a,0 0 24px var(--theme53-glow)}
+#page-profile .passport-chips48 span,#passport-rank-chip52{border-color:var(--edge)!important}
+#archium-theme53{grid-column:1/-1;border:1px solid var(--edge);background:linear-gradient(130deg,#20251e,#111610);padding:0 0 14px;min-width:0}
+#archium-theme53 .theme53-intro{margin:12px 16px;color:#bfc5b6;font-size:12px;line-height:1.6}
+.theme53-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:0 14px}
+.theme53-card{display:flex;align-items:center;gap:10px;min-width:0;min-height:81px;border:1px solid #4d5548;border-radius:7px;padding:10px;text-align:left;background:linear-gradient(120deg,#20281f,#111810);color:#dbe0d2;position:relative;transition:border-color .14s,background .14s}
+.theme53-card:before{content:"";position:absolute;left:0;top:7px;bottom:7px;width:3px;border-radius:3px;background:var(--theme53-swatch,var(--amber))}
+.theme53-card:hover,.theme53-card[aria-pressed="true"]{border-color:var(--amber);background:linear-gradient(115deg,var(--theme53-dark),#161c18);box-shadow:inset 0 0 0 1px var(--theme53-glow)}
+.theme53-card[aria-pressed="true"]:after{content:'✓';position:absolute;top:6px;right:7px;font-weight:900;color:var(--amber)}
+.theme53-card img{width:51px;height:51px;object-fit:contain;flex:none;filter:drop-shadow(0 2px 6px #000a)}
+.theme53-card .theme53-icon{width:51px;height:51px;display:grid;place-items:center;border:1px solid #6b654f;border-radius:50%;font-size:24px;flex:none}
+.theme53-card b{display:block;font-size:14px;color:#e5e4d6;overflow-wrap:anywhere}
+.theme53-card small{display:block;font-size:11px;color:#b6bfae;margin-top:5px}
+.theme53-foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:14px 16px 0;color:#bac4b3;font-size:12px}
+.theme53-foot button{background:#1c261e;color:var(--amber);border:1px solid var(--edge);border-radius:5px;padding:9px 12px;min-height:42px}
+#archium-smart53{margin:13px 0;border:1px solid var(--edge);background:linear-gradient(120deg,#1b211b,#101710);padding:14px;min-width:0}
+.smart53-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:11px}
+.smart53-head strong{color:var(--amber);font-size:18px;letter-spacing:.4px}
+.smart53-head span{color:#aebaa8;font-size:11px}
+.smart53-controls{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(130px,1fr) minmax(110px,.55fr) auto;gap:9px}
+.smart53-controls input,.smart53-controls select{min-width:0;width:100%;border:1px solid #5b6754;background:#101710;color:#eee7d6;padding:10px 12px;border-radius:5px;font-size:14px;min-height:43px}
+.smart53-controls button{border:1px solid var(--edge);background:#2c3329;color:#e7ddc6;padding:9px 14px;border-radius:5px;min-height:43px}
+.smart53-results{margin-top:12px;max-height:320px;overflow:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.smart53-result{min-width:0;border:1px solid #3d493d;background:#111b14;color:#e5e6d8;padding:10px 12px;text-align:left;border-radius:5px;min-height:76px}
+.smart53-result:hover,.smart53-result:focus-visible{border-color:var(--amber);background:#253028}
+.smart53-result strong{display:block;font-size:14px;overflow-wrap:anywhere}
+.smart53-result small{display:block;margin:5px 0;color:var(--amber);font-size:11px}
+.smart53-result span{display:block;color:#b8c2b5;font-size:11px;line-height:1.4;max-height:2.8em;overflow:hidden}
+.smart53-empty{grid-column:1/-1;padding:14px;color:#b7bfae;border:1px dashed #505c4e;font-size:12px}
+.smart53-links{margin:22px 0 12px;border-top:1px solid var(--edge);padding-top:13px}
+.smart53-links h3{margin:0 0 5px;color:var(--amber);font-size:17px}
+.smart53-links p{font-size:11px;color:#bac4b5;margin:0 0 10px}
+.smart53-linklist{display:flex;flex-wrap:wrap;gap:7px}
+.smart53-linklist button{border:1px solid #536251;background:#1b281d;color:#e4e4d7;border-radius:4px;min-height:38px;padding:8px 10px;font-size:12px}
+.smart53-linklist button:hover{border-color:var(--amber)}
+.smart53-linklist button small{color:var(--amber);font-size:10px;margin-left:6px}
+@media(max-width:950px){.theme53-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.smart53-controls{grid-template-columns:1fr 1fr}.smart53-controls input{grid-column:1/-1}}
+@media(max-width:560px){.theme53-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:0 10px}.theme53-card{gap:7px;padding:7px;min-height:74px}.theme53-card img,.theme53-card .theme53-icon{width:40px;height:40px}.theme53-card b{font-size:12px}.theme53-card small{font-size:10px}.smart53-controls{grid-template-columns:1fr 1fr}.smart53-controls input{grid-column:1/-1}.smart53-controls button{grid-column:1/-1}.smart53-results{grid-template-columns:1fr;max-height:260px}#archium-smart53{padding:10px}}
+@media(prefers-reduced-motion:reduce){.theme53-card{transition:none}}
+
+</style>
+<style>
+
+/* ARCHIUM 5.3.1 — счётчик визитов. Не затрагивает оформление отдельных тем. */
+.archium-visits54{--visits-glow:var(--amber,#efbd53);display:grid;grid-template-columns:minmax(0,1fr) minmax(126px,auto) minmax(0,1fr);align-items:center;gap:13px;margin:12px 0 15px;padding:12px 18px;position:relative;overflow:hidden;background:linear-gradient(120deg,#182016f2,#0a110ef7 47%,#242316ed);border:1px solid var(--edge,#66543b);border-left:3px solid var(--amber,#efbd53);box-shadow:inset 0 0 0 1px #0009,0 5px 16px #0007;color:#e9e5d7;min-height:84px}
+.archium-visits54::after{content:'';pointer-events:none;position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0,transparent 6px,#e0ddbf04 7px);opacity:.75}
+.archium-visits54-label,.archium-visits54-metric,.archium-visits54-status{z-index:1;position:relative}
+.archium-visits54-label{display:flex;align-items:center;gap:11px;min-width:0}
+.archium-visits54-pulse{height:11px;width:11px;flex:0 0 11px;background:#81b377;border-radius:50%;box-shadow:0 0 0 4px #81b37722,0 0 13px #81b37766}
+.archium-visits54-label strong{display:block;font:900 13px/1.2 Consolas,'Arial Narrow',sans-serif;color:#e8ddb7;letter-spacing:.5px}
+.archium-visits54-label small{display:block;color:#91a492;margin-top:5px;font:700 10px/1.25 Consolas,monospace;letter-spacing:1px}
+.archium-visits54-metric{text-align:center;border-left:1px solid #7b6b474f;border-right:1px solid #7b6b474f;padding:2px 20px}
+.archium-visits54-metric span{display:block;font:900 clamp(30px,3.4vw,43px)/1 Impact,'Arial Narrow',sans-serif;letter-spacing:2px;color:var(--amber,#efbd53);text-shadow:0 0 15px #c69e424d;font-variant-numeric:tabular-nums;white-space:nowrap}
+.archium-visits54-metric small{display:block;color:#b6bea8;font:800 10px/1.4 Consolas,monospace;letter-spacing:.6px;margin-top:5px;white-space:nowrap}
+.archium-visits54-status{justify-self:end;max-width:250px;text-align:right;color:#b9c5ae;font:700 11px/1.4 'Segoe UI',Arial,sans-serif}
+.archium-visits54.is-preview .archium-visits54-pulse{background:#a49a6e;box-shadow:0 0 0 4px #aaa06f20}
+.archium-visits54.is-error .archium-visits54-pulse{background:#ca7560;box-shadow:0 0 0 4px #ca756020}
+@media(max-width:800px){.archium-visits54{grid-template-columns:1fr auto;gap:9px 10px;padding:11px 13px}.archium-visits54-metric{border-right:0;padding:3px 0 3px 12px}.archium-visits54-status{grid-column:1/-1;justify-self:start;max-width:none;text-align:left;border-top:1px solid #63694a45;padding-top:8px;width:100%}}
+@media(max-width:380px){.archium-visits54{padding:10px 11px}.archium-visits54-label strong{font-size:11px}.archium-visits54-label small{font-size:9px}.archium-visits54-metric span{font-size:29px}.archium-visits54-metric small{font-size:9px}.archium-visits54-metric{padding-left:8px}}
+@media(prefers-reduced-motion:reduce){.archium-visits54 *{transition:none!important;animation:none!important}}
+
+</style>
+<style id="archium-5-3-2-iphone-touchfix-css">
+/* iOS: always keep the acknowledgment reachable above the scrolling text. */
+#archium-legal-notice[hidden],#archium-legal-notice[aria-hidden="true"]{display:none!important}
+#archium-legal-continue{-webkit-tap-highlight-color:rgba(216,179,101,.28);-webkit-touch-callout:none;touch-action:manipulation;cursor:pointer;user-select:none;-webkit-user-select:none;min-height:52px}
+#archium-legal-notice .legal-actions{position:relative;z-index:5;flex-shrink:0}
+@media (max-width:600px){#archium-legal-continue{width:100%;font-size:14px}}
+</style>
+<style id="archium-533-navigation">
+/* ARCHIUM 5.4 — аккуратная навигация без повторяющихся кнопок */
+.ency-modules533{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0 16px}
+.ency-module533{cursor:pointer;min-width:0;min-height:122px;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:9px;text-align:left;padding:15px;background:linear-gradient(145deg,#232920,#111813 70%);border:1px solid #6e653d;border-radius:7px;box-shadow:inset 0 1px 0 #d4c18814,0 4px 13px #0006;color:#e7dac0;transition:border-color .15s,background .15s,transform .15s}
+.ency-module533:hover,.ency-module533:focus-visible{border-color:#f0c979;background:linear-gradient(145deg,#373522,#171f18);outline:2px solid transparent}
+.ency-module533:focus-visible{outline:2px solid #dfb75b;outline-offset:3px}
+.ency-module533:active{transform:scale(.985)}
+.ency-module533 .ency-icon533{font-size:26px;line-height:1;color:#e7bd6b;text-shadow:0 0 9px #e9aa3744}
+.ency-module533 strong{font-size:13px;line-height:1.28;letter-spacing:.015em;display:block;color:#f2d5a1}
+.ency-module533 small{font-size:11px;line-height:1.4;color:#bbc3b5;display:block;font-weight:500}
+.ency-module533 .ency-status533{font-size:10px;color:#e9be70;border:1px solid #7a6136;background:#3b321d73;padding:3px 7px;border-radius:4px;margin-top:auto}
+.ency-modules-caption533{font-size:11px;line-height:1.5;color:#b9bba8;margin:0 0 9px;padding-left:2px}
+.ency-breadcrumb533{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 12px;font-size:12px;color:#b2b9ad}
+.ency-breadcrumb533 button{cursor:pointer;background:#22291f;color:#f2d5a1;border:1px solid #7b6946;border-radius:5px;padding:9px 12px;min-height:42px;font-weight:700;font-size:12px}
+.ency-breadcrumb533 button:hover,.ency-breadcrumb533 button:focus-visible{border-color:#f1c878}
+.ency-upcoming533{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ency-upcoming533 article{min-width:0;padding:18px;border-radius:8px;border:1px solid #62583e;background:linear-gradient(130deg,#22291f,#111712);box-shadow:inset 0 1px #c8bb7d11}
+.ency-upcoming533 h2{font-size:17px;color:#ecc983;margin:0 0 12px}
+.ency-upcoming533 p{font-size:13px;color:#c1c9ba;line-height:1.6;margin:0 0 9px}
+.ency-upcoming533 .ency-status533{font-size:12px;font-weight:800;color:#dfbb72}
+.lower-grid.clean533{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:980px){.ency-modules533{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:670px){.ency-modules533{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.ency-module533{min-height:123px;padding:11px;gap:7px}.ency-module533 strong{font-size:12px}.ency-module533 small{font-size:10px}.ency-upcoming533{grid-template-columns:1fr}.lower-grid.clean533{grid-template-columns:1fr}}
+@media(max-width:355px){.ency-module533{padding:9px;min-height:126px}.ency-module533 strong{font-size:11px}.ency-modules533{gap:6px}}
+</style>
+<style id="archium54-concept-style">
+/* ARCHIUM 5.4 · визуальный концепт поверх 5.3.3; данные/старые страницы сохраняются */
+:root{--a54:var(--amber,#e8ba68)}
+#guide-pop45,#voron-menu-open,#voron-entry,#raven-trigger,#raven-drawer,#guide-choice-trigger43,#guide-change-profile43,#guide-change-menu43,#guide-sticker-ribbon45,#sticker-popup45,#auth-buttons47,#archium-account-header{display:none!important}
+#page-home .news-sidebar{display:none!important}
+.top-main{gap:12px}.account-shortcut54{white-space:nowrap;cursor:pointer;background:linear-gradient(140deg,#3e351e,#171d17);border:1px solid var(--amber,#c9a668);color:#e9d7b5;border-radius:5px;padding:10px 12px;font-weight:900;min-height:40px}.account-shortcut54:hover{filter:brightness(1.2)}
+#main-nav{display:flex;justify-content:center;gap:1px}#main-nav button{flex:1;min-height:40px;text-align:center}
+.top-status54{min-height:44px;border-top:1px solid #695539;background:linear-gradient(90deg,#111915,#1b231b);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:5px 16px}.top-status54-text{color:#9fab96;font:700 10px/1.3 Consolas,monospace;letter-spacing:1.2px}
+.top-status54 .archium-visits54{flex:none;display:flex!important;align-items:center;gap:9px;min-height:unset;margin:0;padding:3px 8px;border:1px solid #534c33;border-left:2px solid var(--amber,#eabd62);box-shadow:none;background:#101711;overflow:visible;border-radius:5px}
+.top-status54 .archium-visits54:after,.top-status54 .archium-visits54-status,.top-status54 .archium-visits54-label small,.top-status54 .archium-visits54-metric small{display:none!important}
+.top-status54 .archium-visits54-label{gap:4px}.top-status54 .archium-visits54-pulse{display:none}.top-status54 .archium-visits54-label:before{content:'☢';color:var(--a54);font-size:23px;line-height:1}.top-status54 .archium-visits54-label strong{font-size:10px;letter-spacing:.5px;max-width:80px}
+.top-status54 .archium-visits54-metric{padding:0 0 0 7px;border:0;border-left:1px solid #63583f}.top-status54 .archium-visits54-metric span{font-size:23px;letter-spacing:0}
+.home-hero54,.games-banner54,.support-header54{overflow:hidden;position:relative;border:1px solid #8c673b;background:linear-gradient(125deg,#101a16e8 30%,#22271dba 72%),url('assets/images/ba482ab6638ffefd.webp') center/cover;box-shadow:inset 0 0 25px #000a,0 6px 24px #0005;margin:15px 0 12px;padding:25px;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:168px}
+.home-hero54:after,.games-banner54:after,.support-header54:after{content:'';position:absolute;right:0;top:0;bottom:0;width:4px;background:var(--a54);box-shadow:0 0 18px var(--a54);opacity:.7}
+.home-hero54 h1,.games-banner54 h1,.support-header54 h1{margin:7px 0;font:900 clamp(31px,4vw,49px)/1.08 'Arial Narrow',Impact,sans-serif;letter-spacing:1px;color:#eee4ce}.home-hero54 h1 span,.support-header54 h1 span{color:var(--a54)}
+.home-hero54 p,.games-banner54 p,.support-header54 p{font-size:13px;color:#c2cbb9;max-width:620px;margin:0;line-height:1.6}.home-hero54-mark{font-size:86px;color:#ad8b4b;opacity:.65;text-shadow:0 0 25px #ac7c3559;display:flex;flex-direction:column;align-items:center;line-height:1}.home-hero54-mark small{font:800 10px Consolas,monospace;color:#d8c9a7;white-space:nowrap}
+.eyebrow54{font:800 11px/1.5 Consolas,monospace;letter-spacing:1.6px;color:var(--a54)}.home-quick54{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-bottom:16px}
+.quick-tile54{position:relative;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:7px;text-align:left;padding:15px 13px;min-height:126px;color:#eae6d7;background:linear-gradient(145deg,#283028,#121a16);border:1px solid #61563b;box-shadow:inset 0 0 0 1px #0009}.quick-tile54:hover,.quick-tile54:focus-visible{border-color:var(--a54);box-shadow:0 0 0 1px #ab875152,inset 0 0 18px #a2833027}.quick-tile54 strong{font:900 16px/1.2 'Arial Narrow',Arial,sans-serif}.quick-tile54 small{font-size:11px;color:#9eae9c;line-height:1.35}.quick-ico54{font-size:26px;color:var(--a54);line-height:1}.quick-arrow54{position:absolute;right:11px;top:10px;color:#c5a15c}
+#page-home .personal-guide-bar{margin:8px 0 15px!important}#page-home .guide-bar-buttons{display:none!important}#page-home .lower-grid.clean533{grid-template-columns:1fr 1fr;gap:12px}
+.archive-intro54,.archive-heading54,.account-intro54,.account-detail-title54{margin:22px 0 12px}.archive-intro54 h2,.archive-heading54 h2,.account-intro54 h2,.account-detail-title54 h2{margin:4px 0;color:#edddbd;font:900 25px/1.2 'Arial Narrow',Impact,sans-serif}.archive-intro54 p,.archive-heading54 p,.account-intro54 p{font-size:12px;color:#b4bcaf;margin:5px 0 12px;line-height:1.5}
+.ency-modules533.archive-hub54{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:10px 0 12px}.archive-hub54 .ency-module533{position:relative;min-height:136px;border:1px solid #736043;border-radius:6px;padding:18px;background:linear-gradient(140deg,#252e28ee,#111912ee),url('assets/images/ba482ab6638ffefd.webp') center/cover;text-align:left}.archive-hub54 .ency-module533:hover{border-color:var(--a54);background-color:#2d3323}.archive-hub54 .ency-module533 strong{color:#f2dfbb;font-size:20px}.archive-hub54 .ency-module533 small{color:#abb4a1;font-size:12px}.archive-hub54 .ency-module533 .ency-icon533{color:var(--a54);font-size:27px}.archive-hub54 .ency-status533{display:inline-block;margin-top:6px}.hub-arrow54{position:absolute;right:13px;top:12px;color:var(--a54)}
+.archive-all54{border:1px solid #5f553e;background:#19251c;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 17px;margin-bottom:20px}.archive-all54 strong{color:#dcc8a2;font-size:13px;display:block}.archive-all54 small{color:#a9b3a3;display:block;font-size:11px;margin-top:4px}.archive-all54 button{white-space:nowrap}
+.breadcrumb54{display:flex;align-items:center;flex-wrap:wrap;gap:10px;color:#d6b475;font-size:12px;padding:8px 3px;margin:6px 0}.breadcrumb54 button{border:0;background:transparent;color:#e5c188;padding:6px 3px;font-weight:800;cursor:pointer}
+.games-banner54,.support-header54{display:block;margin:8px 0 14px;min-height:155px}.games-grid54{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:12px}
+.game-card54{color:#f4e6c9;cursor:pointer;min-height:260px;padding:14px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:left;position:relative;overflow:hidden;border:1px solid #857045;box-shadow:inset 0 0 0 1px #0009,0 8px 24px #0005;background:linear-gradient(155deg,#171d1bc9 15%,#1a2116 58%,#080d0b),radial-gradient(circle at 55% 50%,#6a653d,#111611)}.game-card54:before{content:'';position:absolute;inset:25% -16% -10% 18%;background:repeating-linear-gradient(25deg,transparent 0 17px,#afb48f0b 18px 20px);transform:rotate(-6deg);pointer-events:none}.game-card54:hover,.game-card54:focus-visible{border-color:var(--a54);transform:translateY(-2px);box-shadow:0 0 18px #a58a4c55}.game-tch54{background:radial-gradient(circle at 65% 30%,#665438b8,transparent 65%),linear-gradient(160deg,#15201c,#080d09)}.game-chn54{background:radial-gradient(circle at 65% 25%,#476572c0,transparent 63%),linear-gradient(160deg,#142124,#091011)}.game-zp54{background:radial-gradient(circle at 60% 20%,#54674ca0,transparent 68%),linear-gradient(160deg,#15241c,#070f0a)}.game-s254{background:radial-gradient(circle at 60% 20%,#855b3ba8,transparent 68%),linear-gradient(160deg,#211e19,#0c0e0c)}
+.game-code54{font:800 11px Consolas,monospace;color:#c8bd9a;letter-spacing:1px}.game-symbol54{font:900 73px/1 Impact,sans-serif;opacity:.4;color:var(--a54);align-self:center}.game-card54 strong{z-index:1;font:900 clamp(19px,2vw,24px)/1.14 Impact,'Arial Narrow',sans-serif;text-transform:uppercase}.game-card54 small{color:#bbc1b0;font:700 11px Consolas,monospace}.game-arrow54{z-index:1;border-top:1px solid #79643d;padding-top:10px;color:var(--a54);font:900 10px Consolas,monospace;letter-spacing:1px;width:100%}
+.games-footer54{display:grid;grid-template-columns:1fr 1fr;gap:12px}.game-wide54{display:flex;align-items:center;gap:10px;text-align:left;padding:13px;border:1px solid #67563c;color:#eadab9;background:#1c241e;cursor:pointer}.game-wide54>span{font-size:29px;color:var(--a54)}.game-wide54 strong{white-space:nowrap;font-size:15px}.game-wide54 small{color:#aeb7a7;font-size:11px}.game-wide54>b{margin-left:auto;color:var(--a54)}.game-wide54:hover{border-color:var(--a54)}.concept-note54{padding:12px 15px;background:#1a211d;border-left:3px solid #ad8b51;color:#bbc0b0;font-size:11px;line-height:1.5;margin:14px 0}
+/* Вместо горизонтального скролла — компактная сетка категорий и видимых досье */
+#page-archive .column3{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:12px!important}#page-archive .column3>.pane{min-width:0;grid-column:auto!important}#page-archive .column3>aside:last-child{display:none!important}#page-archive .column3>aside:first-child .side-list{padding:10px!important}
+#page-archive #archive-cats{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible!important;scroll-snap-type:none!important;gap:7px!important}#page-archive #archive-cats button{width:100%!important;min-width:0!important;max-width:none!important;min-height:62px!important;white-space:normal;text-align:left;display:flex;align-items:center;justify-content:space-between;box-shadow:inset 0 -2px #0005;padding:9px!important}#page-archive #archive-cats button>span{font-size:12px;font-weight:800}
+#page-archive #archive-list{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;max-height:none!important;overflow:visible!important;padding:10px 0!important;align-items:stretch}
+#page-archive #archive-list>button[data-dossier]{position:relative;display:flex;flex-direction:column;gap:4px;align-items:flex-start;text-align:left;width:100%;min-height:147px;padding:8px;background:linear-gradient(160deg,#273028,#151c17);border:1px solid #655944;white-space:normal!important;overflow:hidden;box-shadow:inset 0 0 0 1px #070c0a}
+#page-archive #archive-list>button[hidden]{display:none!important}
+#page-archive #archive-list>button[data-dossier].selected,#page-archive #archive-list>button[data-dossier]:focus-visible{border-color:var(--a54);box-shadow:0 0 12px #b9943a38,inset 0 0 0 1px #64512e}
+.archive-card-img54{width:100%;height:86px;object-fit:cover;border:1px solid #554a30;border-radius:3px;background:#121813;display:block;filter:saturate(.68)}#page-archive #archive-list>button[data-dossier]>span{display:block;color:#e6d6b6;line-height:1.25;font-weight:900;font-size:12px}#page-archive #archive-list>button[data-dossier]>small{color:#a4ae9d;font-size:10px;margin-top:auto}
+#page-archive #archive-article[hidden]{display:none!important}#page-archive #archive-article{scroll-margin-top:170px;margin-top:18px;border-top:2px solid var(--a54);padding-top:15px}#page-archive #archive-article .feature-img{max-height:430px;object-fit:contain}
+.media-visual54{padding:23px;min-height:145px;display:flex;align-items:center;gap:25px;border:1px solid #685334;background:radial-gradient(circle at 18% 30%,#77512c55,transparent 48%),linear-gradient(135deg,#243029,#101811);margin:10px 0 12px}.media-visual54>span{font-size:73px;color:var(--a54)}.media-visual54 b{color:#eed8b6;font-size:21px}.media-visual54 p{color:#aeb7aa;font-size:12px;max-width:520px}.media-video54{background:radial-gradient(circle at 18% 30%,#573a3d99,transparent 50%),linear-gradient(135deg,#243029,#101811)}
+.support-header54{min-height:180px}.support-grid54{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.support-card54{min-height:315px;display:flex;flex-direction:column;align-items:flex-start;border:1px solid #776044;padding:23px;background:radial-gradient(circle at 80% 10%,#7c61353f,transparent 65%),#181f1a;box-shadow:inset 0 0 0 1px #0b120e,0 8px 25px #0004}.support-card54 h2{font:900 27px Impact,'Arial Narrow',sans-serif;color:#f1e1bf;margin:6px 0 11px}.support-card54 p{font-size:13px;line-height:1.6;color:#bac3b4}.support-icon54{font-size:45px;color:var(--a54)}.support-action54{background:linear-gradient(160deg,var(--amber,#caa157),#ad7f32);border:1px solid #e0bc75;border-radius:3px;text-decoration:none!important;padding:11px 15px;font-weight:900;color:#14180f!important;margin-top:auto}.support-unavailable54{padding:13px;border:1px dashed #72613f;color:#baad92;font-size:12px;margin-top:auto}.support-foot54{font:800 10px Consolas,monospace;color:#9caa98;margin-top:20px}.support-note54{font-size:11px;color:#95a592;margin:17px 0}
+.faction-entry54{padding:17px;border:1px solid #776243;background:#141e18;box-shadow:inset 0 0 20px #0008}.faction-head54 h2{font:900 26px Impact,'Arial Narrow',sans-serif;color:#eddaa8;margin:6px 0}.faction-head54 p{color:#b0bbaa;line-height:1.5;font-size:12px;max-width:740px}.faction-grid54{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:18px}.faction-tile54{min-height:150px;border:1px solid var(--fc,#75633b);background:linear-gradient(140deg,#26302a,#101812);text-align:left;padding:12px;display:flex;flex-direction:column;align-items:flex-start;gap:7px;color:#e8dac4;cursor:pointer}.faction-tile54:hover{filter:brightness(1.17);border-color:#e0be77}.faction-mark54{font-size:33px;color:var(--fc,#c6a165)}.faction-tile54 strong{font-size:13px}.faction-tile54 small{color:#b2b9a8;font-size:11px}.faction-tile54 span:last-child{font:800 10px Consolas,monospace;color:var(--a54);margin-top:auto}
+.faction-quiz54[hidden]{display:none!important}.faction-quiz54{position:fixed;inset:0;z-index:4200;background:#050905e8;display:grid;place-items:center;padding:16px}.quiz-shell54{width:min(610px,100%);background:linear-gradient(135deg,#1a241d,#0c130f);border:2px solid #a37b44;color:#ede0c7;box-shadow:0 16px 50px #000b;max-height:90dvh;overflow:auto}.quiz-bar54{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid #655037;font:900 12px Consolas,monospace;color:var(--a54)}.quiz-bar54 button{background:none;border:1px solid #745e3f;color:#fff;padding:7px 12px;cursor:pointer}.quiz-progress54{display:flex;gap:5px;padding:18px 20px 0}.quiz-progress54 i{height:6px;flex:1;background:#3b4034;border-radius:3px}.quiz-progress54 i.done{background:var(--a54)}.quiz-content54{padding:20px}.quiz-content54 h2{font:900 27px Impact,'Arial Narrow',sans-serif;margin:7px 0;color:#f0d9b2}.quiz-content54 p{font-size:14px;line-height:1.55}.quiz-answers54{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:13px 0}.quiz-answers54 button{min-height:58px;text-align:left;padding:12px;background:#232d26;color:#e5d8c3;border:1px solid #6c6649;cursor:pointer}.quiz-answers54 button.chosen{border-color:var(--a54);background:#48402b}.quiz-disclaimer54{font-size:11px!important;color:#a6b1a6}.quiz-footer54{border-top:1px solid #5a4d35;padding:13px 20px;display:flex;justify-content:space-between;gap:8px}.quiz-footer54 button{min-height:40px;padding:10px;cursor:pointer}body.quiz-locked54{overflow:hidden}
+.mobile-tabs54{display:none}
+@media(max-width:1100px){.games-grid54{grid-template-columns:repeat(2,minmax(0,1fr))}#page-archive #archive-list{grid-template-columns:repeat(3,minmax(0,1fr))}#page-archive #archive-cats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:740px){#app{padding-bottom:95px!important}.top-main{flex-wrap:wrap}.identity strong{font-size:24px}.top-search{order:4;flex-basis:100%;width:100%}.account-shortcut54{margin-left:auto;padding:8px;font-size:12px;min-height:36px}#main-nav{display:none!important}.top-status54{padding:4px 9px}.top-status54-text{font-size:8px;letter-spacing:.5px}.top-status54 .archium-visits54-label strong{font-size:9px}.top-status54 .archium-visits54-metric span{font-size:21px}
+.home-hero54{padding:15px;min-height:142px;margin:9px 0}.home-hero54 h1{font-size:33px}.home-hero54 p{font-size:11px}.home-hero54-mark{display:none}.home-quick54{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.quick-tile54{min-height:116px;padding:11px}.quick-tile54 strong{font-size:14px}.quick-tile54 small{font-size:10px}.quick-ico54{font-size:23px}
+.archive-hub54 .ency-module533{min-height:125px;padding:12px}.archive-hub54 .ency-module533 strong{font-size:15px}.archive-hub54 .ency-module533 small{font-size:10px}.archive-all54{flex-direction:column;align-items:stretch}.archive-all54 button{width:100%}.archive-heading54 h2,.archive-intro54 h2{font-size:21px}
+#page-archive #archive-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}#page-archive #archive-cats{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}#page-archive #archive-list>button[data-dossier]{min-height:138px;padding:7px}.archive-card-img54{height:84px}
+.games-grid54{gap:8px}.game-card54{min-height:195px;padding:10px}.game-card54 strong{font-size:18px}.game-symbol54{font-size:45px}.games-footer54{grid-template-columns:1fr}.support-grid54{grid-template-columns:1fr}.support-card54{min-height:240px}.faction-grid54{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.faction-tile54{min-height:133px}.media-visual54{padding:14px;gap:12px}.media-visual54>span{font-size:45px}.media-visual54 b{font-size:17px}.quiz-answers54{grid-template-columns:1fr}.mobile-tabs54{position:fixed;z-index:70;bottom:0;left:0;right:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#101813f5;border-top:1px solid #8a6e40;padding:6px max(5px,env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(5px,env(safe-area-inset-left));box-shadow:0 -8px 30px #000c}.mobile-tabs54 button{min-height:51px;background:transparent;border:1px solid transparent;color:#a7b5a4;font:800 11px Consolas,monospace;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer}.mobile-tabs54 button>span{font-size:21px;line-height:1.2}.mobile-tabs54 button.active{border-color:#5c4d31;background:#2b281b;color:var(--a54)}}
+@media(max-width:365px){.top-status54-text{max-width:120px;line-height:1.25}.top-status54 .archium-visits54-label strong{display:none}.top-status54 .archium-visits54{padding:2px 5px}.home-hero54 h1{font-size:28px}.faction-grid54{gap:6px}.faction-tile54{padding:8px}.game-card54 strong{font-size:16px}.game-card54{min-height:176px}.archive-hub54 .ency-module533 strong{font-size:13px}.archive-hub54 .ency-module533 small{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.game-card54:hover{transform:none}}
+</style>
+
+<style id="archium55-ui">
+/* ARCHIUM 5.5: new independent home tiles, while reusing original metal PDA design */
+#page-home .home-quick54{grid-template-columns:repeat(3,minmax(0,1fr))}
+#page-archive .archive-hub54{grid-template-columns:repeat(2,minmax(0,1fr))}
+#page-home .quick-tile54{min-width:0}
+#page-home .quick-tile54 strong{overflow-wrap:anywhere}
+.autocards55{margin:20px 0 16px;border:1px solid #7b6340;background:linear-gradient(140deg,#212921,#101813);padding:14px}
+.autocards55-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px}
+.autocards55-head h2{margin:0;color:#e9c284;font:900 21px 'Arial Narrow',Arial,sans-serif}
+.autocards55-head span,.autocards55-empty{font-size:12px;color:#b3bdac}
+.autocards55-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.autocards55-card{display:flex;flex-direction:column;min-width:0;gap:8px;padding:11px;background:#1b241e;border:1px solid #716342;color:#efdfc3;overflow-wrap:anywhere}
+.autocards55-card img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#101612}
+.autocards55-card strong{font-size:15px}.autocards55-card p{margin:0;font-size:12px;color:#b7c0b3;line-height:1.4}
+.autocards55-card a{font-size:12px;color:#ecc17b;text-decoration:underline;text-underline-offset:3px}
+.autocards55-empty{grid-column:1/-1;border:1px dashed #665637;padding:15px}
+.performance55{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:14px 0;padding:13px;color:#e8d5ac}
+.performance55 p{color:#acb9a9;font-size:12px;margin:5px 0 0;line-height:1.4}
+.performance55 label{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12px;font-weight:bold;white-space:nowrap}
+.performance55 input{accent-color:#d8ad5e;width:18px;height:18px}
+html.archium-light55 *,html.archium-light55 *::before,html.archium-light55 *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important;backdrop-filter:none!important}
+html.archium-light55 body::before{display:none}
+@media(max-width:850px){.autocards55-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){#page-home .home-quick54{grid-template-columns:repeat(2,minmax(0,1fr))}.performance55{align-items:flex-start;flex-direction:column}.autocards55{padding:11px}}
+@media(max-width:350px){#page-home .quick-tile54{padding:9px;min-height:120px}#page-home .quick-tile54 strong{font-size:14px}}
+</style>
+<style id="archium-developer561-style">
+/* ARCHIUM 5.6.1 — founder dossier; presentation only, no auth or privileges */
+.developer-shortcut561{margin:12px 9px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid #937744;background:linear-gradient(105deg,#302a1b,#141b17 72%);box-shadow:inset 0 0 0 2px #0c0f0c,0 5px 18px #0005}
+.developer-shortcut561 strong{display:block;color:#eed39c;font-size:18px}.developer-shortcut561 p{font-size:12px;color:#bab9a7;margin:6px 0 0;line-height:1.5}.developer-shortcut561 button{border:1px solid #dfb45c;background:#aa7b32;color:#171b15;min-height:44px;font-weight:900;padding:10px 14px;border-radius:5px;flex-shrink:0;cursor:pointer}
+#page-developer .developer-hero561{border:1px solid #8e713c;background:radial-gradient(ellipse at 12% 25%,#44311b9c,transparent 43%),linear-gradient(120deg,#1e2824,#101611 65%,#232016);padding:22px;box-shadow:inset 0 0 0 3px #0b100e,0 10px 35px #0006}
+#page-developer .developer-kicker561{font-weight:800;font-size:11px;letter-spacing:2px;color:#bda77f}
+#page-developer .developer-heading561{display:flex;gap:18px;align-items:center;margin-top:15px}
+#page-developer .developer-seal561{width:96px;height:96px;flex:0 0 96px;display:grid;place-items:center;border:2px solid #b18a45;border-radius:15px;background:linear-gradient(140deg,#3e3019,#161f1a);color:#ebc46e;font-size:56px;box-shadow:inset 0 0 25px #c39b2926,0 0 22px #e3ae371e}
+#page-developer .developer-verified561{display:inline-flex;align-items:center;gap:6px;color:#f0d9a4;border:1px solid #8b6a39;background:#3b3121;padding:6px 9px;font-size:10px;font-weight:bold;letter-spacing:1px;border-radius:4px}
+#page-developer h1{font:900 clamp(29px,6vw,48px)/1.08 Impact,'Arial Narrow',sans-serif;color:#f4e2bd;letter-spacing:1px;margin:11px 0 5px;overflow-wrap:anywhere}
+#page-developer .developer-call561{font-size:12px;color:#d0b47d;margin:0}
+#page-developer .developer-summary561{max-width:760px;color:#cdd1bf;line-height:1.65;font-size:14px;margin:20px 0 10px;white-space:pre-wrap}
+#page-developer .developer-tags561{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0 0}
+#page-developer .developer-tags561 span{font-size:11px;color:#dfd0aa;border:1px solid #716140;background:#252c24;padding:7px 10px}
+#page-developer .developer-grid561{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+#page-developer .developer-pane561{background:linear-gradient(145deg,#202b24,#111813);border:1px solid #5b6046;padding:18px;min-width:0}
+#page-developer .developer-pane561 small{font-size:10px;letter-spacing:1.2px;color:#b9ac87;font-weight:800}
+#page-developer .developer-pane561 h2{font-size:20px;margin:8px 0 10px;color:#f1d9a7}
+#page-developer .developer-pane561 p{font-size:13px;line-height:1.6;color:#cbd0bf;white-space:pre-wrap}
+#page-developer .developer-links561{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+#page-developer .developer-links561 a,#page-developer .developer-links561 button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border:1px solid #9a7e46;background:#292e25;padding:10px 14px;color:#efdaab;text-decoration:none;font-size:12px;font-weight:bold;cursor:pointer}
+#page-developer .developer-hint561{font-size:11px;line-height:1.55;color:#a9aa9a;margin:12px 0}
+@media(max-width:650px){.developer-shortcut561{flex-direction:column;align-items:flex-start}.developer-shortcut561 button{width:100%}#page-developer .developer-hero561{padding:14px}#page-developer .developer-heading561{gap:11px}#page-developer .developer-seal561{width:65px;height:65px;flex-basis:65px;font-size:37px}#page-developer .developer-grid561{grid-template-columns:minmax(0,1fr)}#page-developer .developer-pane561{padding:15px}}
+</style>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/icons/archium-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ARCHIUM">
+<link rel="stylesheet" href="assets/css/archium57.css">
+</head>
+<body>
+
+<!-- ARCHIUM 4.4: shown on EVERY new page load, with no saved skip flag. -->
+<div id="archium-legal-notice" role="dialog" aria-modal="true" aria-labelledby="archium-legal-heading" aria-describedby="archium-legal-desc">
+ <div class="legal-panel">
+  <div class="legal-copy">
+  <div class="legal-eyebrow">ARCHIUM · Информация о проектах</div>
+  <h2 id="archium-legal-heading">Перед входом на сайт</h2>
+  <p class="legal-lead" id="archium-legal-desc">Пожалуйста, ознакомьтесь со статусом ARCHIUM и «Проекта Горизонт».</p>
+  <section class="legal-part" aria-label="Статус ARCHIUM">
+   <h3>ARCHIUM — неофициальный фанатский портал</h3>
+   <p>ARCHIUM посвящён вселенной S.T.A.L.K.E.R., создан независимыми энтузиастами и не является официальным ресурсом. Портал не связан с GSC Game World и не одобрен компанией.</p>
+  </section>
+  <section class="legal-part" aria-label="Статус Проекта Горизонт">
+   <h3>«Проект Горизонт» — самостоятельная авторская игра</h3>
+   <p>«Проект Горизонт» имеет собственные вселенную, сюжет, персонажей и материалы. Игра не относится к S.T.A.L.K.E.R. и не связана с GSC Game World. Пока новости разработки публикуются на ARCHIUM; в дальнейшем планируется отдельный сайт игры.</p>
+  </section>
+  <p class="legal-rights">Название S.T.A.L.K.E.R. и связанные с ним охраняемые материалы принадлежат соответствующим правообладателям.</p>
+  </div>
+  <div class="legal-actions">
+  <button class="legal-submit" type="button" id="archium-legal-continue">Понятно, перейти в ARCHIUM</button><noscript><p class="legal-footnote" role="alert">Для работы ARCHIUM нужен JavaScript. Открой сайт в обычной вкладке браузера по HTTPS (не через предпросмотр скачанного файла) и разреши выполнение сценариев.</p></noscript>
+  <p class="legal-footnote">Это уведомление появляется при каждом открытии сайта.</p>
+  </div>
+ </div>
+</div>
+
+<script id="archium-5-3-2-legal-iphone-fix">(function(){
+'use strict';
+// This is intentionally the FIRST interactive script in the document.
+// All handlers below work before the large encyclopedia finishes parsing.
+var gate=document.getElementById('archium-legal-notice');
+var btn=document.getElementById('archium-legal-continue');
+if(!gate||!btn)return;
+var began=null;
+function dismiss(event){
+  if(event){
+    if(event.cancelable)event.preventDefault();
+    if(typeof event.stopPropagation==='function')event.stopPropagation();
+  }
+  if(window.ARCHIUM_NOTICE_DISMISSED)return;
+  window.ARCHIUM_NOTICE_DISMISSED=true;
+  gate.hidden=true;
+  document.documentElement.classList.remove('archium-legal-open');
+  document.body&&document.body.classList.remove('archium-legal-open');
+  window.ARCHIUM_LEGAL_NOTICE_ACTIVE=false;
+  window.ARCHIUM_NOTICE_PENDING_ENTRY=true;
+  if(typeof window.ARCHIUM_NOTICE_FINALIZE==='function'){
+    try{window.ARCHIUM_NOTICE_FINALIZE();}catch(error){console.warn('ARCHIUM: next screen could not initialize',error);}
+  }
+}
+// Standard mouse, keyboard and accessibility activation.
+btn.addEventListener('click',dismiss,true);
+// iOS Safari / Yandex: fall back to a direct touch gesture if a synthesized
+// click does not arrive. Do not treat scrolling as a press.
+btn.addEventListener('touchstart',function(event){
+  if(event.touches.length!==1){began=null;return;}
+  began={x:event.touches[0].clientX,y:event.touches[0].clientY};
+},{passive:true});
+btn.addEventListener('touchmove',function(event){
+  if(!began||!event.touches.length)return;
+  if(Math.abs(event.touches[0].clientX-began.x)>16||Math.abs(event.touches[0].clientY-began.y)>16)began=null;
+},{passive:true});
+btn.addEventListener('touchend',function(event){
+  if(!began)return;
+  var t=event.changedTouches&&event.changedTouches[0];
+  var valid=t&&Math.abs(t.clientX-began.x)<=16&&Math.abs(t.clientY-began.y)<=16;
+  began=null;
+  if(valid)dismiss(event);
+},{passive:false});
+btn.addEventListener('touchcancel',function(){began=null;},{passive:true});
+window.ARCHIUM_NOTICE_DISMISS=dismiss;
+})();</script>
+
+<div id="app">
+<header class="top">
+ <div class="top-main"><div class="symbol" aria-hidden="true">☢</div>
+  <div class="identity"><strong>АРХИУМ 5.5</strong><small>Полевой архив Зоны</small></div>
+  <label class="top-search"><span>⌕</span><input id="global-search" type="search" placeholder="Поиск по архиву…" aria-label="Поиск по энциклопедии"></label>
+  <button type="button" class="account-shortcut54 square-btn" data-page="profile">♙ <span>Аккаунт</span></button>
+  <div class="top-auth" id="auth-buttons47" hidden><button class="square-btn" type="button" data-auth-open="login">Войти</button><button class="square-btn emph" type="button" data-auth-open="register">Регистрация</button></div>
+  <div id="archium-account-header" hidden><span class="auth-account-label" id="archium-account-header-name47"></span><button class="square-btn" type="button">♙ Мой профиль</button></div>
+ </div>
+ <nav class="nav" aria-label="Основная навигация" id="main-nav">
+  <button id="voron-menu-open" class="voron-menu-open" type="button" aria-label="Устаревшее меню" hidden>◈ Меню Зоны</button>
+  <button class="active" data-page="home">⌂ Главная</button>
+  <button data-page="archive">☢ S.T.A.L.K.E.R.</button>
+  <button data-page="profile">♙ Аккаунт</button>
+  <button data-page="support">♡ Поддержка</button>
+ </nav>
+<div class="top-status54"><span class="top-status54-text">◉ СИГНАЛ ПРИНЯТ · КАНАЛ ARCHIUM</span><div class="archium-visits54" aria-label="Счётчик посещений ARCHIUM">  <div class="archium-visits54-label"><span class="archium-visits54-pulse" aria-hidden="true"></span><div><strong>СЧЁТЧИК ЗОНЫ</strong><small>ВСЕ ВИЗИТЫ</small></div></div>  <div class="archium-visits54-metric"><span id="archium-visits54-value" aria-live="polite">—</span><small>ВИЗИТОВ</small></div>  <div class="archium-visits54-status" role="status" id="archium-visits54-status">◌ Подключение к сети…</div></div> </div></header>
+<main>
+<section class="route active" id="page-home">
+ <div class="home-hero54">
+ <div class="home-hero54-copy"><span class="eyebrow54">● ПОЛЕВАЯ СВЯЗЬ / ARCHIUM</span><h1>ГЛАВНАЯ <span>СТРАНИЦА</span></h1><p>Добро пожаловать в ARCHIUM. Новости разработки, материалы Зоны и твой личный КПК — в одном месте.</p></div>
+ <div class="home-hero54-mark" aria-hidden="true">☢<small>КАНАЛ АКТИВЕН</small></div>
+</div>
+<div class="home-quick54" aria-label="Главные разделы">
+ <button type="button" data-page="archive" class="quick-tile54"><span class="quick-ico54">☢</span><strong>S.T.A.L.K.E.R.</strong><small>Игры, карта и модификации</small><span class="quick-arrow54">↗</span></button>
+ <button type="button" data-page="books" class="quick-tile54"><span class="quick-ico54">▤</span><strong>Книги Зоны</strong><small>Отдельная библиотека и авторы</small><span class="quick-arrow54">↗</span></button>
+ <button type="button" data-page="youtubers" class="quick-tile54"><span class="quick-ico54">▷</span><strong>Ютуберы Зоны</strong><small>Видеоархив и авторы каналов</small><span class="quick-arrow54">↗</span></button>
+ <button type="button" data-page="home" data-scroll-target="news-feed" class="quick-tile54"><span class="quick-ico54">◉</span><strong>Новости</strong><small>Сводки и обновления проектов</small><span class="quick-arrow54">↗</span></button>
+ <button type="button" data-page="profile" class="quick-tile54"><span class="quick-ico54">♙</span><strong>Аккаунт</strong><small>Личное дело, награды и группировка</small><span class="quick-arrow54">↗</span></button>
+ <button type="button" data-page="support" class="quick-tile54"><span class="quick-ico54">♡</span><strong>Поддержка</strong><small>Telegram и помощь проекту</small><span class="quick-arrow54">↗</span></button>
+</div>
+<section class="research-block57" id="research-home57" aria-label="Недавно просмотрено">
+ <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><h3>▤ НЕДАВНО ПРОСМОТРЕНО</h3><button type="button" class="research-action57" data-page="research">Инструменты исследователя ↗</button></div>
+ <div class="research-recent-grid57" id="research-home-recent57"></div>
+</section>
+<div class="personal-guide-bar" id="personal-guide-bar" aria-label="Личный проводник ARCHIUM"><img class="guide-bar-portrait" alt="Портрет выбранного проводника"><div class="guide-bar-inner"><div class="guide-bar-meta"><img class="guide-bar-logo" alt="Эмблема группировки"><span class="guide-bar-faction"></span><span>● КАНАЛ УСТАНОВЛЕН</span></div><h3 class="guide-bar-name">ПРОВОДНИК</h3><p class="guide-bar-quote"></p></div><div class="guide-bar-buttons"><button id="guide-chat-trigger43" type="button">◉ На связь</button><button id="guide-choice-trigger43" type="button" hidden>⇄ Сменить гида</button></div></div>
+ <div class="news-layout">
+  <div class="news-primary">
+   <div class="news-toolbar ornament"><div><b>ПОСЛЕДНИЕ СВОДКИ</b><small>Общие новости портала • обновляются после публикации news.json</small></div><div class="news-live-indicator">● ПУБЛИКАЦИИ ARCHIUM</div></div>
+   <div class="news-controls"><div class="news-filterset" id="news-filters" aria-label="Фильтр новостей"></div><input id="news-search" type="search" placeholder="Поиск по новостям…" aria-label="Поиск по новостям"></div>
+   <div id="news-feed" class="news-feed" aria-live="polite"></div>
+
+   <div class="news-connection46"><span id="news-connection-status46" role="status">◌ Подключение общей ленты…</span><button type="button" id="news-reload46">↻ Обновить новости</button></div>
+<details class="news-editor46" id="news-editor46" hidden><summary>▧ Редактор новостей ARCHIUM</summary>
+ <p class="news-editor-warn46"><b>Редактор работает только на твоём устройстве.</b> Публикация для всех посетителей и отправка разрешённых анонсов через GitHub Actions происходят после загрузки скачанного файла <code>news.json</code> в папку сайта на GitHub. Адрес <code>?editor=1</code> не является авторизацией и не даёт права изменять GitHub.</p>
+ <div class="news-editor-toolbar46"><label>Импортировать news.json <input id="news-editor-import46" type="file" accept=".json,application/json"></label><button type="button" class="primary46" id="news-editor-export46">↓ Скачать news.json для публикации</button><label class="checkbox46"><input id="news-editor-preview46" type="checkbox" style="width:auto">Предпросмотр моих статей в ленте</label></div>
+ <form id="news-edit-form46" class="news-editor-form46"><input type="hidden" name="id">
+  <label class="wide46">Заголовок новости<input name="title" maxlength="120" required placeholder="Например: обновление ARCHIUM 4.6"></label>
+  <label>Дата публикации<input name="date" type="date" required></label>
+  <label>Рубрика<select name="category"><option>ARCHIUM</option><option>S.T.A.L.K.E.R.</option><option>Модификации</option><option>Проект Горизонт</option><option>Сообщество</option></select></label>
+  <label class="wide46">Короткий анонс<textarea name="intro" rows="2" maxlength="330" placeholder="Краткий текст на карточке"></textarea></label>
+  <label class="wide46">Полная новость<textarea name="body" rows="6" maxlength="6000" required placeholder="Проверенные сведения, описание события и подробности…"></textarea></label>
+  <label>Статус<select name="status"><option value="draft">Черновик</option><option value="published">Опубликовано</option></select></label>
+  <label>Открыть раздел<select name="page"><option value="">Без перехода</option><option value="home">Новости</option><option value="archive">S.T.A.L.K.E.R.</option><option value="mods">Модификации</option><option value="horizon">Проект Горизонт</option><option value="forum">Форум</option><option value="map">Карта</option></select></label>
+  <label>Иллюстрация из архива<select name="art"><option value="news">Обложка ARCHIUM</option><option value="mercs-cover">Промзона</option><option value="history-cover">История Зоны</option><option value="strelok-cover">Сталкер</option><option value="medusa-cover">Артефакт</option><option value="detector-cover">Детектор</option><option value="monolith-cover">Монолит</option><option value="zarya-cover">Экипировка</option></select></label>
+  <label>URL изображения (HTTPS, необязательно)<input name="image" type="url" placeholder="https://example.org/image.webp"></label>
+  <label class="wide46">Ссылка на первоисточник (HTTPS, необязательно)<input name="link" type="url" placeholder="https://..."></label>
+  <label class="checkbox46 wide46"><input name="pinned" type="checkbox">Закрепить в начале ленты</label>
+  <label class="checkbox46 wide46"><input name="telegram_announce" type="checkbox">📣 Отправить анонс в Telegram при публикации на GitHub</label>
+  <p class="wide46 news-editor-warn46" style="margin:0">Галочка не отправляет сообщение сразу. Бот опубликует анонс в @archium_horizon только после загрузки <code>news.json</code> в GitHub и настройки секрета <code>ARCHIUM_TELEGRAM_BOT_TOKEN</code>. Ранее отправленные записи автоматически повторно не публикуются.</p>
+  <div class="news-editor-toolbar46 wide46"><button class="primary46" type="submit">＋ Сохранить в редакторе</button><button type="button" id="news-editor-reset46">Новая запись / очистить поля</button></div>
+ </form><p id="news-editor-message46" class="news-editor-message46" aria-live="polite"></p>
+ <h3 style="color:#e9d6ad;font-size:16px">Записи в редакторе</h3><div id="news-editor-list46"></div>
+</details>
+
+  </div>
+  <aside class="news-sidebar">
+
+   <div class="ornament news-sideblock"><div class="section-label"><span class="ico">◉</span><h3>Наш канал</h3></div><p>Анонсы развития ARCHIUM и «Проекта Горизонт» публикуем в нашем Telegram-канале.</p><a class="news-side-link" target="_blank" rel="noopener noreferrer" href="https://t.me/archium_horizon">@archium_horizon ↗</a></div>
+  </aside>
+ </div>
+<div class="lower-grid clean533"><div class="ornament"><div class="section-label"><span class="ico">▣</span><h3>Форум / Сообщество</h3><button class="action-link push" data-page="forum">Открыть ›</button></div><div class="news-list" id="home-forum"></div></div><div class="ornament"><div class="section-label"><span class="ico">▲</span><h3>Проект Горизонт</h3><small class="push">НАША ИГРА</small></div><div class="horizon-panel"><div class="horizon-art"><span>ГОРИЗОНТ</span></div><p>Наш самостоятельный мир, опытный Командир, Бродяга и тактическая боевая система. Следи за разработкой игры.</p><div class="hero-buttons"><button class="major-btn gold" data-page="horizon">О проекте ›</button><button class="major-btn" data-page="horizon" data-hsection="dev">Дневники ›</button></div></div></div></div>
+</section>
+<section class="route" id="page-archive"><nav class="breadcrumb54"><button type="button" data-page="home">⌂ Главная</button><span>/</span><button type="button" data-page="games">Каталог игр</button></nav><div class="sub-banner"><div><h1>S.T.A.L.K.E.R.</h1><p>Исследуй досье группировок, аномалии, локации, артефакты и историю оригинальной трилогии S.T.A.L.K.E.R.</p></div></div>
+<div class="archive-intro54"><span class="eyebrow54">КАТАЛОГ ARCHIUM // ИГРЫ И КАРТА</span><h2>ВЫБЕРИ АРХИВ</h2><p>Сначала выбираешь направление, затем открываешь карточки и досье. Все старые записи сохранены ниже.</p></div>
+<div class="ency-modules533 archive-hub54" aria-label="Модули S.T.A.L.K.E.R.">
+ <button type="button" class="ency-module533" data-page="games"><span class="ency-icon533">☢</span><strong>S.T.A.L.K.E.R.</strong><small>Четыре игры · каталог модификаций</small><span class="hub-arrow54">↗</span></button>
+ <button type="button" class="ency-module533" data-page="map"><span class="ency-icon533">⌖</span><strong>Карта Зоны</strong><small>Локации, интерактивная схема</small><span class="hub-arrow54">↗</span></button>
+ <button type="button" class="ency-module533 research-hub-tile57" data-page="research"><span class="ency-icon533">▤</span><strong>Инструменты исследователя</strong><small>Сравнение, журнал, коллекция, лаборатория</small><span class="hub-arrow54">↗</span></button>
+</div>
+<div class="archive-all54"><div><strong>ПОЛНЫЙ АРХИВ · ВСЕ ЧАСТИ</strong><small>Режим без ограничений по игре — открыты материалы оригинальной трилогии.</small></div><button type="button" data-select-game54="Все" class="major-btn">Открыть все досье →</button></div>
+<div class="archive-heading54"><span class="eyebrow54">S.T.A.L.K.E.R. / СПРАВОЧНИК</span><h2>КАРТОЧКИ И ДОСЬЕ</h2><p>Выбирай тематическую категорию, затем карточку нужной записи.</p></div>
+<div class="column3"><aside class="pane ornament"><div class="section-label"><span class="ico">▣</span><h3>Разделы архива</h3></div><div class="side-list"><input class="search-filter" type="search" id="archive-search" placeholder="Поиск по досье…"><div id="archive-cats"></div></div></aside><section class="pane ornament"><div class="filterbar" id="game-filters"><small style="color:#9dab94;font-weight:800">ИГРА:</small><button data-game="Все" class="selected">Все</button><button data-game="ТЧ">ТЧ</button><button data-game="ЧН">ЧН</button><button data-game="ЗП">ЗП</button><button data-game="С2">S.T.A.L.K.E.R. 2</button><span class="push" id="archive-visible-count" style="margin-left:auto;font-size:11px;color:#b2b9a6"></span></div><div id="archive-list" class="side-list" style="max-height:190px;overflow:auto"></div><div id="archive-article" class="article"></div></section><aside class="pane ornament"><div class="section-label"><span class="ico">◉</span><h3>Сведения</h3></div><div class="aside-note"><b style="color:#edc36c">ПОЛЕВОЙ КАТАЛОГ</b><p>В объединённый ARCHIUM 4.0 перенесены 1 032 справочные записи из iPhone-архива: персонажи, группировки, артефакты, мутанты, задания, локации, оружие, экипировка, сервисы и хронология. Иллюстрации доступны в досье и медиатеке.</p><p>Выбирай раздел, используй поиск, открывай досье и сохраняй закладки.</p><button class="small-link" data-page="forum">▣ Обсудить на форуме</button><button class="small-link" data-page="profile">★ Мои закладки</button></div></aside></div></section>
+
+<section class="route" id="page-games" aria-labelledby="games-title54">
+ <nav class="breadcrumb54"><button type="button" data-page="archive">‹ S.T.A.L.K.E.R.</button><span>/</span><span>Игры и модификации</span></nav>
+ <div class="games-banner54"><span class="eyebrow54">АРХИВ ИГР // ARCHIUM</span><h1 id="games-title54">S.T.A.L.K.E.R.</h1><p>Выбери часть серии. Досье внутри будут отфильтрованы по выбранной игре. Архив S.T.A.L.K.E.R. 2 пока без наполнения.</p></div>
+ <div class="games-grid54" aria-label="Выбор игры">
+  <button type="button" class="game-card54 game-tch54" data-select-game54="ТЧ"><span class="game-code54">АРХИВ // 01</span><span class="game-symbol54">☢</span><strong>Тень Чернобыля</strong><small>2007 · ТЧ</small><span class="game-arrow54">ОТКРЫТЬ ДОСЬЕ ↗</span></button>
+  <button type="button" class="game-card54 game-chn54" data-select-game54="ЧН"><span class="game-code54">АРХИВ // 02</span><span class="game-symbol54">⌖</span><strong>Чистое Небо</strong><small>2008 · ЧН</small><span class="game-arrow54">ОТКРЫТЬ ДОСЬЕ ↗</span></button>
+  <button type="button" class="game-card54 game-zp54" data-select-game54="ЗП"><span class="game-code54">АРХИВ // 03</span><span class="game-symbol54">▤</span><strong>Зов Припяти</strong><small>2009 · ЗП</small><span class="game-arrow54">ОТКРЫТЬ ДОСЬЕ ↗</span></button>
+  <button type="button" class="game-card54 game-s254" data-select-game54="С2"><span class="game-code54">АРХИВ // 04</span><span class="game-symbol54">◈</span><strong>S.T.A.L.K.E.R. 2</strong><small>Сердце Чернобыля · пока пусто</small><span class="game-arrow54">ОТКРЫТЬ РАЗДЕЛ ↗</span></button>
+ </div>
+ <div class="games-footer54"><button type="button" class="game-wide54" data-select-game54="Все"><span>◉</span><strong>Все части</strong><small>Полный существующий архив без фильтра</small><b>↗</b></button><button type="button" class="game-wide54" data-page="mods"><span>⚙</span><strong>Модификации</strong><small>Отдельный каталог фанатских проектов</small><b>↗</b></button></div>
+ <div class="concept-note54">Архив четвёртой игры пока не наполнен: мы не переносим туда материалы трилогии и не выдаём старые записи за информацию о S.T.A.L.K.E.R. 2.</div>
+</section>
+
+<section class="route" id="page-research" aria-label="Инструменты исследователя">
+  <nav class="ency-breadcrumb533"><button type="button" data-page="home">‹ Главная</button><span>/</span><button type="button" data-page="archive">S.T.A.L.K.E.R.</button><span>/ Инструменты</span></nav>
+  <header class="research-header57"><span class="research-kicker57">ARCHIUM // ПОЛЕВОЙ ТЕРМИНАЛ</span><h1>ИНСТРУМЕНТЫ ИССЛЕДОВАТЕЛЯ</h1><p>Личная статистика, сравнение материалов и небольшая лаборатория. Твои отметки хранятся только в этом браузере.</p><span class="research-kicker57" id="research-version-read57">● Новый сигнал</span></header>
+  <section class="research-block57 research-release57" id="research-signal57"><h2>◉ Новый сигнал: ARCHIUM 5.7</h2><p>Добавлены журнал просмотров, паспорт исследователя, защита от спойлеров, сравнение материалов, виртуальная коллекция и демонстрационная лаборатория аномалий.</p><button type="button" id="research-read57" class="research-action57">Отметить прочитанным</button></section>
+  <div class="research-cards57" aria-label="Статистика исследователя"><div class="research-stat57"><strong id="research-count-total57">—</strong><span>Записей архива</span></div><div class="research-stat57"><strong id="research-count-viewed57">0</strong><span>Изучено досье</span></div><div class="research-stat57"><strong id="research-count-artifacts57">0</strong><span>В коллекции</span></div><div class="research-stat57"><strong id="research-count-books57">0</strong><span>Прочитано книг</span></div></div>
+  <progress id="research-progress57" value="0" max="1">0</progress><p class="research-note57">Статистика начинается с открытия досье в этой версии. Это не онлайн-рейтинг и не реальные игровые достижения.</p>
+  <div class="research-subgrid57">
+    <section class="research-block57"><h2>▤ Недавно просмотрено</h2><div class="research-recent-grid57" id="research-recent57"></div></section>
+    <section class="research-block57"><h2>⚙ Чтение и данные</h2><label class="research-checkbox57"><input type="checkbox" id="research-spoiler57" checked> Скрывать подробности досье до нажатия</label><label class="research-control57">Размер текста <span id="research-font-value57">100%</span><input type="range" min="90" max="135" step="5" id="research-font57" value="100"></label><p class="research-muted57">Защита от спойлеров скрывает развёрнутые сведения, оставляя краткую справку видимой. Это не гарантия отсутствия спойлеров в заголовках.</p><button type="button" class="research-action57" id="research-export57">↓ Резервная копия моих отметок</button><label class="research-control57">Восстановить копию<input id="research-import57" type="file" accept=".json,application/json"></label><p id="research-status57" class="research-muted57" role="status"></p></section>
+  </div>
+  <section class="research-block57"><h2>⌖ Маршрут новичка</h2><p class="research-muted57">Начни с основных тем и постепенно изучай Зону. Все досье открыты без экзамена и регистрации.</p><div class="research-mini-grid57"><button type="button" class="research-action57" data-research-category57="Группировки">1. Группировки</button><button type="button" class="research-action57" data-research-category57="Аномалии">2. Аномалии</button><button type="button" class="research-action57" data-research-category57="Артефакты">3. Артефакты</button><button type="button" class="research-action57" data-research-category57="Локации">4. Локации</button><button type="button" class="research-action57" data-research-category57="Персонажи">5. Персонажи</button></div></section>
+  <section class="research-block57"><h2>⌖ Сравнение материалов по играм</h2><label class="research-control57">Материал<select id="research-compare-select57"></select></label><div id="research-compare-result57"></div></section>
+  <div class="research-subgrid57">
+    <section class="research-block57"><h2>⚑ Отношения группировок</h2><div id="research-relations57"></div></section>
+    <section class="research-block57"><h2>◷ Хронология выхода игр</h2><p><strong>2007:</strong> Тень Чернобыля<br><strong>2008:</strong> Чистое Небо<br><strong>2009:</strong> Зов Припяти<br><strong>2024:</strong> S.T.A.L.K.E.R. 2: Сердце Чернобыля</p><p class="research-muted57">Это даты выпуска игр, а не хронология сюжетных событий.</p></section>
+  </div>
+  <section class="research-block57"><h2>◇ Моя коллекция артефактов</h2><div id="research-artifacts57"></div></section>
+  <section class="research-block57"><h2>☢ Лаборатория аномалий</h2><p>Небольшая визуальная демонстрация действия аномалий из нашего архива. Не является физической симуляцией или игровым движком.</p><label class="research-control57">Тип<select id="research-anomaly-type57"><option value="electra">Электра</option><option value="burner">Жарка</option><option value="gravity">Трамплин</option></select></label><div class="research-anomaly-visual57" id="research-anomaly-visual57" data-kind="electra" aria-label="Демонстрационная область аномалии"><span class="research-bolt57" aria-hidden="true"></span></div><button type="button" id="research-throw57" class="research-action57">↗ Бросить болт</button><p id="research-bolt-feedback57" class="research-muted57" aria-live="polite">Выбери аномалию и брось болт.</p></section>
+  <section class="research-block57"><h2>▤ Личная книжная полка</h2><div id="research-shelf57"></div></section>
+  <p class="research-note57">Данные ARCHIUM составляются редакционно: отдельные записи могут требовать проверки источников. Книжные сюжеты, игровые факты и авторские материалы не следует смешивать.</p>
+</section>
+<section class="route" id="page-books">
+  <nav class="ency-breadcrumb533" aria-label="Путь по сайту"><button type="button" data-page="home">‹ Главная</button><span aria-current="page">/ Книги Зоны</span></nav>
+  <div class="sub-banner"><div><h1>КНИГИ ЗОНЫ</h1><p>Будущий книжный архив: произведения по мотивам S.T.A.L.K.E.R., авторы, серии и аннотации. Книжные сюжеты не смешиваются с каноном игр.</p></div></div>
+  <div class="media-visual54 media-book54"><span>▤</span><div><b>ЗАСЕКРЕЧЕННАЯ БИБЛИОТЕКА</b><p>Полки пока пустуют. Обложки, авторов и описания добавим на следующем этапе.</p></div></div>
+   <section class="autocards55" aria-label="Каталог книг"><div class="autocards55-head"><h2>Книжные карточки</h2><span>Проверенные публикации</span></div><div class="autocards55-grid" id="cards-books55" aria-live="polite"><p class="autocards55-empty">Материалы ещё не добавлены. Архив готов к автоматическому наполнению.</p></div></section>
+  <div class="ency-upcoming533">
+    <article><h2>▤ Библиотека Зоны</h2><p>Здесь появятся карточки книг с обложками, авторами и кратким описанием.</p><span class="ency-status533">◌ В разработке</span></article>
+    <article><h2>⌕ Авторы и серии</h2><p>Подборки книжных циклов и удобная навигация по связанным произведениям.</p><span class="ency-status533">◌ В разработке</span></article>
+  </div>
+</section>
+<section class="route" id="page-youtubers">
+  <nav class="ency-breadcrumb533" aria-label="Путь по сайту"><button type="button" data-page="home">‹ Главная</button><span aria-current="page">/ Ютуберы Зоны</span></nav>
+  <div class="sub-banner"><div><h1>ЮТУБЕРЫ ЗОНЫ</h1><p>Будущий каталог авторов и каналов о S.T.A.L.K.E.R.: обзоры, лор, модификации, прохождения и история сообщества.</p></div></div>
+  <div class="media-visual54 media-video54"><span>▷</span><div><b>ВИДЕОАРХИВ ЗОНЫ</b><p>Карточки каналов, ведущие, обзоры и подборки появятся после проверки материалов.</p></div></div>
+   <section class="autocards55" aria-label="Каталог видеоканалов"><div class="autocards55-head"><h2>Видеоархив</h2><span>Проверенные публикации</span></div><div class="autocards55-grid" id="cards-youtubers55" aria-live="polite"><p class="autocards55-empty">Каталог готов. Добавляем только проверенные каналы.</p></div></section>
+  <div class="ency-upcoming533">
+    <article><h2>▷ Авторы и каналы</h2><p>Карточки каналов с описаниями специализации и ссылками на оригинальные страницы.</p><span class="ency-status533">◌ В разработке</span></article>
+    <article><h2>◉ Видео и подборки</h2><p>Тематические разделы: обзоры игр, разборы истории Зоны, моды и прохождения.</p><span class="ency-status533">◌ В разработке</span></article>
+  </div>
+</section>
+<section class="route" id="page-forum"><div class="sub-banner" style="background-image:url('assets/images/bd76a1acf518e5f4.webp')"><div><h1>ФОРУМ СТАЛКЕРОВ</h1><p>Макет будущего сообщества: темы можно открывать и добавлять локальные тестовые сообщения. Сервер и реальные пользователи пока не подключены.</p></div></div><div class="forum-layout"><aside class="ornament"><div class="section-label"><span class="ico">▣</span><h3>Категории</h3></div><div class="side-list" id="forum-categories"></div><div style="padding:10px"><button class="major-btn gold" style="width:100%" id="new-thread-btn">+ Новая тема</button></div></aside><section class="ornament"><div class="forum-headline"><h3 id="forum-title">Лента обсуждений</h3><small>ДЕМОНСТРАЦИОННЫЕ ДАННЫЕ</small><button class="square-btn" id="forum-list-btn" hidden>← Все темы</button></div><div id="forum-content"></div></section><aside class="ornament"><div class="section-label"><span class="ico">◉</span><h3>О сообществе</h3></div><div class="aside-note"><p><b style="color:var(--amber)">Бета-прототип форума</b></p><p>Твои пробные темы и ответы сохраняются только в браузере на этом устройстве и не видны другим.</p><p>Настоящий форум появится после серверной части, регистрации и модерации.</p><button class="small-link" data-page="horizon">▲ Обсудить будущую игру</button></div></aside></div></section>
+<section class="route" id="page-map"><nav class="ency-breadcrumb533" aria-label="Путь по энциклопедии"><button type="button" data-page="archive">‹ S.T.A.L.K.E.R.</button><span aria-current="page">/ Карта Зоны</span></nav><div class="sub-banner"><div><h1>КАРТА ЗОНЫ</h1><p>Демонстрационная карта: выбор локаций и масштабирование, без выдачи примерных меток за точные координаты.</p></div></div><div class="map-layout"><aside class="ornament"><div class="section-label"><span class="ico">⌖</span><h3>Навигация</h3></div><div class="side-list"><div id="map-list"></div><div style="font-size:11px;line-height:1.5;color:#a9b4a2;padding:11px">Это концептуальная схема. Для реальных игровых меток потребуется отдельно проверить источники и координаты.</div></div></aside><div class="map-wrap"><div id="map-canvas" class="map-canvas"></div><div class="map-zoom"><button id="zoom-in" aria-label="Увеличить">+</button><button id="zoom-out" aria-label="Уменьшить">−</button><button id="zoom-reset" aria-label="Сбросить масштаб" style="font-size:12px">1:1</button></div><div class="map-legend">▵ Схематическая карта для проверки интерфейса · координаты условные</div></div><aside class="ornament map-info"><div class="section-label"><span class="ico">▤</span><h3>Досье локации</h3></div><div id="map-info"></div></aside></div></section>
+<section class="route" id="page-mods"><nav class="ency-breadcrumb533" aria-label="Путь по энциклопедии"><button type="button" data-page="games">‹ Архив игр</button><span aria-current="page">/ Модификации</span></nav>
+ <div class="mods-intro"><span class="news-eyebrow">АРХИУМ / ДОПОЛНЕНИЯ К ИГРАМ</span><h1>МОДИФИКАЦИИ <span>S.T.A.L.K.E.R.</span></h1><p>Каталог проектов сообщества: глобальные переделки, сюжетные моды, сборки и оружейные дополнения. Начальные карточки — редакционные примеры; совместимость и актуальные версии требуют сверки на странице автора.</p></div>
+ <div class="mods-layout"><div>
+  <div class="mods-controlbar ornament"><div id="mods-tabs" class="mods-tabs" aria-label="Фильтр модификаций"></div><input id="mods-search" type="search" placeholder="Найти модификацию…" aria-label="Поиск модификаций"></div>
+  <div class="mods-results"><span id="mods-count"></span><small>Без сторонних загрузок в автономной версии</small></div>
+  <div id="mods-grid" class="mods-grid"></div>
+  <details class="news-publisher ornament"><summary>＋ Добавить карточку модификации локально</summary><form id="mods-form" class="news-form">
+   <label>Название<input name="title" maxlength="100" required placeholder="Название модификации"></label>
+   <label>Основа<select name="base"><option>Тень Чернобыля</option><option>Чистое Небо</option><option>Зов Припяти</option><option>Самостоятельная</option></select></label>
+   <label>Тип<select name="type"><option>Сюжетная</option><option>Глобальная</option><option>Сборка</option><option>Оружейная</option><option>Другое</option></select></label>
+   <label>Описание<textarea name="description" maxlength="1200" required rows="3" placeholder="Кратко о моде"></textarea></label>
+   <button class="major-btn gold" type="submit">Сохранить в этом браузере</button><small>Добавление в общий каталог потребует отдельной проверки и публикации.</small>
+  </form></details>
+ </div><aside class="mods-aside ornament"><div class="section-label"><span class="ico">☷</span><h3>Полевые заметки</h3></div><div class="mods-aside-content"><strong>КАК ПОЛЬЗОВАТЬСЯ</strong><p>Выбирай основу игры, ищи по названию и открывай подробности карточек.</p><strong>ВАЖНО</strong><p>Проверяй требования и страницу автора перед установкой. ARCHIUM не распространяет сторонние архивы и не подтверждает совместимость непроверенных сборок.</p><button data-page="forum" class="major-btn">Обсудить моды ›</button></div></aside></div>
+ </section><section class="route" id="page-support" aria-labelledby="support-title54">
+ <nav class="breadcrumb54"><button type="button" data-page="home">‹ Главная страница</button><span>/</span><span>Поддержка и связь</span></nav>
+ <div class="support-header54"><span class="eyebrow54">◉ ARCHIUM / ПОЛЕВАЯ РАДИОСТАНЦИЯ</span><h1 id="support-title54">ПОДДЕРЖКА <span>И СВЯЗЬ</span></h1><p>Сталкер, этот архив развивается силами одного автора. Твои идеи, отзывы и добровольная поддержка помогают проекту двигаться вперёд.</p></div>
+ <div class="support-grid54">
+  <article class="support-card54"><span class="support-icon54">♡</span><span class="eyebrow54">ФОНД РАЗВИТИЯ</span><h2>Поддержать проект</h2><p>Новые досье, улучшения мобильного КПК и поддержка портала. Все материалы энциклопедии остаются бесплатными.</p><div class="support-unavailable54">Реквизиты YooMoney добавим после подтверждения владельца.</div><span class="support-foot54">ПОДДЕРЖКА ТОЛЬКО ДОБРОВОЛЬНАЯ</span></article>
+  <article class="support-card54"><span class="support-icon54">⌁</span><span class="eyebrow54">КАНАЛ СООБЩЕСТВА</span><h2>Telegram ARCHIUM</h2><p>Новости энциклопедии, анонсы обновлений, процесс разработки «Проекта Горизонт» и обсуждение новых идей.</p><a href="https://t.me/archium_horizon" target="_blank" rel="noopener noreferrer" class="support-action54">Перейти в @archium_horizon ↗</a><span class="support-foot54">ПЕРЕДАЧА ОТКРЫТА ДЛЯ ВСЕХ СТАЛКЕРОВ</span></article>
+ </div>
+ <div class="support-note54">ARCHIUM — неофициальный фанатский проект. Не связан с GSC Game World. «Проект Горизонт» — отдельная оригинальная игра.</div>
+</section>
+<section class="route" id="page-horizon"><div class="horizon-cover"><div><span class="tagline">ОРИГИНАЛЬНАЯ ИГРА / В РАЗРАБОТКЕ</span><h1>ПРОЕКТ ГОРИЗОНТ</h1><p>Самостоятельная тактическая RPG с собственной вселенной, сюжетными решениями и живыми боями. Проект развивается отдельно от фанатской энциклопедии S.T.A.L.K.E.R.</p><div class="hero-buttons"><button class="major-btn gold" data-hsection="world">Об игре</button><button class="major-btn" data-hsection="battle">Боевая система</button><button class="major-btn" data-hsection="dev">Дневник разработки</button></div></div></div><div class="horizon-live-strip"><span>◉ ТАКТИЧЕСКИЙ ПРОТОТИП / ALPHA 0.1</span><strong>Командир и Бродяга · миссия «Старик у ворот»</strong><button type="button" class="major-btn gold" id="horizon-demo-toggle" aria-expanded="false">▶ Запустить локальную демоверсию</button></div>
+ <div class="horizon-demo-box ornament" id="horizon-demo-box" hidden><div class="horizon-demo-info"><span>ВЕБ-ДЕМО • 2.5D • ОФЛАЙН</span><button id="horizon-demo-close" type="button" class="major-btn">✕ Закрыть</button></div><p>Это ранний тактический прототип: действия по ОД, укрытия, туман войны, напарник-ИИ и три режима обзора. Ещё не полноценная 3D-игра.</p><div id="horizon-demo-host"></div></div>
+<div class="horizon-grid" id="horizon-cards"></div><div class="ornament block" style="margin-left:9px;margin-right:9px"><div class="section-label"><span class="ico">▲</span><h3 id="horizon-info-title">О проекте</h3></div><div class="article" id="horizon-info" style="min-height:150px"></div></div></section>
+<section class="route" id="page-profile"><div class="sub-banner" style="background-image:url('assets/images/b5bff52f144b5c2b.webp')"><div><h1>АККАУНТ СТАЛКЕРА</h1><p>Твой личный штаб: позывной, проводник, группировка, достижения и настройки. Локальный профиль работает без регистрации. Данные хранятся только на этом устройстве; серверная синхронизация будет подключена позднее.</p></div></div><div class="research-block57"><strong>▤ Паспорт исследователя</strong><p class="research-note57">История просмотров, коллекция артефактов и настройки чтения — на этом устройстве.</p><button type="button" class="research-action57" data-page="research">Открыть инструменты ↗</button></div>
+<div class="account-intro54"><span class="eyebrow54">ARCHIUM // ЛИЧНОЕ ДЕЛО</span><h2>Всё о сталкере — в одном окне</h2><p>Сведения профиля, достижения, репутация, облики КПК и будущие испытания группировок теперь объединены в «Аккаунте». Данные пока остаются на устройстве.</p></div>
+ <section class="developer-shortcut561" aria-label="Досье разработчика"><div><strong>☢ Аккаунт разработчика</strong><p>Посмотри официальное досье создателя ARCHIUM и новости разработки. Это публичная карточка автора, а не доступ к управлению сайтом.</p></div><button type="button" data-page="developer">Открыть досье ↗</button></section>
+<section id="faction-entry54" class="faction-entry54" aria-labelledby="faction-title54"><div class="faction-head54"><span class="eyebrow54">◈ ЛИЧНАЯ ПРИНАДЛЕЖНОСТЬ</span><h2 id="faction-title54">ВЫБОР ГРУППИРОВКИ</h2><p>В будущем вступление потребует 8 правильных ответов из 10. Проводник и облик КПК будут назначаться автоматически после успешного испытания.</p></div><div id="faction-tiles54" class="faction-grid54"></div><div class="concept-note54">Сейчас это демонстрация интерфейса: вопросы ещё не проверены, реальное вступление и автоматическая смена проводника не активированы.</div></section>
+ <div class="performance55 ornament"><div><strong>⚙ РЕЖИМ КПК</strong><p>Для слабых телефонов отключает тяжёлые переходы и эффекты. Содержимое не меняется.</p></div><label for="performance-toggle55"><input type="checkbox" id="performance-toggle55"> Лёгкий режим</label></div>
+  <div class="account-detail-title54"><span class="eyebrow54">◉ НАСТРОЙКИ ЛИЧНОГО КПК</span><h2>Досье и достижения</h2></div>
+ <div class="profile-layout">
+  <section class="passport-hero48" id="passport-hero48" aria-label="Мой персональный КПК">
+    <div class="passport-hero-head48"><span>◉ ARCHIUM / ЛИЧНЫЙ КПК</span><span class="passport-local48">● ЛОКАЛЬНЫЙ ПРОФИЛЬ</span></div>
+    <div class="passport-hero-body48">
+      <div class="passport-photo-frame48"><img id="passport-avatar48" alt="Выбранный аватар сталкера"><span>СТАЛКЕР / ID-КАРТА</span></div>
+      <div class="passport-hero-info48"><div class="passport-eyebrow48">ЛИЧНОЕ ДЕЛО · ДОСТУП РАЗРЕШЁН</div>
+        <h2 id="passport-callsign48">СТАЛКЕР</h2><p id="passport-motto48">Каждый путь начинается с первого шага.</p>
+        <div class="passport-chips48"><span id="passport-faction48">◈ Одиночки</span><span id="passport-guide48">◉ Проводник не выбран</span><span id="passport-rank-chip52">◈ РАНГ: НОВИЧОК</span></div>
+        <div class="passport-metrics48"><div><b id="passport-bookmarks48">0</b><small>ЗАКЛАДОК</small></div><div><b id="passport-dossiers48">0</b><small>ИЗУЧЕНО ДОСЬЕ</small></div><div><b id="passport-level48">0/6</b><small>ДОСТИЖЕНИЙ</small></div><div><b id="passport-xp-chip52">0</b><small>ОПЫТ / XP</small></div></div>
+        <div class="passport-since48" id="passport-since48"></div>
+      </div>
+    </div>
+    <div class="passport-foot48"><span id="passport-storage48">Данные сохраняются только в браузере</span><button type="button" data-open-local-edit48>✎ НАСТРОИТЬ КПК</button></div>
+  </section>
+  <section class="passport-edit48 ornament" id="passport-edit48">
+    <div class="section-label"><span class="ico">◈</span><h3>Мой облик и девиз</h3></div>
+    <div class="passport-form48"><label for="passport-motto-input48">Девиз сталкера <small>до 100 символов</small></label><input class="field" id="passport-motto-input48" maxlength="100" placeholder="Например: Зона ошибок не прощает" />
+      <label>Выбери аватар <small>8 образов проводников; не меняет самого проводника</small></label><div id="passport-avatars48" class="passport-avatars48" role="group" aria-label="Выбор аватара"></div>
+      <button type="button" class="major-btn gold" id="passport-save-appearance48">✓ СОХРАНИТЬ ОБЛИК</button>
+      <p class="passport-hint48">Позывной и группировку можно изменить в блоке «Личное дело» ниже. Всё работает без регистрации.</p>
+    </div>
+  </section>
+
+  <section id="archium-reputation52" class="rep52 ornament" aria-label="Репутация сталкера">
+    <div class="section-label"><span class="ico">✦</span><h3>РЕПУТАЦИЯ СТАЛКЕРА</h3><span class="rep52-version">ARCHIUM 5.3</span></div>
+    <div class="rep52-summary">
+      <div class="rep52-emblem" id="rep52-emblem" aria-hidden="true">Ⅰ</div>
+      <div class="rep52-summary-main"><div class="rep52-kicker">УЧЁТ ОПЫТА / ЛИЧНЫЙ КПК</div>
+        <h2 id="rep52-rank">НОВИЧОК</h2>
+        <p id="rep52-next" class="rep52-muted">Изучай архив, чтобы повышать звание.</p>
+        <div class="rep52-track" role="progressbar" aria-label="Прогресс до следующего звания" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="rep52-progress"><span id="rep52-progress-bar"></span></div>
+        <div class="rep52-progress-label"><span id="rep52-progress-text">0 / 75 XP</span><strong id="rep52-total-xp">0 XP</strong></div>
+      </div>
+    </div>
+    <div class="rep52-stats" id="rep52-stats" aria-label="Статистика исследований"></div>
+    <div class="rep52-note">Репутация начисляется за уникальные исследованные досье, прочитанные новости, закладки и записи в журнале. Повторные открытия не дают дополнительных очков. Это локальные достижения портала, не статистика из игр.</div>
+    <div class="rep52-rank-strip" id="rep52-rank-strip" aria-label="Лестница званий"></div>
+  </section>
+  <section id="archium-collection52" class="rep52 ornament" aria-label="Коллекция наград">
+    <div class="section-label"><span class="ico">✪</span><h3>КОЛЛЕКЦИЯ НАГРАД</h3><span id="rep52-medals-count" class="rep52-version">0 / 15</span></div>
+    <div class="rep52-toolbar" role="group" aria-label="Фильтр наград">
+      <button type="button" class="rep52-filter" data-rep-filter="all" aria-pressed="true">Все</button>
+      <button type="button" class="rep52-filter" data-rep-filter="earned" aria-pressed="false">Получены</button>
+      <button type="button" class="rep52-filter" data-rep-filter="locked" aria-pressed="false">Закрыты</button>
+    </div>
+    <div id="rep52-medals" class="rep52-medals"></div>
+    <div class="rep52-showcase"><label for="rep52-showcase-select">Значок на твоём КПК</label><select id="rep52-showcase-select" aria-label="Выбрать полученную награду"><option value="">Без значка</option></select><p>Полученную награду можно выставить на ID-карте сталкера. Закрытые награды выбрать нельзя.</p></div>
+  </section>
+  <section class="passport-awards48 ornament" id="passport-awards48">
+    <div class="section-label"><span class="ico">✦</span><h3>Достижения архивариуса</h3></div>
+    <div class="passport-progress48"><div><strong id="passport-award-title48">НОВИЧОК</strong><small id="passport-award-count48">0 из 6</small></div><div class="passport-progress-track48"><span id="passport-award-bar48"></span></div></div>
+    <div class="passport-awards-grid48" id="passport-awards-grid48"></div>
+    <p class="passport-hint48">Награды выдаются за действия на этом устройстве. Они не связаны с игровой статистикой «Проекта Горизонт».</p>
+  </section>
+  <section class="passport-journal48 ornament" id="passport-journal48">
+    <div class="section-label"><span class="ico">▤</span><h3>Полевой журнал</h3></div>
+    <form id="passport-note-form48" class="passport-form48">
+      <label for="passport-note-title48">Заголовок записи</label><input class="field" id="passport-note-title48" maxlength="65" placeholder="Например: Маршрут через Свалку" required>
+      <label for="passport-note-body48">Заметка</label><textarea class="field" id="passport-note-body48" rows="4" maxlength="1200" placeholder="Наблюдения, идеи, планы…" required></textarea>
+      <button class="major-btn gold" type="submit">＋ ДОБАВИТЬ ЗАПИСЬ</button>
+    </form><div class="passport-notes48" id="passport-notes48" aria-live="polite"></div>
+  </section>
+  <section class="passport-backup48 ornament" id="passport-backup48">
+    <div class="section-label"><span class="ico">⬡</span><h3>Резервная копия</h3></div>
+    <div class="passport-form48"><p>Без сервера данные хранятся лишь в этом браузере. Сохрани копию, чтобы перенести свой КПК на другое устройство или не потерять записи.</p>
+      <div class="passport-backup-buttons48"><button type="button" id="passport-export48">↓ СОХРАНИТЬ КОПИЮ</button><label class="passport-import-btn48" for="passport-import48">↑ ВОССТАНОВИТЬ ИЗ КОПИИ<input type="file" id="passport-import48" accept="application/json,.json" hidden></label></div>
+      <p id="passport-backup-status48" role="status" class="passport-hint48">Копия содержит позывной, закладки, личный журнал, настройки и выбранного проводника. Не выкладывай её публично.</p>
+    </div>
+  </section>
+<section id="archium-account-panel"><div><h3>◉ ЛИЧНОЕ ДЕЛО ARCHIUM</h3><div class="auth-status" id="archium-auth-state47">ГОСТЕВОЙ ДОСТУП</div><p id="archium-account-desc47">Читай архив бесплатно. Зарегистрируйся для персонального профиля.</p></div><div id="archium-account-actions47" class="account-actions"><button data-auth-open="login" type="button">Войти</button><button class="secondary" data-auth-open="register" type="button">Регистрация</button></div><div id="archium-logged-actions47" class="account-actions" hidden><button class="secondary" id="archium-logout47" type="button">Выйти</button><button class="secondary" id="archium-delete47" type="button">Удалить аккаунт</button></div></section><section class="ornament"><div class="section-label"><span class="ico">♙</span><h3>Личное дело</h3></div><img class="profile-avatar" src="assets/images/df818275ec418daf.webp" alt="Ворон — пример портретного оформления"><div class="prefs"><label style="display:block">Позывной<input id="callsign" class="field" type="text" maxlength="25" placeholder="Сталкер"></label><label style="display:block">Группировка<select id="faction" class="field"><option>Одиночки</option><option>Долг</option><option>Свобода</option><option>Чистое Небо</option><option>Наёмники</option><option>Экологи</option><option>Монолит</option><option>Военные</option><option>Ренегаты</option><option>Бандиты</option></select></label><button class="major-btn gold" id="save-profile">Сохранить локально</button></div></section><section class="ornament"><div class="section-label"><span class="ico">★</span><h3>Личные закладки</h3></div><div class="article" id="bookmarks" style="min-height:210px"></div><div class="section-label"><span class="ico">⚙</span><h3>Настройки</h3></div><div class="prefs"><label><input id="pref-reduced" type="checkbox"> Меньше анимаций</label><label><input id="pref-raven" type="checkbox" checked> Показывать сообщения проводника</label></div></section><section class="guide-profile43" id="guide-profile43"><h3>◈ МОЙ ПРОВОДНИК</h3><div class="profile-guide-data"><img class="guide-profile-img" alt="Проводник"><div><b class="guide-profile-name">—</b><small class="guide-profile-faction"></small><div style="font-size:11px;color:#9ba795;margin-top:7px">Выбор проводника не ограничен твоей группировкой.</div></div></div><button type="button" id="guide-change-profile43">⇄ СМЕНИТЬ ПРОВОДНИКА</button><span class="guide-local-hint">Выбор сохраняется локально на этом устройстве.</span></section><aside class="ornament"><div class="section-label"><span class="ico">▲</span><h3>Связь с игрой</h3></div><div class="aside-note"><p>В будущем здесь появятся достижения, игровые профили и прогресс «Проекта Горизонт».</p><p style="color:#e5bc69">Синхронизация профиля работает после входа на настроенный сервер. Игровой прогресс «Проекта Горизонт» пока не синхронизируется.</p><button class="small-link" data-page="horizon">▲ Раздел игры</button></div></aside></div></section>
+<section class="route" id="page-developer" aria-labelledby="developer-title561">
+<nav class="ency-breadcrumb533" aria-label="Путь к аккаунту разработчика"><button type="button" data-page="home">‹ Главная</button><span>/</span><button type="button" data-page="profile">Аккаунт</button><span>/ Досье разработчика</span></nav>
+<div class="developer-hero561">
+<div class="developer-kicker561">ARCHIUM // РАЗРАБОТКА // ДОСЬЕ СОЗДАТЕЛЯ</div>
+<div class="developer-heading561"><div class="developer-seal561" aria-hidden="true">☢</div><div><span class="developer-verified561">◆ СОЗДАТЕЛЬ ПРОЕКТА</span><h1 id="developer-title561">Создатель ARCHIUM</h1><p class="developer-call561" id="developer-callsign561">Позывной: Разработчик</p></div></div>
+<p class="developer-summary561" id="developer-bio561">Независимый автор фанатского портала ARCHIUM и оригинальной игры «Проект Горизонт».</p>
+<div class="developer-tags561"><span>ARCHIUM</span><span>ПРОЕКТ ГОРИЗОНТ</span><span>ОДИН РАЗРАБОТЧИК</span></div>
+</div>
+<div class="developer-grid561"><article class="developer-pane561"><small>◉ ТЕКУЩАЯ РАБОТА</small><h2>В разработке</h2><p id="developer-focus561">Развитие портала, оптимизация КПК и наполнение архивов.</p></article>
+<article class="developer-pane561"><small>📡 СТАТУС И СВЯЗЬ</small><h2 id="developer-status561">Разработка продолжается</h2><p id="developer-note561">Следи за обновлениями в Telegram-канале ARCHIUM.</p></article></div>
+<div class="developer-links561"><a href="https://t.me/archium_horizon" target="_blank" rel="noopener noreferrer">📡 Telegram ARCHIUM ↗</a><button type="button" data-page="horizon">▲ Проект Горизонт</button><button type="button" data-page="support">♡ Поддержать проект</button><button type="button" data-page="profile">‹ Вернуться в аккаунт</button><a id="developer-admin-link561" href="admin/" hidden>⚙ ARCHIUM CONTROL (локально)</a><a id="developer-mobile-link562" href="#" target="_blank" rel="noopener noreferrer" hidden>📱 ARCHIUM CONTROL — с iPhone</a><span id="developer-mobile-note562" class="developer-hint561">Мобильная панель: требуется безопасное подключение через GitHub.</span></div>
+<p class="developer-hint561">Официальное публичное досье автора. Редактирование доступно только в локальном ARCHIUM CONTROL; на GitHub Pages это окно не предоставляет административных прав или входа.</p>
+</section>
+</main>
+<nav class="mobile-tabs54" aria-label="Быстрая навигация"><button type="button" data-page="home"><span>⌂</span>Главная</button><button type="button" data-page="archive"><span>☢</span>Сталкер</button><button type="button" data-page="profile"><span>♙</span>Аккаунт</button><button type="button" data-page="support"><span>♡</span>Поддержка</button></nav>
+<footer class="foot">ARCHIUM 5.7 — инструменты исследователя, локальные визиты, репутация, звания и персональные КПК; серверные аккаунты доступны после подключения API. Форум и часть карты остаются демонстрационными.</footer>
+</div>
+<button class="raven-trigger" id="raven-trigger" title="Ворон — проводник ARCHIUM" aria-label="Открыть помощника Ворона"><img src="assets/images/06dfcc18d3b26ccf.webp" alt="Ворон"></button>
+<div class="raven-drawer" id="raven-drawer"><header><div><b>◉ ВОРОН</b><div style="font-size:10px;color:#a7c593">КАНАЛ СВЯЗИ / НА ЛИНИИ</div></div><button id="raven-close" aria-label="Закрыть">×</button></header><div class="raven-content"><p id="raven-text">«На связи Ворон. Выбирай раздел — если потеряешь дорогу, помогу.»</p><div class="guide-reactions43" id="guide-reactions43" aria-label="Реплики проводника"></div><div class="raven-shortcuts"><button data-page="archive">☢ S.T.A.L.K.E.R.</button><button data-page="forum">▣ Форум</button><button data-page="profile">♙ Личный КПК</button><button data-page="horizon">▲ Горизонт</button></div></div></div>
+<div class="toast" id="toast" role="status"></div>
+<script defer src="assets/js/01-archium-core.js"></script>
+<script id="archium-4-1-news-mods-js" defer src="assets/js/02-archium-4-1-news-mods-js.js"></script>
+<div class="voron-entry" id="voron-entry" hidden role="dialog" aria-modal="true" aria-labelledby="voron-entry-title" aria-describedby="voron-entry-greeting">
+  <div class="voron-entry-fog" aria-hidden="true"></div>
+  <div class="voron-entry-frame">
+    <div class="voron-entry-topline"><span>ARCHIUM 5.5 / ПРИЁМ СИГНАЛА</span><span class="voron-entry-live">● КАНАЛ УСТАНОВЛЕН</span></div>
+    <div class="voron-entry-body">
+      <div class="voron-entry-portrait">
+        <img src="assets/images/06dfcc18d3b26ccf.webp" alt="Ворон — проводник по порталу ARCHIUM" width="300" height="322" decoding="async" fetchpriority="high" />
+        <div class="voron-entry-portrait-caption"><strong>ВОРОН</strong><span>ПРОВОДНИК / СВЯЗЬ 01</span></div>
+      </div>
+      <div class="voron-entry-main">
+        <span class="voron-entry-overline">◉ ВХОД В СЕТЬ СТАЛКЕРОВ</span>
+        <h2 id="voron-entry-title">ДОБРО ПОЖАЛОВАТЬ <em>В АРХИУМ</em></h2>
+        <blockquote id="voron-entry-greeting">«Слышь, сталкер… Ворон на связи. Зона сегодня неспокойна. Сводки поступают одна за другой. Выбирай, куда отправишься, а я укажу дорогу».</blockquote>
+        <div class="voron-entry-divider"><span>ВЫБЕРИ НАПРАВЛЕНИЕ</span></div>
+        <nav class="voron-entry-links" aria-label="Меню входа в ARCHIUM">
+          <button type="button" class="voron-entry-link primary" data-page="home"><span class="voron-entry-link-icon">◉</span><span><b>НОВОСТИ ЗОНЫ</b><small>Оперативные сводки и обновления</small></span><span class="voron-entry-arrow">›</span></button>
+          <button type="button" class="voron-entry-link" data-page="archive"><span class="voron-entry-link-icon">▤</span><span><b>ЭНЦИКЛОПЕДИЯ</b><small>Секретные досье и полевой архив</small></span><span class="voron-entry-arrow">›</span></button>
+          <button type="button" class="voron-entry-link" data-page="horizon"><span class="voron-entry-link-icon">▲</span><span><b>ПРОЕКТ ГОРИЗОНТ</b><small>Наша оригинальная тактическая RPG</small></span><span class="voron-entry-arrow">›</span></button>
+          <button type="button" class="voron-entry-link" data-page="forum"><span class="voron-entry-link-icon">✦</span><span><b>ФОРУМ СТАЛКЕРОВ</b><small>Общение и идеи сообщества</small></span><span class="voron-entry-arrow">›</span></button>
+        </nav>
+        <div class="voron-entry-actions"><button type="button" class="voron-entry-skip" id="guide-change-menu43">⇄ Сменить проводника</button><button type="button" class="voron-entry-skip" id="voron-entry-skip">Пропустить вступление · к новостям</button><span>G-0 // СИГНАЛ СТАБИЛЕН</span></div>
+      </div>
+    </div>
+    <div class="voron-entry-bottom">АРХИУМ • ФАНАТСКИЙ ПОРТАЛ ПО S.T.A.L.K.E.R. <span>ПЕРЕДАЧА НЕ ЗАЩИЩЕНА / НЕИЗВЕСТНЫЙ СЕКТОР</span></div>
+  </div>
+</div>
+<script id="archium-4-2-voron-js" defer src="assets/js/03-archium-4-2-voron-js.js"></script>
+
+<div class="guide-choice" id="guide-choice43" role="dialog" aria-modal="true" aria-labelledby="guide-heading43" aria-describedby="guide-chooser-lead" hidden>
+  <div class="guide-shell">
+    <div class="guide-top"><span>ARCHIUM 5.6 / ПРОВОДНИК</span><span class="guide-signal">● ПОЛЕВОЙ КАНАЛ АКТИВЕН</span></div>
+    <div class="guide-scroll">
+      <div class="guide-intro"><img src="assets/images/2f3694ecaf6b185b.webp" alt="Ворон встречает посетителя" decoding="async"><div><span class="pre">◉ ПЕРВАЯ СВЯЗЬ / ВОРОН</span><h2 id="guide-heading43">ВЫБЕРИ СВОЕГО ПРОВОДНИКА</h2><p id="guide-chooser-lead">Ворон встречает тебя в ARCHIUM. Дальше решать тебе: кто будет твоим проводником?</p><p><strong>Выбор свободный:</strong> твоя группировка и группировка гида могут отличаться.</p></div></div>
+      <div class="guide-section-kicker">8 ПЕРСОНАЛЬНЫХ ПРОВОДНИКОВ / ВЫБЕРИ ОДНОГО</div>
+      <div class="guide-grid" id="guide-card-list43" role="radiogroup" aria-label="Проводники ARCHIUM"></div>
+      <div class="guide-preview" id="guide-preview43" aria-live="polite"></div>
+      <p class="guide-pending"><img src="assets/images/1d6931941a2ebbbc.webp" alt=""> Бандиты и <img src="assets/images/0c6412cf8389119f.webp" alt=""> Экологи — проводники ещё не выбраны и пока недоступны.</p>
+    </div>
+    <div class="guide-bottom"><button type="button" class="guide-back" id="guide-back43" hidden>‹ Назад</button><p>Персонажа можно изменить позднее в профиле.<br>Данные сохраняются только в этом браузере.</p><button type="button" class="guide-confirm" id="guide-confirm43" disabled>СНАЧАЛА ВЫБЕРИ ПРОВОДНИКА</button></div>
+  </div>
+</div>
+<script id="archium-4-3-guides-js" defer src="assets/js/04-archium-4-3-guides-js.js"></script>
+
+<script id="archium-4-6-2-legal-js" defer src="assets/js/05-archium-4-6-2-legal-js.js"></script>
+
+<script id="archium-4-5-stickers-js" defer src="assets/js/06-archium-4-5-stickers-js.js"></script>
+<div id="archium-auth-modal" hidden role="dialog" aria-modal="true" aria-labelledby="auth-title47">
+ <div class="auth-panel">
+  <div class="auth-top"><h2 id="auth-title47">◈ ARCHIUM · Личное дело</h2><button id="auth-close47" class="auth-close" type="button" aria-label="Закрыть">×</button></div>
+  <div class="auth-body">
+   <div class="auth-unavailable" id="auth-unavailable47" hidden>Публичная регистрация пока не подключена к серверу. Все разделы энциклопедии доступны гостям. Действующий интерфейс регистрации включится после подключения API.</div>
+   <div class="auth-message" id="auth-message47" role="status" aria-live="polite" hidden></div>
+   <div class="auth-tabs" role="tablist" aria-label="Вход или регистрация"><button type="button" id="auth-tab-login47" data-auth-tab="login" aria-selected="true">Войти</button><button type="button" id="auth-tab-register47" data-auth-tab="register" aria-selected="false">Регистрация</button></div>
+   <form id="auth-login47" class="auth-view" autocomplete="on">
+     <p>Войди в свою учётную запись. Энциклопедию можно читать и без регистрации.</p>
+     <label>Электронная почта<input name="email" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required></label>
+     <label>Пароль<input name="password" type="password" autocomplete="current-password" minlength="12" maxlength="128" required></label>
+     <button class="auth-action" type="submit">Установить связь · Войти</button>
+     <button class="auth-link" type="button" data-auth-tab="recover">Забыли пароль?</button>
+   </form>
+   <form id="auth-register47" class="auth-view" hidden autocomplete="on">
+     <p>Создай профиль сталкера. Мы отправим письмо для подтверждения почты.</p>
+     <div class="auth-row"><label>Позывной<input name="callsign" minlength="3" maxlength="24" placeholder="Например: Феникс" autocomplete="nickname" required pattern="[А-Яа-яЁёA-Za-z0-9_-]{3,24}"></label><label>Группировка<select name="faction"></select></label></div>
+     <label>Личный проводник<select name="guide"></select></label>
+     <label>Электронная почта<input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+     <label>Пароль (не менее 12 символов)<input name="password" type="password" minlength="12" maxlength="128" autocomplete="new-password" required></label>
+     <label class="auth-consent"><input type="checkbox" name="consent" required><span>Согласен на обработку данных по <a href="privacy.html" target="_blank" rel="noopener noreferrer">политике конфиденциальности</a>. Документ должен быть утверждён владельцем до публичного запуска.</span></label>
+     <button class="auth-action" type="submit">Создать аккаунт</button>
+   </form>
+   <form id="auth-recover47" class="auth-view" hidden>
+     <p>Укажи почту, и мы отправим письмо для восстановления доступа, если аккаунт существует.</p>
+     <label>Электронная почта<input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+     <button class="auth-action" type="submit">Отправить письмо</button>
+     <button class="auth-link" type="button" data-auth-tab="login">← Вернуться ко входу</button>
+   </form>
+   <form id="auth-reset47" class="auth-view" hidden>
+     <p>Установи новый пароль для своего аккаунта.</p>
+     <label>Новый пароль (от 12 символов)<input name="password" type="password" autocomplete="new-password" minlength="12" maxlength="128" required></label>
+     <button class="auth-action" type="submit">Сменить пароль</button>
+   </form>
+   <form id="auth-verify47" class="auth-view" hidden>
+     <p>Подтверди адрес электронной почты, чтобы активировать учётную запись.</p>
+     <button class="auth-action" type="submit">Подтвердить почту</button>
+   </form>
+  </div>
+ </div>
+</div>
+
+<script id="archium-auth-js47" defer src="assets/js/07-archium-auth-js47.js"></script>
+<style id="archium48-passport-styles">
+/* ARCHIUM 4.8: Local private PDA. Keeps existing archive, router and auth UI intact. */
+#page-profile .profile-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;gap:14px}
+#page-profile .passport-hero48{grid-column:1/-1;min-width:0;--p48:#e8b24d;border:1px solid #a77b40;background:radial-gradient(ellipse at 75% 13%,#4d3825 0%,transparent 38%),linear-gradient(120deg,#20241e,#0d1110 65%,#1e1d16);box-shadow:inset 0 0 0 3px #0c0e0d,0 12px 35px #0008;position:relative;overflow:hidden}
+#page-profile .passport-hero48:after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 4px,#ffffff02 5px);opacity:.45}
+.passport-hero-head48,.passport-foot48{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid #7d623b;color:#dcc28b;font-size:11px;letter-spacing:1.2px;font-weight:800}
+.passport-local48{background:#213324;color:#b9e2a6;border:1px solid #4b7042;border-radius:18px;padding:5px 9px;font-size:10px}
+.passport-hero-body48{display:grid;grid-template-columns:200px 1fr;gap:22px;align-items:center;padding:20px}
+.passport-photo-frame48{position:relative;height:244px;background:#151b15;border:3px double #9a7745;box-shadow:0 8px 22px #0008;overflow:hidden}
+.passport-photo-frame48 img{height:100%;width:100%;object-fit:cover;object-position:center 19%;display:block}
+.passport-photo-frame48 span{position:absolute;left:0;right:0;bottom:0;text-align:center;background:#0a0d0ce8;color:#f2c76d;font:800 11px system-ui,sans-serif;letter-spacing:1.5px;padding:10px 3px}
+.passport-hero-info48{min-width:0}
+.passport-eyebrow48{font-size:11px;color:#9ec08e;letter-spacing:1.5px;font-weight:800}
+#page-profile #passport-callsign48{font-size:clamp(28px,4.5vw,48px);margin:8px 0;line-height:1.12;color:#ffe2a1;overflow-wrap:anywhere;text-shadow:0 2px 9px #000}
+#passport-motto48{font:italic 16px/1.5 Georgia,serif;color:#d2cabb;margin:9px 0 14px;overflow-wrap:anywhere}
+.passport-chips48{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 16px}
+.passport-chips48 span{border:1px solid #896f3f;background:#1d241d;padding:6px 10px;font-size:11px;color:#efe0b9}
+.passport-metrics48{display:flex;flex-wrap:wrap;gap:10px}
+.passport-metrics48>div{min-width:95px;flex:1;border-top:2px solid #b9873e;background:#0f1512;padding:10px 12px;display:flex;flex-direction:column;gap:5px}
+.passport-metrics48 b{font-size:27px;color:#f4bd53;font-weight:900;line-height:1}
+.passport-metrics48 small{font-size:9px;letter-spacing:.6px;color:#aabbad}
+.passport-since48{margin-top:13px;color:#a7b29f;font-size:11px}
+.passport-foot48{border-top:1px solid #4d513d;border-bottom:0;font-size:10px;letter-spacing:0;color:#b3bcab}
+.passport-foot48 button{background:#2e291f;border:1px solid #ac8144;color:#ffdb8a;padding:9px 12px;cursor:pointer;font-weight:800}
+#page-profile .passport-edit48,#page-profile .passport-awards48,#page-profile .passport-journal48,#page-profile .passport-backup48{min-width:0}
+.passport-form48{display:grid;gap:9px;padding:15px}
+.passport-form48>label{display:block;color:#ebd3a0;font-size:12px;font-weight:750}
+.passport-form48 small{color:#aab8a7;font-weight:400;margin-left:4px}
+.passport-form48 .field{background:#111711;color:#f0e7d7;width:100%;max-width:100%;min-width:0;box-sizing:border-box;border:1px solid #6b6a4b;min-height:40px;border-radius:3px;padding:11px;font:14px system-ui,sans-serif}
+.passport-form48 textarea.field{resize:vertical;line-height:1.4;min-height:100px}
+.passport-hint48{font-size:11px!important;line-height:1.6;color:#aab6a6!important;padding:0 15px 12px;margin:4px 0!important}
+.passport-avatars48{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.passport-avatar-option48{background:#121914;border:1px solid #625d40;color:#d6d5c1;padding:4px;min-width:0;cursor:pointer;position:relative;border-radius:5px;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:10px}
+.passport-avatar-option48 img{display:block;object-fit:cover;width:100%;aspect-ratio:1/1;object-position:center 20%;filter:saturate(.82)}
+.passport-avatar-option48[aria-pressed="true"]{border-color:#f3c05c;box-shadow:0 0 0 2px #956c2790;color:#fff2c3}
+.passport-progress48{padding:15px 15px 8px}.passport-progress48>div:first-child{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#f6ca73;font-weight:800;font-size:15px}
+.passport-progress48 small{font-size:11px;color:#aab5a4}
+.passport-progress-track48{height:9px;background:#141914;border:1px solid #655336;margin-top:12px;overflow:hidden;border-radius:10px}
+.passport-progress-track48 span{display:block;width:0;height:100%;background:linear-gradient(90deg,#887230,#f0bb53);transition:width .2s ease}
+.passport-awards-grid48{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:10px 14px}
+.passport-award48{border:1px solid #484c3d;background:#151b16;border-radius:7px;min-width:0;display:flex;align-items:flex-start;gap:10px;padding:12px;opacity:.65}
+.passport-award48.unlocked{border-color:#b38a41;background:linear-gradient(145deg,#302a1d,#162018);opacity:1}
+.passport-award48 .symbol{font-size:25px;line-height:1}.passport-award48 b{display:block;color:#e6d2a0;font-size:13px}.passport-award48 p{font-size:11px;line-height:1.4;color:#b1baa8;margin:4px 0 0}
+.passport-notes48{padding:0 15px 15px;display:grid;gap:9px}
+.passport-note48{border:1px solid #626143;background:#111713;padding:13px;border-radius:6px;overflow-wrap:anywhere}
+.passport-note48 .meta{display:flex;justify-content:space-between;gap:10px;align-items:start}
+.passport-note48 h4{margin:0;color:#f6cd84;font-size:15px}.passport-note48 time{color:#9baaa0;font-size:10px;white-space:nowrap}
+.passport-note48 p{margin:8px 0 0;white-space:pre-wrap;font-size:13px;line-height:1.5;color:#d0d8c7}
+.passport-note48 button{border:1px solid #654841;color:#d5a39a;background:#201917;padding:6px 9px;margin-top:12px;cursor:pointer;font-size:11px}
+.passport-empty48{color:#a7b4a5;font-size:12px;padding:12px;border:1px dashed #475447}
+.passport-backup-buttons48{display:flex;flex-wrap:wrap;gap:9px}
+.passport-backup-buttons48>button,.passport-import-btn48{flex:1;min-width:150px;padding:11px 8px;background:#252a20;border:1px solid #947044;color:#f5cc85;font:700 11px system-ui,sans-serif;text-align:center;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}
+#page-profile .passport-hero48,#page-profile .passport-edit48,#page-profile .passport-awards48,#page-profile .passport-journal48,#page-profile .passport-backup48{position:relative}
+@media(min-width:1000px){#page-profile .profile-layout{grid-template-columns:repeat(3,minmax(0,1fr))}#page-profile .passport-hero48{grid-column:1/-1}#page-profile .passport-edit48,#page-profile .passport-awards48,#page-profile .passport-journal48,#page-profile .passport-backup48{grid-column:span 1}}
+@media(max-width:760px){#page-profile .profile-layout{grid-template-columns:minmax(0,1fr)!important}#page-profile .passport-hero48{grid-column:1}#page-profile .passport-hero-body48{grid-template-columns:132px 1fr;gap:12px;padding:12px}#page-profile .passport-photo-frame48{height:180px}#page-profile #passport-callsign48{font-size:29px}#passport-motto48{font-size:13px}#page-profile .passport-metrics48>div{min-width:65px;padding:8px 6px}#page-profile .passport-metrics48 b{font-size:21px}#page-profile .passport-metrics48 small{font-size:8px}#page-profile .passport-edit48,#page-profile .passport-awards48,#page-profile .passport-journal48,#page-profile .passport-backup48{grid-column:1}}
+@media(max-width:420px){#page-profile .passport-hero-body48{grid-template-columns:100px minmax(0,1fr)}#page-profile .passport-photo-frame48{height:153px}#page-profile #passport-callsign48{font-size:23px}#page-profile .passport-metrics48{gap:5px}#page-profile .passport-metrics48>div{min-width:52px;padding:7px 5px}#page-profile .passport-metrics48 small{font-size:7px;letter-spacing:0}#page-profile .passport-local48{font-size:8px;letter-spacing:0}#page-profile .passport-hero-head48{font-size:9px;letter-spacing:0;padding:9px}#page-profile .passport-foot48{flex-wrap:wrap}#page-profile .passport-avatars48{grid-template-columns:repeat(4,minmax(0,1fr))}.passport-awards-grid48{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.passport-progress-track48 span{transition:none}}
+</style>
+
+<script id="archium-4-8-profile-js" defer src="assets/js/08-archium-4-8-profile-js.js"></script>
+<style id="archium-5-2-reputation-css">
+#page-profile .profile-layout{gap:14px}
+#page-profile .rep52{grid-column:1/-1;min-width:0;border:1px solid #62502c;background:linear-gradient(145deg,#22241d,#101613 50%,#171810);box-shadow:0 10px 25px #0005;overflow:hidden}
+.rep52-version{margin-left:auto;color:#d4ac64;font-size:10px;font-weight:800;letter-spacing:.6px}
+.rep52-summary{display:grid;grid-template-columns:115px minmax(0,1fr);align-items:center;gap:18px;padding:18px 19px}
+.rep52-emblem{height:110px;width:110px;display:grid;place-items:center;flex:none;border:2px solid #9b773b;clip-path:polygon(15% 0,85% 0,100% 15%,100% 77%,50% 100%,0 77%,0 15%);background:radial-gradient(circle at 50% 15%,#6e5731,#25251d 67%,#101611);font:900 55px Georgia,serif;color:#fbd184;text-shadow:0 3px 12px #000;box-shadow:inset 0 0 22px #0007}
+.rep52-kicker{font-size:10px;letter-spacing:1.8px;color:#94ac8b;font-weight:800}
+.rep52-summary h2{margin:4px 0 5px;color:#ffcd75;font:900 clamp(21px,3vw,32px)/1.15 system-ui,sans-serif;letter-spacing:.5px}
+.rep52-muted{font-size:12px;line-height:1.5;color:#b9c2b2;margin:0 0 12px}
+.rep52-track{height:11px;border:1px solid #72603b;background:#0b120f;border-radius:12px;overflow:hidden}
+.rep52-track span{display:block;width:0;height:100%;border-radius:10px;background:linear-gradient(90deg,#8c6930,#e9b359,#fff0a1);transition:width .22s}
+.rep52-progress-label{display:flex;justify-content:space-between;gap:10px;margin:7px 0 0;color:#acb9a8;font-size:11px}.rep52-progress-label strong{color:#ffd58b}
+.rep52-stats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding:0 18px 16px}
+.rep52-stat{min-width:0;border:1px solid #4e4c32;background:#141c16;padding:10px 8px;text-align:center;display:grid;gap:4px}
+.rep52-stat strong{font:900 24px/1.1 system-ui,sans-serif;color:#ffcd78}.rep52-stat small{font-size:10px;color:#b6c5b3;line-height:1.35}
+.rep52-note{margin:0 18px 16px;border-left:3px solid #c08d47;padding:9px 12px;background:#131813;color:#b9c6b6;font-size:11px;line-height:1.6}
+.rep52-rank-strip{display:flex;flex-wrap:wrap;gap:6px;padding:0 18px 17px}.rep52-rank-step{font-size:10px;color:#a4ad9f;border:1px solid #424a3a;padding:7px 9px;background:#151a16}.rep52-rank-step.active{color:#ffe3ab;border-color:#cba35d;background:#40301e}
+.rep52-toolbar{display:flex;gap:7px;flex-wrap:wrap;padding:15px 16px 8px}.rep52-filter{cursor:pointer;color:#c6d0be;background:#141a16;border:1px solid #505942;padding:9px 14px;font:700 12px system-ui,sans-serif;min-height:40px}.rep52-filter[aria-pressed="true"]{background:#4a3620;color:#ffe3ac;border-color:#daa94e}
+.rep52-medals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:10px 16px 18px}
+.rep52-medal{min-width:0;display:flex;gap:11px;align-items:center;border:1px solid #464e3d;background:#141a15;padding:12px;border-radius:7px;opacity:.69}
+.rep52-medal.earned{background:linear-gradient(145deg,#30281c,#1a261b);opacity:1;border-color:#ae8445;box-shadow:inset 0 1px 0 #e1b97928}
+.rep52-medal-icon{flex:none;display:grid;place-items:center;width:48px;height:50px;border:1px double #75613b;background:radial-gradient(circle at top,#4d412a,#191f18);clip-path:polygon(10% 0,90% 0,100% 15%,95% 80%,50% 100%,5% 80%,0 15%);color:#ffd284;font-size:25px;filter:grayscale(.85)}.rep52-medal.earned .rep52-medal-icon{filter:none;box-shadow:0 0 9px #efba4a55}
+.rep52-medal-info{min-width:0;overflow-wrap:anywhere}.rep52-medal-info b{font-size:12px;color:#f4d59a}.rep52-medal-info p{font-size:11px;line-height:1.45;color:#b2c1ae;margin:4px 0}.rep52-medal-info small{font-size:10px;color:#dfb467}
+.rep52-showcase{border-top:1px solid #534a30;padding:15px 18px;display:grid;grid-template-columns:minmax(0,1fr) minmax(140px,1fr);gap:6px 12px;align-items:center}.rep52-showcase label{font-weight:800;color:#d6c597;font-size:13px}.rep52-showcase select{width:100%;min-width:0;background:#111910;color:#ffe0a2;border:1px solid #9d793f;padding:10px;min-height:40px}.rep52-showcase p{grid-column:1/-1;font-size:11px;color:#b5c0ac;margin:3px 0 0}
+#passport-rank-chip52,#passport-showcase-chip52{border-color:#b88e49;color:#ffe0a7}
+@media(max-width:999px){.rep52-medals{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:570px){.rep52-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;padding:0 11px 11px}.rep52-summary{grid-template-columns:76px minmax(0,1fr);gap:11px;padding:13px}.rep52-emblem{width:75px;height:78px;font-size:39px}.rep52-medals{grid-template-columns:minmax(0,1fr);padding:10px}.rep52-medal{padding:10px}.rep52-rank-strip{padding:0 10px 12px}.rep52-note{margin:0 10px 12px}.rep52-showcase{grid-template-columns:1fr;padding:12px}.rep52-toolbar{padding:10px}.rep52-stat strong{font-size:20px}}
+@media(prefers-reduced-motion:reduce){.rep52-track span{transition:none}}
+</style>
+
+<script id="archium-5-2-reputation-js" defer src="assets/js/09-archium-5-2-reputation-js.js"></script>
+<script id="archium-5-3-js" defer src="assets/js/10-archium-5-3-js.js"></script>
+<script defer src="assets/js/11-archium-core.js"></script>
+<div id="faction-quiz54" class="faction-quiz54" role="dialog" aria-modal="true" aria-labelledby="quiz-heading54" hidden>
+ <div class="quiz-shell54"><div class="quiz-bar54"><span>◈ ARCHIUM / ИСПЫТАНИЕ</span><button type="button" id="quiz-close54" aria-label="Закрыть испытание">✕</button></div>
+ <div class="quiz-progress54" id="quiz-progress54"></div><div class="quiz-content54"><span class="eyebrow54" id="quiz-subtitle54">ВИЗУАЛЬНЫЙ ПРОТОТИП</span><h2 id="quiz-heading54">ИСПЫТАНИЕ ГРУППИРОВКИ</h2><p id="quiz-question54">Вопрос появится здесь.</p><div id="quiz-answers54" class="quiz-answers54"></div><p id="quiz-disclaimer54" class="quiz-disclaimer54">Вопросы и варианты ответов демонстрационные. Сейчас это проверка интерфейса — результат не меняет аккаунт и проводника.</p></div>
+ <div class="quiz-footer54"><button type="button" id="quiz-back54">‹ Назад</button><button type="button" id="quiz-next54" class="major-btn gold" disabled>Продолжить ›</button></div></div>
+</div>
+<script id="archium54-concept-js" defer src="assets/js/12-archium54-concept-js.js"></script>
+
+<script src="generated/cards.generated.js" defer></script>
+<script id="archium55-runtime" defer src="assets/js/13-archium55-runtime.js"></script>
+<script src="assets/js/14-developer-profile561.js" defer></script>
+<script defer src="assets/js/15-archium57-tools.js"></script>
+</body>
+</html>
