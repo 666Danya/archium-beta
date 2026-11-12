@@ -1,0 +1,75 @@
+name: ARCHIUM · поиск новостей на модерацию
+
+on:
+  schedule:
+    - cron: '23 */3 * * *'  # every three hours (UTC), may be delayed by GitHub
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        type: boolean
+        default: true
+        description: 'Only collect and upload preview artifact; do not open PR'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: archium-news-review
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check collector and news schema
+        run: python -m unittest discover -s tests -p 'test_news*.py' -v
+      - name: Find news and prepare review version
+        run: |
+          python scripts/archium_news.py \
+            --news news.json \
+            --output "$RUNNER_TEMP/news-reviewed.json" \
+            --report "$RUNNER_TEMP/REVIEW.md"
+      - name: Upload review preview (no deployment)
+        uses: actions/upload-artifact@v4
+        with:
+          name: archium-news-review-preview
+          path: |
+            ${{ runner.temp }}/news-reviewed.json
+            ${{ runner.temp }}/REVIEW.md
+          retention-days: 14
+      - name: Open draft PR for human approval (never merge automatically)
+        if: ${{ github.event_name == 'schedule' || inputs.dry_run == false }}
+        shell: bash
+        env:
+          BASE_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          set -euo pipefail
+          if cmp -s news.json "$RUNNER_TEMP/news-reviewed.json"; then
+            echo 'No changes; no review PR needed.'
+            exit 0
+          fi
+          # Avoid conflicting review PRs or duplicate news while one is unapproved.
+          if gh pr list --state open --limit 100 --json headRefName --jq '.[].headRefName' | grep -q '^autonews/review-'; then
+            echo 'Existing news review PR awaiting editor. Do not create another.'
+            exit 0
+          fi
+          branch="autonews/review-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git switch -c "$branch"
+          cp "$RUNNER_TEMP/news-reviewed.json" news.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add news.json
+          git commit -m 'news: prepare S.T.A.L.K.E.R. candidates for manual review'
+          git push origin "$branch"
+          gh pr create \
+            --base "$BASE_BRANCH" --head "$branch" --draft \
+            --title 'ARCHIUM: новости на проверку (без автопубликации)' \
+            --body-file "$RUNNER_TEMP/REVIEW.md"
